@@ -7,7 +7,7 @@ package userInterface;
 
 /**
  *
- * @author Hp
+ * @author Diksha Godse
  */
 public class mainJFrame extends javax.swing.JFrame {
 
