@@ -80,7 +80,7 @@ public class mainJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addGap(0, 142, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -98,7 +98,7 @@ public class mainJFrame extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
+            .addGap(0, 397, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(87, 87, 87)
@@ -113,7 +113,7 @@ public class mainJFrame extends javax.swing.JFrame {
                     .addComponent(loginJButton)
                     .addGap(34, 34, 34)
                     .addComponent(logoutJButton)
-                    .addContainerGap(87, Short.MAX_VALUE)))
+                    .addContainerGap(74, Short.MAX_VALUE)))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -129,14 +129,14 @@ public class mainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(161, 161, 161)
                 .addComponent(jLabel3)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         mainWorkArea.add(jPanel2, "card2");
