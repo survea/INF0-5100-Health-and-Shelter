@@ -5,10 +5,25 @@
  */
 package business.organization;
 
+import business.roles.LabAssistantRole;
+import business.roles.Role;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Diksha Godse
  */
-public class LabOrganization {
+public class LabOrganization extends Organization{
+    public LabOrganization() {
+        super(Organization.OrganizationType.Lab.getValue());
+    }
+
+    @Override
+    public List<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new LabAssistantRole());
+        return roles;
+    }
     
 }

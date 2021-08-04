@@ -10,5 +10,9 @@ package business.organization;
  * @author Diksha Godse
  */
 public class OrganizationDirectory {
+
+    public Iterable<Organization> getOrganizationList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
