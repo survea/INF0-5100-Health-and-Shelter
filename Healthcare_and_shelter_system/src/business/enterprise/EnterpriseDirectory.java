@@ -34,15 +34,37 @@ public class EnterpriseDirectory {
             enterprise = new HospitalEnterprise(name);
             enterpriseList.add(enterprise);
         }
-//        if (type == Enterprise.EnterpriseType.Camp) {
-//            enterprise = new CampEnterprise(name);
-//            enterpriseList.add(enterprise);
-//        }
-//        if (type == Enterprise.EnterpriseType.Event) {
-//            enterprise = new EventEnterprise(name);
-//            enterpriseList.add(enterprise);
-//        }
+        if (type == Enterprise.EnterpriseType.NGO) {
+            enterprise = new NGOEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        if (type == Enterprise.EnterpriseType.FundRaiser) {
+            enterprise = new FundEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        if (type == Enterprise.EnterpriseType.Volunteer) {
+            enterprise = new PersonEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
         return enterprise;
+    }
+
+    public Enterprise removeEnterprise(String name, Enterprise.EnterpriseType type) {
+        Enterprise enterprise = fetchEnterprise(name, type);
+        if (type == Enterprise.EnterpriseType.Hospital) {
+            enterpriseList.remove(enterprise);
+        }
+        return enterprise;
+    }
+
+    public Enterprise fetchEnterprise(String name, Enterprise.EnterpriseType type) {
+        for (Enterprise enterprise : enterpriseList) {
+            if (enterprise.getName().equals(name) && enterprise.getEnterpriseType().equals(type)) {
+                return enterprise;
+            }
+
+        }
+        return null;
     }
 
 }

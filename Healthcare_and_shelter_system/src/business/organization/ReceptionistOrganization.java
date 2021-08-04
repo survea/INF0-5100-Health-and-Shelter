@@ -5,10 +5,26 @@
  */
 package business.organization;
 
+import business.roles.NurseRole;
+import business.roles.ReceptionistRole;
+import business.roles.Role;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Diksha Godse
  */
-public class ReceptionistOrganization {
+public class ReceptionistOrganization extends Organization{
     
+    public ReceptionistOrganization() {
+        super(Organization.OrganizationType.Receptionist.getValue());
+    }
+    
+    @Override
+    public List<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new ReceptionistRole());
+        return roles;
+    }
 }

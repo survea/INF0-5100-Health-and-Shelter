@@ -5,10 +5,25 @@
  */
 package business.roles;
 
+import business.EcoSystem;
+import business.enterprise.Enterprise;
+import business.network.Network;
+import business.organization.DoctorOrganization;
+import business.organization.Organization;
+import business.organization.ReceptionistOrganization;
+import business.userAccount.UserAccount;
+import javax.swing.JPanel;
+import userInterface.doctorRole.DoctorMainWorkAreaJPanel;
+
 /**
  *
  * @author dhairyasheel
  */
-public class ReceptionistRole {
+public class ReceptionistRole extends Role{
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
+        return new DoctorMainWorkAreaJPanel(userProcessContainer, account, (DoctorOrganization) organization, enterprise, business);
+    }
     
 }
