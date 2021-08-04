@@ -13,6 +13,7 @@ import business.network.Network;
 import business.organization.Organization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
+import userInterface.corporateRole.CorporateWorkAreaJPanel;
 
 /**
  *
@@ -22,7 +23,7 @@ public class CorporateRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new CorporateWorkAreaJPanel(userProcessContainer);
     }
     
 }
