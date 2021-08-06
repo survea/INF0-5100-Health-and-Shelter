@@ -11,7 +11,6 @@ import business.network.Network;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import userInterface.corporateRole.FundRaiserEventJpanel;
 
 /**
  *
@@ -62,6 +61,11 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("Manage Funds");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,11 +95,19 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GeneralRegisterJPanel fundPanel = new GeneralRegisterJPanel();
-        userProcessContainer.add("SponcerRegistrationJPanel", fundPanel);
+        FundTransferRequestJpanel fundPanel = new FundTransferRequestJpanel(userProcessContainer);
+        userProcessContainer.add("FundTransferRequestJpanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ManageFundsJpanel fundPanel = new ManageFundsJpanel(userProcessContainer);
+        userProcessContainer.add("ManageFundsJpanel", fundPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

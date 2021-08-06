@@ -17,6 +17,8 @@ import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userInterface.AdminFundRole.CorporateRegisterJPanel;
+import userInterface.AdminFundRole.GeneralRegisterJPanel;
 
 /**
  *
@@ -55,8 +57,8 @@ public class mainJFrame extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         loginJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCorporateRole = new javax.swing.JButton();
+        btnGeneralRole = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         mainWorkArea = new javax.swing.JPanel();
@@ -84,9 +86,19 @@ public class mainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cooperate Donate");
+        btnCorporateRole.setText("Cooperate Donate");
+        btnCorporateRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCorporateRoleActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("General Donate");
+        btnGeneralRole.setText("General Donate");
+        btnGeneralRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeneralRoleActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Register Self");
 
@@ -100,8 +112,8 @@ public class mainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCorporateRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGeneralRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -130,9 +142,9 @@ public class mainJFrame extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnCorporateRole)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnGeneralRole)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
@@ -286,6 +298,22 @@ public class mainJFrame extends javax.swing.JFrame {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
+    private void btnCorporateRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorporateRoleActionPerformed
+        // TODO add your handling code here:
+        CorporateRegisterJPanel fundPanel = new CorporateRegisterJPanel();
+        mainWorkArea.add("CorporateRegisterJPanel", fundPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+    }//GEN-LAST:event_btnCorporateRoleActionPerformed
+
+    private void btnGeneralRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneralRoleActionPerformed
+        // TODO add your handling code here:
+        GeneralRegisterJPanel fundPanel = new GeneralRegisterJPanel();
+        mainWorkArea.add("GeneralRegistrationJPanel", fundPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+    }//GEN-LAST:event_btnGeneralRoleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,8 +350,8 @@ public class mainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCorporateRole;
+    private javax.swing.JButton btnGeneralRole;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
