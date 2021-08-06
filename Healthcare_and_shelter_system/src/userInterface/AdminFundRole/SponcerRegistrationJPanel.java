@@ -5,8 +5,6 @@
  */
 package userInterface.AdminFundRole;
 
-import userInterface.sponcerRegistration.*;
-
 /**
  *
  * @author dhairyasheel

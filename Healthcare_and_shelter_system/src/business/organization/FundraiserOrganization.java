@@ -5,10 +5,27 @@
  */
 package business.organization;
 
+import business.roles.CorporateRole;
+import business.roles.GeneralRole;
+import business.roles.Role;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author dhairyasheel
  */
-public class FundraiserOrganization {
-    
+public class FundraiserOrganization  extends Organization {
+
+    public FundraiserOrganization() {
+        super(Organization.OrganizationType.Fundrasier.getValue());
+    }
+
+    @Override
+    public List<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new CorporateRole());
+        roles.add(new GeneralRole());
+        return roles;
+    }
 }

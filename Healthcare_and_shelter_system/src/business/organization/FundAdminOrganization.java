@@ -10,5 +10,9 @@ package business.organization;
  * @author dhairyasheel
  */
 public class FundAdminOrganization {
+
+    public FundAdminOrganization() {
+        
+    }
     
 }

@@ -54,6 +54,10 @@ public class EnterpriseDirectory {
         if (type == Enterprise.EnterpriseType.Hospital) {
             enterpriseList.remove(enterprise);
         }
+        if (type == Enterprise.EnterpriseType.FundRaiser) {
+            enterprise = new PersonEnterprise(name);
+            enterpriseList.remove(enterprise);
+        }
         return enterprise;
     }
 
