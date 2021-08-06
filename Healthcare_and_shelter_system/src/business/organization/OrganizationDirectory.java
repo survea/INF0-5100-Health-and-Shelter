@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package business.organization;
+import business.Organization;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,7 +6,7 @@
 package business.enterprise;
 
 import business.organization.FundraiserOrganization;
-import business.organization.Organization;
+import business.Organization;
 import business.roles.Role;
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business.organization;
+package business;
 
 import business.employee.EmployeeDirectory;
 import business.roles.Role;
@@ -16,13 +16,14 @@ import java.util.List;
  * @author Diksha Godse
  */
 public abstract class Organization {
+
     private String name;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationId;
     private static int counter = 0;
-    private OrganizationType organizationType;
+//    private OrganizationType organizationType;
 
     public enum OrganizationType {
         Admin("Admin Organization"),
@@ -35,8 +36,6 @@ public abstract class Organization {
         NGOOrganization("NGO Organization"),
         Fundrasier("Fundraiser Organization");
 
-
-        
         private String value;
 
         private OrganizationType(String value) {
@@ -56,6 +55,15 @@ public abstract class Organization {
         organizationId = counter;
         ++counter;
     }
+        public Organization(){
+        workQueue = new WorkQueue();
+        userAccountDirectory = new UserAccountDirectory();
+        employeeDirectory = new EmployeeDirectory();
+        organizationId = counter;
+        ++counter;   
+    }
+
+    public abstract List<Role> getSupportedRole();
 
     public String getName() {
         return name;
@@ -105,14 +113,15 @@ public abstract class Organization {
         this.employeeDirectory = employeeDirectory;
     }
 
-    public OrganizationType getOrganizationType() {
-        return organizationType;
+//    public OrganizationType getOrganizationType() {
+//        return organizationType;
+//    }
+//
+//    public void setOrganizationType(OrganizationType organizationType) {
+//        this.organizationType = organizationType;
+//    }   
+    @Override
+    public String toString() {
+        return name;
     }
-
-    public void setOrganizationType(OrganizationType organizationType) {
-        this.organizationType = organizationType;
-    }
-    public abstract List<Role> getSupportedRole();
-    
-    
 }

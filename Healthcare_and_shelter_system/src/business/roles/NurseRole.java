@@ -10,7 +10,7 @@ import business.enterprise.Enterprise;
 import business.enterprise.EnterpriseDirectory;
 import business.network.Network;
 import business.organization.NurseOrganization;
-import business.organization.Organization;
+import business.Organization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
 import userInterface.nurseRole.NurseMainWorkAreaJPanel;

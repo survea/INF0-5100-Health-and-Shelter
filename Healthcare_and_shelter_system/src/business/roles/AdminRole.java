@@ -8,7 +8,7 @@ package business.roles;
 import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
-import business.organization.Organization;
+import business.Organization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
 import userInterface.AdminFundRole.FundsAdminWorkAreaJPanel;
@@ -24,11 +24,11 @@ public class AdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.Volunteer)){
+        if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.Volunteer.getValue())){
                 return new VolunteerAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);
-        }else if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.NGO)){
+        }else if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.NGO.getValue())){
                 return new NGOAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);
-        }else if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.FundRaiser)){
+        }else if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.FundRaiser.getValue())){
                 return new FundsAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);
         }else{
          return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);

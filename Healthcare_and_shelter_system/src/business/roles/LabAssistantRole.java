@@ -9,7 +9,7 @@ import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.organization.LabOrganization;
-import business.organization.Organization;
+import business.Organization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
 import userInterface.labAssistantRole.LabAssistantMainWorkAreaJPanel;

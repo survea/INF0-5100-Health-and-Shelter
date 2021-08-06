@@ -5,7 +5,7 @@
  */
 package business.enterprise;
 
-import business.organization.Organization;
+import business.Organization;
 import business.organization.OrganizationDirectory;
 import business.roles.Role;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public abstract class Enterprise extends Organization {
 
-    private EnterpriseType enterpriseType;
+    public String enterpriseType;
     private OrganizationDirectory organizationDirectory;
 
     public abstract List<Role> getSupportedRole();
@@ -51,15 +51,15 @@ public abstract class Enterprise extends Organization {
 
     public Enterprise(String name, EnterpriseType type) {
         super(name);
-        this.enterpriseType = type;
+        this.enterpriseType = type.getValue();
         organizationDirectory = new OrganizationDirectory();
      }
 
-    public EnterpriseType getEnterpriseType() {
+    public String getEnterpriseType() {
         return enterpriseType;
     }
 
-    public void setEnterpriseType(EnterpriseType enterpriseType) {
+    public void setEnterpriseType(String enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
 

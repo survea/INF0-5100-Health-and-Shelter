@@ -8,7 +8,7 @@ package business.enterprise;
 import business.organization.DoctorOrganization;
 import business.organization.LabOrganization;
 import business.organization.NurseOrganization;
-import business.organization.Organization;
+import business.Organization;
 import business.roles.Role;
 import java.util.ArrayList;
 import java.util.List;

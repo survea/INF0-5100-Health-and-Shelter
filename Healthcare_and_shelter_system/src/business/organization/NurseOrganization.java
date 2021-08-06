@@ -5,6 +5,7 @@
  */
 package business.organization;
 
+import business.Organization;
 import business.roles.NurseRole;
 import business.roles.Role;
 import java.util.ArrayList;

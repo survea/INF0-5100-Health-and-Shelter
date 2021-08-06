@@ -10,7 +10,7 @@ import business.enterprise.Enterprise;
 import static business.enterprise.Enterprise.EnterpriseType.FundRaiser;
 import business.enterprise.EnterpriseDirectory;
 import business.network.Network;
-import business.organization.Organization;
+import business.Organization;
 import business.roles.CorporateRole;
 import business.roles.FundAdminRole;
 import business.roles.GeneralRole;

@@ -6,10 +6,11 @@
 package userInterface;
 
 import business.ConfigureASystem;
+import business.DB4OUtil.DB4OUtil;
 import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
-import business.organization.Organization;
+import business.Organization;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -27,11 +28,14 @@ public class mainJFrame extends javax.swing.JFrame {
      * Creates new form mainJFrame
      */
     private EcoSystem system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 //    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
     public mainJFrame() {
         initComponents();
-        //        system = dB4OUtil.retrieveSystem();
-        system = ConfigureASystem.configure();
+        system = dB4OUtil.retrieveSystem();
+        this.setSize(1680, 1050);
+//        system = ConfigureASystem.configure();
     }
 
     /**
@@ -154,26 +158,26 @@ public class mainJFrame extends javax.swing.JFrame {
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
-        
-        if((userName==null || userName.equals("")) && (password==null || password.equals(""))){
-                 jLabel1.setForeground(Color.RED);
-                 jLabel2.setForeground(Color.RED);
-                 JOptionPane.showMessageDialog(null, "Please enter user name and password!");
-                 return;
-            }
-        if(userName==null || userName.equals("")){
-                 jLabel1.setForeground(Color.RED);
-                 JOptionPane.showMessageDialog(null, "Please enter user name!");
-                 return;
-            }else{
-                 jLabel1.setForeground(Color.BLACK);
-            }
-        
-        if(password==null || password.equals("")){
+
+        if ((userName == null || userName.equals("")) && (password == null || password.equals(""))) {
+            jLabel1.setForeground(Color.RED);
+            jLabel2.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null, "Please enter user name and password!");
+            return;
+        }
+        if (userName == null || userName.equals("")) {
+            jLabel1.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null, "Please enter user name!");
+            return;
+        } else {
+            jLabel1.setForeground(Color.BLACK);
+        }
+
+        if (password == null || password.equals("")) {
             jLabel2.setForeground(Color.RED);
             JOptionPane.showMessageDialog(null, "Please enter password!");
             return;
-        } else{
+        } else {
             jLabel2.setForeground(Color.BLACK);
         }
         //Step1: Check in the system admin user account directory if you have the user
@@ -226,7 +230,7 @@ public class mainJFrame extends javax.swing.JFrame {
         if (userAccount == null) {
             jLabel1.setForeground(Color.RED);
             jLabel2.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Invalid Credentials! Please re-enter!");            
+            JOptionPane.showMessageDialog(null, "Invalid Credentials! Please re-enter!");
             return;
         } else {
             CardLayout layout = (CardLayout) mainWorkArea.getLayout();
@@ -259,7 +263,7 @@ public class mainJFrame extends javax.swing.JFrame {
         mainWorkArea.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) mainWorkArea.getLayout();
         crdLyt.next(mainWorkArea);
-//        dB4OUtil.storeSystem(system);
+        dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     /**

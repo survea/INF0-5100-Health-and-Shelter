@@ -5,6 +5,7 @@
  */
 package business.organization;
 
+import business.Organization;
 import business.roles.CorporateRole;
 import business.roles.GeneralRole;
 import business.roles.Role;

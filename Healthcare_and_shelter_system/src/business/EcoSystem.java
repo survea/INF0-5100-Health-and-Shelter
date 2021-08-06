@@ -6,7 +6,6 @@
 package business;
 
 import business.network.Network;
-import business.organization.Organization;
 import business.roles.Role;
 import business.roles.SystemAdminRole;
 import java.util.ArrayList;
@@ -16,9 +15,10 @@ import java.util.List;
  *
  * @author Diksha Godse
  */
-public class EcoSystem extends Organization{
-        private static EcoSystem business;
-    private List<Network> networkList;
+public class EcoSystem extends Organization {
+
+    public static EcoSystem business;
+    public List<Network> networkList;
 
     public static EcoSystem getInstance() {
         if (business == null) {
@@ -32,29 +32,27 @@ public class EcoSystem extends Organization{
         networkList.add(network);
         return network;
     }
-    
+
     public void removeNetwork(Network network) {
         networkList.remove(network);
     }
-    
-    public void updateNetwork(Network network,String name){
-        for(Network n:networkList){
-            if(network.equals(network)){
-                network.setName(name);
+
+    public void updateNetwork(Network network, String name) {
+        for (Network n : networkList) {
+            if (n.equals(network)) {
+                n.setName(name);
             }
         }
-    }
-
-    @Override
-    public List<Role> getSupportedRole() {
-        List<Role> roleList = new ArrayList<Role>();
-        roleList.add(new SystemAdminRole());
-        return roleList;
     }
 
     private EcoSystem() {
         super(null);
         networkList = new ArrayList<Network>();
+    }
+
+    public EcoSystem(List<Network> networkList) {
+        super();
+        this.networkList = networkList;
     }
 
     public List<Network> getNetworkList() {
@@ -73,11 +71,27 @@ public class EcoSystem extends Organization{
     }
 
     public boolean isDuplicateNetwork(String name) {
-     for(Network n:networkList){
-            if(n.equals(name)){
+        for (Network n : networkList) {
+            if (n.equals(name)) {
                 return true;
             }
-        }    
-    return false;
+        }
+        return false;
     }
+
+//    public static EcoSystem getBusiness() {
+//        return business;
+//    }
+//
+//    public static void setBusiness(EcoSystem business) {
+//        EcoSystem.business = business;
+//    }
+
+    @Override
+    public List<Role> getSupportedRole() {
+        List<Role> roleList = new ArrayList<Role>();
+        roleList.add(new SystemAdminRole());
+        return roleList;
+    }
+
 }
