@@ -9,7 +9,9 @@ import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.userAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userInterface.corporateRole.FundRaiserEventJpanel;
 
 /**
  *
@@ -53,6 +55,11 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Funds admin work Area");
 
         jButton1.setText("Register to Donate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Manage Funds");
 
@@ -80,6 +87,14 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        SponcerRegistrationJPanel fundPanel = new SponcerRegistrationJPanel();
+        userProcessContainer.add("SponcerRegistrationJPanel", fundPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
