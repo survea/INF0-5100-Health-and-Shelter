@@ -7,6 +7,7 @@ package business.organization;
 
 import business.Organization;
 import business.roles.CorporateRole;
+import business.roles.FundAdminRole;
 import business.roles.GeneralRole;
 import business.roles.Role;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class FundraiserOrganization  extends Organization {
     @Override
     public List<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
+        roles.add(new FundAdminRole());
         roles.add(new CorporateRole());
         roles.add(new GeneralRole());
         return roles;

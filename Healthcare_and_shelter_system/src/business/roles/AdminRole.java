@@ -9,6 +9,7 @@ import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.Organization;
+import business.organization.FundraiserOrganization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
 import userInterface.AdminFundRole.FundsAdminWorkAreaJPanel;
@@ -29,7 +30,7 @@ public class AdminRole extends Role{
         }else if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.NGO.getValue())){
                 return new NGOAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);
         }else if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.FundRaiser.getValue())){
-                return new FundsAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);
+                return new FundsAdminWorkAreaJPanel(userProcessContainer, account, (FundraiserOrganization)organization, enterprise,network, business);
         }else{
          return new HospitalAdminWorkAreaJPanel(userProcessContainer, enterprise,account,network,business);
         }     }

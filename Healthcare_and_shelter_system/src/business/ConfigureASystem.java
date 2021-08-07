@@ -42,19 +42,6 @@ public class ConfigureASystem {
             UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
             
             
-          // created Fund Raiser Enterprise and its organization
-          Enterprise fundRaiserEnterprise = enterpriseDirectory.createAndAddEnterprise("Boston Fund Raiser", FundRaiser);
-          List<Organization> fundList = fundRaiserEnterprise.getSupportedType();
-          Organization fundraiserOrganization = fundList.get(0);
-          
-          Employee adminFD = system.getEmployeeDirectory().createEmployee("adminFD");
-          UserAccount uaFD = system.getUserAccountDirectory().createUserAccount("fd", "fd", adminFD, new FundAdminRole());
-          
-          Employee corporate = system.getEmployeeDirectory().createEmployee("co");
-          UserAccount coop = system.getUserAccountDirectory().createUserAccount("co", "co", corporate, new CorporateRole());
-          
-          Employee general = system.getEmployeeDirectory().createEmployee("gen");
-          UserAccount gen = system.getUserAccountDirectory().createUserAccount("gen", "gen", general, new GeneralRole());
-          return system;
+        return system;
     }
 }

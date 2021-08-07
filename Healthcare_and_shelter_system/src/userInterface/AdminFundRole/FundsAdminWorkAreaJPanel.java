@@ -6,8 +6,10 @@
 package userInterface.AdminFundRole;
 
 import business.EcoSystem;
+import business.Organization;
 import business.enterprise.Enterprise;
 import business.network.Network;
+import business.organization.FundraiserOrganization;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -26,14 +28,14 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     Network network;
     EcoSystem system;
-
-    public FundsAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount userAccount, Network network, EcoSystem business) {
+    FundraiserOrganization organization;
+    public FundsAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, FundraiserOrganization organization, Enterprise enterprise, Network network, EcoSystem business) {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.userProcessContainer = userProcessContainer;
-        this.userAccount = userAccount;
+        this.userAccount = account;
         this.network = network;
         this.system = business;
+        this.organization = organization;
         initComponents();
     }
 
@@ -60,7 +62,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Manage Funds");
+        jButton2.setText("Manage Funds Request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -78,7 +80,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +105,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ManageFundsJpanel fundPanel = new ManageFundsJpanel(userProcessContainer);
+        ManageFundsJpanel fundPanel = new ManageFundsJpanel(userProcessContainer,userAccount, organization, enterprise,network, system);
         userProcessContainer.add("ManageFundsJpanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

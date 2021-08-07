@@ -11,6 +11,7 @@ import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.Organization;
+import business.organization.FundraiserOrganization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
 import userInterface.AdminFundRole.FundsAdminWorkAreaJPanel;
@@ -24,7 +25,7 @@ public class FundAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new FundsAdminWorkAreaJPanel(userProcessContainer, enterprise, account, network, business);
+        return new FundsAdminWorkAreaJPanel(userProcessContainer, account, (FundraiserOrganization)organization, enterprise,network, business);
     }
     
 }

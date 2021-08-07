@@ -5,6 +5,15 @@
  */
 package userInterface.AdminFundRole;
 
+import business.EcoSystem;
+import business.Organization;
+import business.enterprise.Enterprise;
+import business.network.Network;
+import business.userAccount.UserAccount;
+import business.workQueue.SponsorApprovalStatus;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author dhairyasheel
@@ -14,8 +23,12 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SponcerRegistrationJPanel
      */
-    public CorporateRegisterJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem system;
+    public CorporateRegisterJPanel(JPanel userProcessContainerÏ, EcoSystem system) {
         initComponents();
+        this.system = system;
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -42,6 +55,7 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtManager = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jTextField2.setText("jTextField1");
 
@@ -58,8 +72,15 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
         jLabel6.setText("Phone number");
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Manager Name");
+
+        jButton1.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,7 +111,9 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
                             .addGap(31, 31, 31)
                             .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(176, 176, 176)
+                            .addContainerGap()
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(70, 70, 70)
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -102,8 +125,10 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,13 +154,69 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(btnRegister)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        if(txtCompany.getText().isEmpty() | txtManager.getText().isEmpty()|txtAddress.getText().isEmpty()|txtUser.getText().isEmpty()|txtPassword.getText().isEmpty()|txtPhone.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please fill all the fields", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int userCheck =0;
+        String userName =txtUser.getText();
+        String pass = txtPassword.getText();
+        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, pass);
+        if (userAccount == null) {
+            for (Network network : system.getNetworkList()) {
+                //Step 2.a: check against each enterprise
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        System.out.println(organization);
+                        userAccount = organization.getUserAccountDirectory().authenticateUser(userName, pass);
+                        System.out.println(userAccount);
+                        if (userAccount != null) {
+                            userCheck++;
+                            System.out.println(userAccount);
+                            // break;
+                        }
+                    }
+                }
+            }
+        }
+        if (userCheck > 0) {
+            JOptionPane.showMessageDialog(this, "User name already exists!");
+        } else if (userCheck == 0) {
+            SponsorApprovalStatus request = new SponsorApprovalStatus();
+            request.setTypeOfRequest("Sponsor");
+                request.setCompanyName(txtCompany.getText());
+                request.setName(txtManager.getText());
+                request.setUsername(userName);
+                request.setPassword(pass);
+                request.setAddress(txtAddress.getText());
+                request.setMobile(txtPhone.getText());
+                request.setStatus("Pending");
+                request.setRole("CorporateRole");
+                
+                for (Network network : system.getNetworkList()) {
+                    //Step 2.a: check against each enterprise
+                    for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                        for (UserAccount user : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                          if(user.getUsername().equals("BFAdmin")){
+                              user.getWorkQueue().getWorkRequestList().add(request);
+                                JOptionPane.showMessageDialog(this, "Registration submitted Successfully. Sent to Fund Admin for Approval!");
+                          }
+                        }
+                    }
+                }
+        }
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

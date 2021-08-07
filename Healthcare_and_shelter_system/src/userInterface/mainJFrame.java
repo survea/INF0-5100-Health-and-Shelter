@@ -306,7 +306,7 @@ public class mainJFrame extends javax.swing.JFrame {
 
     private void btnCorporateRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorporateRoleActionPerformed
         // TODO add your handling code here:
-        CorporateRegisterJPanel fundPanel = new CorporateRegisterJPanel();
+        CorporateRegisterJPanel fundPanel = new CorporateRegisterJPanel(mainWorkArea,system);
         mainWorkArea.add("CorporateRegisterJPanel", fundPanel);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.next(mainWorkArea);
