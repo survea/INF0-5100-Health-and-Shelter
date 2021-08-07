@@ -37,7 +37,10 @@ public class OrganizationDirectory {
         } else if (type.getValue().equals(Organization.OrganizationType.Receptionist.getValue())) {
             organization = new ReceptionistOrganization();
             organizationList.add(organization);
-        }
+        }else if (type.getValue().equals(Organization.OrganizationType.HAS_Healthcare_Representative.getValue())) {
+            organization = new HasHealthcareRepresentativeOrganization();
+            organizationList.add(organization);
+        } 
 //        else if (type.getValue().equals(Organization.OrganizationType.Fundrasier.getValue())) {
 //            organization = new FundraiserOrganization();
 //            organizationList.add(organization);

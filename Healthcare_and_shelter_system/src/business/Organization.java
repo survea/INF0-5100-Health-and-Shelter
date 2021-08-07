@@ -23,7 +23,7 @@ public abstract class Organization {
     private UserAccountDirectory userAccountDirectory;
     private int organizationId;
     private static int counter = 0;
-//    private OrganizationType organizationType;
+    private String organizationType;
 
     public enum OrganizationType {
         Admin("Admin Organization"),
@@ -32,7 +32,8 @@ public abstract class Organization {
         Nurse("Nurse Organization"),
         Pharmacy("Pharmacy"),
         Receptionist("Receptionist Organization"),
-        Volunteer("volunteer Organization"),
+        HAS_Healthcare_Representative("HAS Healthcare Organization"),
+        HAS_Shelter_Representative("HAS shelter Organization"),
         NGOOrganization("NGO Organization"),
         Fundrasier("Fundraiser Organization");
 
@@ -113,13 +114,13 @@ public abstract class Organization {
         this.employeeDirectory = employeeDirectory;
     }
 
-//    public OrganizationType getOrganizationType() {
-//        return organizationType;
-//    }
-//
-//    public void setOrganizationType(OrganizationType organizationType) {
-//        this.organizationType = organizationType;
-//    }   
+    public String getOrganizationType() {
+        return organizationType;
+    }
+
+    public void setOrganizationType(OrganizationType organizationType) {
+        this.organizationType = organizationType.getValue();
+    }   
     @Override
     public String toString() {
         return name;

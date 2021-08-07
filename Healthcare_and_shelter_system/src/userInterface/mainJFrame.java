@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userInterface.AdminFundRole.CorporateRegisterJPanel;
 import userInterface.AdminFundRole.GeneralRegisterJPanel;
+import userInterface.PatientRole.PatientRegistrationJPanel;
 
 /**
  *
@@ -101,6 +102,11 @@ public class mainJFrame extends javax.swing.JFrame {
         });
 
         jButton3.setText("Register Self");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Register Needy");
 
@@ -112,7 +118,7 @@ public class mainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnCorporateRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+.addComponent(btnCorporateRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGeneralRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -313,6 +319,38 @@ public class mainJFrame extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.next(mainWorkArea);
     }//GEN-LAST:event_btnGeneralRoleActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if((!userNameJTextField.getText().isEmpty()) && (!loginJButton.isEnabled())){
+        int selectionButton = JOptionPane.YES_NO_OPTION;
+        int selectionResult = JOptionPane.showConfirmDialog(null, "The current user session" +userNameJTextField.getText() + " will be terminated, Do you want to proceed?", 
+                "Warning", selectionButton);
+        if (selectionResult == JOptionPane.YES_OPTION) {
+            PatientRegistrationJPanel prjp = new PatientRegistrationJPanel(mainWorkArea, system);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        mainWorkArea.add("PatientRegistrationJPanel", prjp);
+        layout.next(mainWorkArea);
+
+        loginJButton.setEnabled(false);
+        logoutJButton.setEnabled(true);
+        userNameJTextField.setEnabled(false);
+        passwordField.setEnabled(false);
+        userNameJTextField.setText("");
+        passwordField.setText("");
+        }
+        }else{
+        PatientRegistrationJPanel prjp = new PatientRegistrationJPanel(mainWorkArea, system);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        mainWorkArea.add("PatientRegistrationJPanel", prjp);
+        layout.next(mainWorkArea);
+
+        loginJButton.setEnabled(false);
+        logoutJButton.setEnabled(true);
+        userNameJTextField.setEnabled(false);
+        passwordField.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
