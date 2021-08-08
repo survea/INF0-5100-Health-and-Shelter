@@ -5,6 +5,7 @@
  */
 package userInterface.AdminFundRole;
 
+import business.enterprise.FundEnterprise;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -18,9 +19,13 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
      * Creates new form FundTransferRequestJpanel
      */
     JPanel userProcessContainer;
-    public FundTransferRequestJpanel(JPanel userProcessContainer) {
+    FundEnterprise enterprise;
+    public FundTransferRequestJpanel(JPanel userProcessContainer, FundEnterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        
+        lblTotalFunds.setText(String.valueOf(enterprise.getFundsCollected()));
     }
 
     /**
@@ -37,7 +42,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTotalFunds = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Manage Fund  Request");
@@ -69,7 +74,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
 
         jLabel2.setText("Total Funds:");
 
-        jLabel3.setText("jLabel3");
+        lblTotalFunds.setText("jLabel3");
 
         jButton1.setText("Approve");
 
@@ -91,7 +96,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTotalFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(228, 228, 228)
@@ -108,7 +113,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTotalFunds))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
@@ -130,8 +135,8 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblTotalFunds;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,8 @@ import java.util.List;
  * @author dhairyasheel
  */
 public class FundEnterprise extends Enterprise{
+    private int fundsCollected=0;
+    
         public FundEnterprise(String name) {
         super(name, EnterpriseType.FundRaiser);
     }
@@ -30,5 +32,13 @@ public class FundEnterprise extends Enterprise{
         List<Organization> organization = new ArrayList<>();
         organization.add(new FundraiserOrganization());
         return organization;
+    }
+    
+    public int getFundsCollected() {
+        return fundsCollected;
+    }
+
+    public void setFundsCollected(int fundsCollected) {
+        this.fundsCollected = this.fundsCollected + fundsCollected;
     }
 }

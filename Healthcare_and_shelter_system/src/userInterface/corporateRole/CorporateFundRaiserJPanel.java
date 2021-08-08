@@ -5,6 +5,13 @@
  */
 package userInterface.corporateRole;
 
+import business.EcoSystem;
+import business.enterprise.Enterprise;
+import business.enterprise.FundEnterprise;
+import business.network.Network;
+import business.organization.FundraiserOrganization;
+import business.userAccount.UserAccount;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,10 +23,20 @@ public class CorporateFundRaiserJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CorporateFundRaiserJPanel
      */
-     JPanel userProcessContainer;
-    public CorporateFundRaiserJPanel(JPanel userProcessContainer) {
-        initComponents();
+    JPanel userProcessContainer;
+    FundEnterprise enterprise;
+    UserAccount userAccount;
+    Network network;
+    EcoSystem system;
+    FundraiserOrganization organization;
+    public CorporateFundRaiserJPanel(JPanel userProcessContainer, UserAccount account, FundraiserOrganization organization, FundEnterprise enterprise, Network network, EcoSystem business) {
         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.userAccount = account;
+        this.network = network;
+        this.system = business;
+        this.organization = organization;
+        initComponents();
     }
 
     /**
@@ -32,40 +49,20 @@ public class CorporateFundRaiserJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRaiseFund = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        txtmoney = new javax.swing.JTextField();
 
         jLabel1.setText("Corporate Donate Funds");
 
-        jButton1.setText("Raise fund");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRaiseFund.setText("Raise fund");
+        btnRaiseFund.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRaiseFundActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Enter Amount to Donate");
-
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Amount"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(workRequestJTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,49 +71,52 @@ public class CorporateFundRaiserJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
+                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(138, 138, 138)
+                                .addComponent(btnRaiseFund))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                                .addComponent(txtmoney, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtmoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton1)
-                .addGap(56, 56, 56))
+                .addComponent(btnRaiseFund)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRaiseFundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaiseFundActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try{
+                    enterprise.setFundsCollected(Integer.parseInt(txtmoney.getText()));
+                    System.out.println(enterprise.getFundsCollected());
+                    JOptionPane.showMessageDialog(null, "You have donated " +txtmoney.getText()+ "$. Thank you for your valuable contribution! " +"\n"+" Funds Sent to System Admin for Assigning Hospital!");
+                }catch(NumberFormatException ex){
+                  //   System.out.println(e.getFundsCollected());
+                     JOptionPane.showMessageDialog(null, "Please Enter The Amount you want to donate in digits");
+                }
+    }//GEN-LAST:event_btnRaiseFundActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRaiseFund;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTextField txtmoney;
     // End of variables declaration//GEN-END:variables
 }

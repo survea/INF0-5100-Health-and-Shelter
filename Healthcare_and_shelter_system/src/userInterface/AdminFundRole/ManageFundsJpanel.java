@@ -184,29 +184,8 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         }
         WorkRequest request = (WorkRequest) tblWorkRequest.getValueAt(row, 0);
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(request.getName());
-                UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
-//        Employee employee = null;
-//        Role role = null;
-//        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-//            if (request.getRole().equals("Corporate")) {
-//                employee = org.getEmployeeDirectory().createEmployee(request.getName());
-//                for (Employee e : org.getEmployeeDirectory().getEmployeeList()) {
-//                    if (request.getName() == e.getName()) {
-//                        employee = e;
-//                    }
-//                    for (Role r : org.getSupportedRole()) {
-//                        //System.out.println(r);
-//                        if (request.getRole().equals(r.toString())) {
-//                            role = r;
-//                        }
-//                    }
-//                }
-//                
-//                System.out.println(role);
-//                org.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, role);
-//                break;
-//            }
-//        }
+        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
+
         request.setStatus("Approved");
         populateRequestTable();
         populateApproveTable();

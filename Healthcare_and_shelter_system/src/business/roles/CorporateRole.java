@@ -11,6 +11,8 @@ import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.Organization;
+import business.enterprise.FundEnterprise;
+import business.organization.FundraiserOrganization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
 import userInterface.corporateRole.CorporateFundRaiserJPanel;
@@ -23,7 +25,7 @@ public class CorporateRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-        return new CorporateFundRaiserJPanel(userProcessContainer);
+        return new CorporateFundRaiserJPanel(userProcessContainer, account, (FundraiserOrganization)organization, (FundEnterprise)enterprise,network, business);
     }
     
 }
