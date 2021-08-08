@@ -27,8 +27,8 @@ public abstract class Role {
         Pharmacy("Pharmacy"),
         Receptionist("Redirector"),
         Volunteer("Volunteer"),
-        Corporate("Corporate Fund"),
-        General("General Fund");
+        Corporate("Corporate"),
+        General("General");
 
         private String value;
 

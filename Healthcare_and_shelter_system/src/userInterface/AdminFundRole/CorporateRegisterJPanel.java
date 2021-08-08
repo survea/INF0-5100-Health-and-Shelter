@@ -197,7 +197,7 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
                 request.setAddress(txtAddress.getText());
                 request.setMobile(txtPhone.getText());
                 request.setStatus("Pending");
-                request.setRole("CorporateRole");
+                request.setRole("Corporate");
                 
                 for (Network network : system.getNetworkList()) {
                     //Step 2.a: check against each enterprise

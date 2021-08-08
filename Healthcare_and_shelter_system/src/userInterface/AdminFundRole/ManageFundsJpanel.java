@@ -6,10 +6,14 @@
 package userInterface.AdminFundRole;
 
 import business.EcoSystem;
+import business.Organization;
+import business.employee.Employee;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.organization.FundraiserOrganization;
 import business.organization.HasHealthcareRepresentativeOrganization;
+import business.roles.CorporateRole;
+import business.roles.Role;
 import business.userAccount.UserAccount;
 import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -40,7 +44,8 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         this.network = network;
         this.system = business;
         this.organization = organization;
-        populateTable();
+        populateRequestTable();
+        populateApproveTable();
     }
 
     /**
@@ -58,6 +63,8 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         btnDecline = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblDonarList = new javax.swing.JTable();
 
         jLabel1.setText("Manage Donor's Request");
 
@@ -100,14 +107,28 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
             }
         });
 
+        tblDonarList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Role", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblDonarList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 84, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -121,6 +142,12 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
                         .addGap(70, 70, 70)
                         .addComponent(btnDecline)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 84, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +162,9 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove)
                     .addComponent(btnDecline))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,9 +182,34 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        WorkRequest selectedItem = (WorkRequest) tblWorkRequest.getValueAt(row, 0);
-        selectedItem.setStatus("Approved");
-        populateTable();
+        WorkRequest request = (WorkRequest) tblWorkRequest.getValueAt(row, 0);
+        Employee employee = enterprise.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
+//        Employee employee = null;
+//        Role role = null;
+//        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+//            if (request.getRole().equals("Corporate")) {
+//                employee = org.getEmployeeDirectory().createEmployee(request.getName());
+//                for (Employee e : org.getEmployeeDirectory().getEmployeeList()) {
+//                    if (request.getName() == e.getName()) {
+//                        employee = e;
+//                    }
+//                    for (Role r : org.getSupportedRole()) {
+//                        //System.out.println(r);
+//                        if (request.getRole().equals(r.toString())) {
+//                            role = r;
+//                        }
+//                    }
+//                }
+//                
+//                System.out.println(role);
+//                org.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, role);
+//                break;
+//            }
+//        }
+        request.setStatus("Approved");
+        populateRequestTable();
+        populateApproveTable();
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
@@ -167,7 +221,7 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         }
         WorkRequest selectedItem = (WorkRequest) tblWorkRequest.getValueAt(row, 0);
         selectedItem.setStatus("Declined");
-        populateTable();
+        populateRequestTable();
     }//GEN-LAST:event_btnDeclineActionPerformed
 
 
@@ -177,10 +231,12 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDecline;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tblDonarList;
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    private void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
 
         model.setRowCount(0);
@@ -191,6 +247,21 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
                 row[1] = request.getName();
                 row[2] = request.getStatus();
                 model.addRow(row);
+            }
+        }
+    }
+
+    private void populateApproveTable() {
+                DefaultTableModel model1 = (DefaultTableModel) tblDonarList.getModel();
+
+        model1.setRowCount(0);
+        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (request.getStatus().equals("Approved")) {
+                Object[] row = new Object[3];
+                row[0] = request;
+                row[1] = request.getName();
+                row[2] = request.getStatus();
+                model1.addRow(row);
             }
         }
     }
