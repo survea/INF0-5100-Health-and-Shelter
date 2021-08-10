@@ -10,6 +10,7 @@ import business.Organization;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.organization.HasHealthcareRepresentativeOrganization;
+import business.roles.AdminRole;
 import business.userAccount.UserAccount;
 import business.workQueue.PatientTestRequest;
 import java.awt.CardLayout;
@@ -293,11 +294,8 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
 //            Network currentNetwork = system.getNetworkList().get(0);
             for (Enterprise ent : currentNetwork.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.Volunteer.getValue())) {
-                    for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
-//                        for (UserAccount user : org.getUserAccountDirectory().getUserAccountList()) {
-                        String has_HealthcareOrg = Organization.OrganizationType.HAS_Healthcare_Representative.getValue();
-                        String has_ShelterOrg = Organization.OrganizationType.HAS_Shelter_Representative.getValue();
-                        if ((org.toString().equals(Organization.OrganizationType.HAS_Healthcare_Representative.getValue()) || org.toString().equals(Organization.OrganizationType.HAS_Shelter_Representative.getValue()))) {
+                    for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
+                        if(adminUser.getRole() instanceof AdminRole) {
                             PatientTestRequest req = new PatientTestRequest();
 
                             req.setPatientid(PROPERTIES);
@@ -308,18 +306,18 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
                             req.setPgender(gender);
                             req.setPimage(pic);
 
-                            if (org.toString().equals(has_HealthcareOrg)) {
+                            //if (org.toString().equals(has_HealthcareOrg)) {
                                 req.setTypeOfRequest("AssignHospital");
-                                req.setStatus("Awaiting hospital For early checkup");
+                                req.setStatus("Awaiting hospital For initial checkup");
                                 //req.setPimage("Have to upload");
-                                ((HasHealthcareRepresentativeOrganization) org).getWorkQueue().getWorkRequestList().add(req);
+                                adminUser.getWorkQueue().getWorkRequestList().add(req);
 //                                req.setReceiver(user);
 //                                user.getWorkQueue().getWorkRequestList().add(req);
 
-                            }
-                            if (org.toString().equals(has_ShelterOrg)) {
-
-                            }
+//                            }
+//                            if (org.toString().equals(has_ShelterOrg)) {
+//
+//                            }
                             fName.setText("");
                             lName.setText("");
                             age.setText("");

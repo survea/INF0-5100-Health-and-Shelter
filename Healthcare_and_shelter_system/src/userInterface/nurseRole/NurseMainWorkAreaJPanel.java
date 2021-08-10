@@ -7,8 +7,10 @@ package userInterface.nurseRole;
 
 import business.EcoSystem;
 import business.enterprise.Enterprise;
+import business.network.Network;
 import business.organization.NurseOrganization;
 import business.userAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -20,12 +22,21 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form NurseMainWorkAreaJPanel
      */
-    public NurseMainWorkAreaJPanel() {
-        initComponents();
-    }
+    JPanel userProcessContainer;
+    UserAccount account;
+    NurseOrganization nurseOrganization;
+    Enterprise enterprise;
+    Network network;
+    EcoSystem business;
 
-    public NurseMainWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, NurseOrganization nurseOrganization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public NurseMainWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, NurseOrganization nurseOrganization, Enterprise enterprise, Network network, EcoSystem business) {
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.nurseOrganization = nurseOrganization;
+        this.enterprise = enterprise;
+        this.business = business;
+        this.network = network;
+        initComponents();
     }
 
     /**
@@ -38,27 +49,67 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnInitialTestReq = new javax.swing.JButton();
+        btnDoctorTestRequest = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nurse work Area");
+
+        btnInitialTestReq.setText("InItial Test Requests");
+        btnInitialTestReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInitialTestReqActionPerformed(evt);
+            }
+        });
+
+        btnDoctorTestRequest.setText("Test requests by doctor");
+        btnDoctorTestRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoctorTestRequestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDoctorTestRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInitialTestReq, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(btnInitialTestReq, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btnDoctorTestRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnInitialTestReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialTestReqActionPerformed
+        // TODO add your handling code here:
+        PatientListInitialTestReqJPanel workStatusPanel = new PatientListInitialTestReqJPanel(userProcessContainer, account, nurseOrganization, enterprise,network, business);
+        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnInitialTestReqActionPerformed
+
+    private void btnDoctorTestRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorTestRequestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDoctorTestRequestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDoctorTestRequest;
+    private javax.swing.JButton btnInitialTestReq;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

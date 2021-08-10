@@ -11,6 +11,8 @@ import business.enterprise.Enterprise;
 import business.network.Network;
 import business.organization.HasHealthcareRepresentativeOrganization;
 import business.organization.ReceptionistOrganization;
+import business.roles.AdminRole;
+import business.roles.Role;
 import business.userAccount.UserAccount;
 import business.workQueue.PatientTestRequest;
 import business.workQueue.WorkRequest;
@@ -51,7 +53,7 @@ public class HASEmployeeWorkStatusJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
-            if ((request.getStatus().equals("Awaiting hospital For early checkup")) || (request.getStatus().equals("Pending hospital assignment"))) {
+            if ((request.getStatus().equals("Awaiting hospital For initial checkup")) || (request.getStatus().equals("Pending hospital assignment"))) {
                 Object[] row = new Object[5];
                 row[0] = request;
                 row[1] = request.getPatientfirstname();
@@ -171,29 +173,49 @@ public class HASEmployeeWorkStatusJPanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
+        if (request.getStatus().equals("Awaiting initial checkup reports")) {
+            JOptionPane.showMessageDialog(null, "Patient Already Added");
+            return;
+        }
         if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.Hospital.getValue())) {
-            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
-//                        for (UserAccount user : org.getUserAccountDirectory().getUserAccountList()) {
-                String receptionOrg = Organization.OrganizationType.Receptionist.getValue();
-                if ((org.toString().equals(receptionOrg))) {
-                    request.setTypeOfRequest("PriorCheckup");
-                    request.setStatus("Awaiting prior checkup reports");
-                    request.setReceiver(userAccount);
-                    WorkRequest currentReq = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-
-                    Optional<WorkRequest> selectedWorkReq;
-                    selectedWorkReq = userAccount.getWorkQueue().getWorkRequestList().stream()
-                            .filter(x -> x == currentReq)
-                            .findFirst();
-                    ((WorkRequest) selectedWorkReq.get()).setStatus("Awaiting prior checkup reports");
-                    ((WorkRequest) selectedWorkReq.get()).setTypeOfRequest("PriorCheckup");
+            for (UserAccount userAcc : ent.getUserAccountDirectory().getUserAccountList()) {
+                if (userAcc.getRole() instanceof AdminRole) {
+                    request.setTypeOfRequest("InitialCheckupRequest");
+                    request.setStatus("Awaiting initial checkup reports");
+                    request.setReceiver(userAcc);
                     //req.setPimage("Have to upload");
-                    ((ReceptionistOrganization) org).getWorkQueue().getWorkRequestList().add(request);
-//                                
-//                                user.getWorkQueue().getWorkRequestList().add(req);
+                    ((UserAccount) userAcc).getWorkQueue().getWorkRequestList().add(request);
 
+                    // updating work request of render HAS employee
+//                    WorkRequest currentReq = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
+//
+//                    Optional<WorkRequest> selectedWorkReq;
+//                    selectedWorkReq = userAccount.getWorkQueue().getWorkRequestList().stream()
+//                            .filter(x -> x == currentReq)
+//                            .findFirst();
+//                    ((WorkRequest) selectedWorkReq.get()).setStatus("Awaiting initial checkup reports");
+//                    ((WorkRequest) selectedWorkReq.get()).setTypeOfRequest("InitialCheckupRequest");
+//                    ((WorkRequest) selectedWorkReq.get()).setReceiver(userAcc);
                 }
             }
+//            for (Organization org : ent.getOrganizationDirectory().getOrganizationList()) {
+//                String receptionOrg = Organization.OrganizationType.Receptionist.getValue();
+//                if ((org.toString().equals(receptionOrg))) {
+//                    request.setTypeOfRequest("PriorCheckup");
+//                    request.setStatus("Awaiting prior checkup reports");
+//                    request.setReceiver(userAccount);
+//                    WorkRequest currentReq = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
+//
+//                    Optional<WorkRequest> selectedWorkReq;
+//                    selectedWorkReq = userAccount.getWorkQueue().getWorkRequestList().stream()
+//                            .filter(x -> x == currentReq)
+//                            .findFirst();
+//                    ((WorkRequest) selectedWorkReq.get()).setStatus("Awaiting prior checkup reports");
+//                    ((WorkRequest) selectedWorkReq.get()).setTypeOfRequest("PriorCheckup");
+//                    ((ReceptionistOrganization) org).getWorkQueue().getWorkRequestList().add(request);
+//
+//                }
+//            }
         }
         JOptionPane.showMessageDialog(null, "Assigned to the Hospital, pending initial checkup");
 

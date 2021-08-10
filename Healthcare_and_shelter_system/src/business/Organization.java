@@ -50,6 +50,7 @@ public abstract class Organization {
 
     public Organization(String name) {
         this.name = name;
+        this.organizationType = name;
         workQueue = new WorkQueue();
         userAccountDirectory = new UserAccountDirectory();
         employeeDirectory = new EmployeeDirectory();

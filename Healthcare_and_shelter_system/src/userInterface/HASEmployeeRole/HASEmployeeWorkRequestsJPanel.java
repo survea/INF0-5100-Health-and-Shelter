@@ -8,6 +8,7 @@ package userInterface.HASEmployeeRole;
 import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.organization.HasHealthcareRepresentativeOrganization;
+import business.roles.AdminRole;
 import business.userAccount.UserAccount;
 import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -276,17 +277,33 @@ public class HASEmployeeWorkRequestsJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
 
         model.setRowCount(0);
-        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
-            if ((request.getStatus().equals("Awaiting hospital For early checkup")) || (request.getStatus().equals("Pending"))) {
-                Object[] row = new Object[5];
-                row[0] = request;
-                row[1] = request.getPatientfirstname();
-                row[2] = request.getPsymptoms();
-                row[3] = request.getPdiagnosis();
-                row[4] = request.getStatus();
-                model.addRow(row);
-            }
+//        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+//            if ((request.getStatus().equals("Awaiting hospital For initial checkup")) || (request.getStatus().equals("Pending"))) {
+//                Object[] row = new Object[5];
+//                row[0] = request;
+//                row[1] = request.getPatientfirstname();
+//                row[2] = request.getPsymptoms();
+//                row[3] = request.getPdiagnosis();
+//                row[4] = request.getStatus();
+//                model.addRow(row);
+//            }
+//
+//        }
+        for (UserAccount HASUser : enterprise.getUserAccountDirectory().getUserAccountList()) {
+            if (HASUser.getRole() instanceof AdminRole) {
+                for (WorkRequest request : HASUser.getWorkQueue().getWorkRequestList()) {
+                    if ((request.getStatus().equals("Awaiting hospital For initial checkup")) || (request.getStatus().equals("Pending"))) {
+                        Object[] row = new Object[5];
+                        row[0] = request;
+                        row[1] = request.getPatientfirstname();
+                        row[2] = request.getPsymptoms();
+                        row[3] = request.getPdiagnosis();
+                        row[4] = request.getStatus();
+                        model.addRow(row);
+                    }
 
+                }
+            }
         }
     }
 }

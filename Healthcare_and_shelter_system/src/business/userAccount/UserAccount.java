@@ -15,6 +15,7 @@ import business.workQueue.WorkQueue;
  * @author Diksha Godse
  */
 public class UserAccount {
+
     private String username;
     private String password;
     private Employee employee;
@@ -72,5 +73,10 @@ public class UserAccount {
 
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
+    }
+
+    @Override
+    public String toString() {
+        return username;
     }
 }
