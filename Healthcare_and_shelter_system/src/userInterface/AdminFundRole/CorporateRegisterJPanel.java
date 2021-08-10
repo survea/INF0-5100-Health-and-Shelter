@@ -9,8 +9,13 @@ import business.EcoSystem;
 import business.Organization;
 import business.enterprise.Enterprise;
 import business.network.Network;
+import business.roles.AdminRole;
+import business.roles.FundAdminRole;
 import business.userAccount.UserAccount;
+import business.workQueue.PatientTestRequest;
 import business.workQueue.SponsorApprovalStatus;
+import static java.awt.image.ImageObserver.PROPERTIES;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -56,6 +61,8 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtManager = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Location = new javax.swing.JLabel();
+        txtLocation = new javax.swing.JTextField();
 
         jTextField2.setText("jTextField1");
 
@@ -82,34 +89,39 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
 
         jButton1.setText("Back");
 
+        Location.setText("Location");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel6))
-                            .addGap(31, 31, 31)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(124, 124, 124)
-                            .addComponent(jLabel2)
-                            .addGap(31, 31, 31)
-                            .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(31, 31, 31)
-                            .addComponent(txtManager, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel6)
+                                    .addComponent(Location))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtManager, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(btnRegister)))
@@ -152,7 +164,11 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Location))
+                .addGap(18, 18, 18)
                 .addComponent(btnRegister)
                 .addGap(46, 46, 46))
         );
@@ -199,22 +215,29 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
                 request.setStatus("Pending");
                 request.setRole("Corporate");
                 
-                for (Network network : system.getNetworkList()) {
-                    //Step 2.a: check against each enterprise
-                    for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                        for (UserAccount user : enterprise.getUserAccountDirectory().getUserAccountList()) {
-                          if(user.getUsername().equals("BFAdmin")){
-                              user.getWorkQueue().getWorkRequestList().add(request);
-                                JOptionPane.showMessageDialog(this, "Registration submitted Successfully. Sent to Fund Admin for Approval!");
-                          }
+                Optional<Network> network;
+                network = system.getNetworkList().stream()
+                        .filter(x -> x.getName().equalsIgnoreCase(txtLocation.getText()))
+                        .findFirst();
+                Network currentNetwork = network.get();
+                for (Enterprise ent : currentNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.FundRaiser.getValue())) {
+                    for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
+                        if(adminUser.getRole() instanceof AdminRole) {
+                            adminUser.getWorkQueue().getWorkRequestList().add(request);
+                            JOptionPane.showMessageDialog(this, "Registration submitted Successfully. Sent to Fund Admin for Approval!");
+
                         }
                     }
                 }
+            }
+                    
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Location;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -227,6 +250,7 @@ public class CorporateRegisterJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtCompany;
+    private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtManager;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPhone;
