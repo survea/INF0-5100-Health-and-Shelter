@@ -138,10 +138,10 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-//        PatientSubmissions payPanel = new PatientSubmissions(userProcessContainer, userAccount, organization, enterprise, eco);
-//        userProcessContainer.add("manageOrganizationJPanel", payPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PatientBillGenerationJPanel payPanel = new PatientBillGenerationJPanel(userProcessContainer, userAccount, organization, enterprise, network, eco);
+        userProcessContainer.add("manageOrganizationJPanel", payPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnPendingDoctorAssignmentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPendingDoctorAssignmentReqActionPerformed

@@ -6,6 +6,7 @@
 package business.workQueue;
 
 import business.userAccount.UserAccount;
+import java.util.Date;
 
 /**
  *
@@ -18,6 +19,12 @@ public class WorkRequest {
     private UserAccount sender;
     private UserAccount receiver;
     private String status;
+    
+        private String nurseStatus;
+    private String nurseMessage;
+    private String labMessage;
+    private Date requestDate;
+    private Date resolveDate;
     
     //    Patient Registration
     private String patientfirstname;
@@ -291,6 +298,44 @@ public class WorkRequest {
     public void setHospitalFee(int HospitalFee) {
         this.HospitalFee = HospitalFee;
     }
-    
-    
+
+    public String getNurseStatus() {
+        return nurseStatus;
+    }
+
+    public void setNurseStatus(String nurseStatus) {
+        this.nurseStatus = nurseStatus;
+    }
+
+    public String getNurseMessage() {
+        return nurseMessage;
+    }
+
+    public void setNurseMessage(String nurseMessage) {
+        this.nurseMessage = nurseMessage;
+    }
+
+    public String getLabMessage() {
+        return labMessage;
+    }
+
+    public void setLabMessage(String labMessage) {
+        this.labMessage = labMessage;
+    }
+
+    public Date getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(Date requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public Date getResolveDate() {
+        return resolveDate;
+    }
+
+    public void setResolveDate(Date resolveDate) {
+        this.resolveDate = resolveDate;
+    }
 }

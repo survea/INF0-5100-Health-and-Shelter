@@ -96,7 +96,7 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnInitialTestReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialTestReqActionPerformed
         // TODO add your handling code here:
-        PatientListInitialTestReqJPanel workStatusPanel = new PatientListInitialTestReqJPanel(userProcessContainer, account, nurseOrganization, enterprise,network, business);
+        PatientListInitialTestReqJPanel workStatusPanel = new PatientListInitialTestReqJPanel(userProcessContainer, account, nurseOrganization, enterprise, network, business);
         userProcessContainer.add("WorkStatusPanel", workStatusPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -104,6 +104,10 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDoctorTestRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorTestRequestActionPerformed
         // TODO add your handling code here:
+        PatientRequestsFromDoctorJPanel patientRequestsFromDoctorJPanel = new PatientRequestsFromDoctorJPanel(userProcessContainer, account, (NurseOrganization) nurseOrganization, enterprise, business);
+        userProcessContainer.add("NurseWorkAreaJPanel", patientRequestsFromDoctorJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnDoctorTestRequestActionPerformed
 
 

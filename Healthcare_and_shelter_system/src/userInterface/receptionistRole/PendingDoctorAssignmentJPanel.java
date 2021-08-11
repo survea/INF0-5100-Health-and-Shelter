@@ -51,7 +51,7 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         backJButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnAssignDoctor = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
 
@@ -63,11 +63,11 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jButton1.setText("ASSIGN TO DOCTOR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAssignDoctor.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnAssignDoctor.setText("ASSIGN TO DOCTOR");
+        btnAssignDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAssignDoctorActionPerformed(evt);
             }
         });
 
@@ -108,7 +108,7 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(backJButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
+                            .addComponent(btnAssignDoctor))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -122,7 +122,7 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(backJButton)
-                        .addComponent(jButton1))
+                        .addComponent(btnAssignDoctor))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -134,7 +134,7 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAssignDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDoctorActionPerformed
         // TODO add your handling code here:
         int selectedRow = workRequestJTable.getSelectedRow();
 
@@ -161,12 +161,12 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Patient has been added already to the Doctor");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAssignDoctorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAssignDoctor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables

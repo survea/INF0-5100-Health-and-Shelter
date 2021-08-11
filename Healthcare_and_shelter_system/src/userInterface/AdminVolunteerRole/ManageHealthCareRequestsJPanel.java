@@ -27,7 +27,7 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
      */
     private Enterprise enterprise;
     private JPanel userProcessContainer;
-    private OrganizationDirectory directory;
+//    private OrganizationDirectory directory;
     UserAccount userAccount;
     Network network;
     EcoSystem system;
@@ -40,7 +40,7 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.network = network;
         this.system = system;
-        this.directory = directory;
+//        this.directory = directory;
         initComponents();
         populateTable();
 //        populateCombo();
