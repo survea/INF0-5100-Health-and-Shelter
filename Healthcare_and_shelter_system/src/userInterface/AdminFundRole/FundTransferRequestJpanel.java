@@ -5,9 +5,19 @@
  */
 package userInterface.AdminFundRole;
 
+import business.EcoSystem;
+import business.employee.Employee;
 import business.enterprise.FundEnterprise;
+import business.network.Network;
+import business.organization.FundraiserOrganization;
+import business.roles.CorporateRole;
+import business.userAccount.UserAccount;
+import business.workQueue.BillPayRequest;
+import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,12 +30,21 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     FundEnterprise enterprise;
-    public FundTransferRequestJpanel(JPanel userProcessContainer, FundEnterprise enterprise) {
+    UserAccount userAccount;
+    Network network;
+    EcoSystem system;
+    FundraiserOrganization organization;
+    public FundTransferRequestJpanel(JPanel userProcessContainer, UserAccount account, FundraiserOrganization organization,  FundEnterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.userAccount = account;
+        this.network = network;
+        this.system = business;
+        this.organization = organization;
         
-        lblTotalFunds.setText(String.valueOf(enterprise.getFundsCollected()));
+        populateTotalFunds();
+        populateRequestTable();
     }
 
     /**
@@ -40,10 +59,10 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        tblHospitalRequest = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         lblTotalFunds = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnApprove = new javax.swing.JButton();
 
         jLabel1.setText("Manage Fund  Request");
 
@@ -54,54 +73,59 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
             }
         });
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblHospitalRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Hospital Name", "Amount Requested", "Status"
+                "Patient Name", "Amount Requested", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true
+                true, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(workRequestJTable);
+        jScrollPane2.setViewportView(tblHospitalRequest);
 
         jLabel2.setText("Total Funds:");
 
         lblTotalFunds.setText("jLabel3");
 
-        jButton1.setText("Approve");
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(166, 166, 166))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblTotalFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(jButton1)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                                .addComponent(lblTotalFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnApprove)
+                .addGap(325, 325, 325))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +140,9 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
                     .addComponent(lblTotalFunds))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jButton1)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnApprove)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,14 +153,53 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int row = tblHospitalRequest.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        WorkRequest request = (WorkRequest) tblHospitalRequest.getValueAt(row, 0);
+        Employee employee = enterprise.getEmployeeDirectory().createEmployee(request.getName());
+        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
+        //request.getRequest().setStatus("Funds Processed");
+        enterprise.setFundsUsed(request.getApproxPatientFee());
+        //request.getRequest().setStatus("Funds Processed");
+        request.setStatus("Funds Processed");
+        request.setMessage("Funds Processed Successfully!");
+        JOptionPane.showMessageDialog(null, "Funds Processed Successfully!");
+        populateTotalFunds();
+        populateRequestTable();
+            
+    }//GEN-LAST:event_btnApproveActionPerformed
+    private void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) tblHospitalRequest.getModel();
+
+        model.setRowCount(0);
+        for (WorkRequest r : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (r.getStatus().equals("Pending payment")) {
+                Object[] row = new Object[5];
+                row[0] = r;
+                row[1] = r.getApproxPatientFee();
+                row[2] = r.getStatus();
+                row[3] = r.getMessage();
+                model.addRow(row);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTotalFunds;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTable tblHospitalRequest;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTotalFunds() {
+        lblTotalFunds.setText(String.valueOf(enterprise.getFundsCollected()));
+    }
 }

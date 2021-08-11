@@ -41,4 +41,8 @@ public class FundEnterprise extends Enterprise{
     public void setFundsCollected(int fundsCollected) {
         this.fundsCollected = this.fundsCollected + fundsCollected;
     }
+    
+    public void setFundsUsed(int fundsCollected) {
+        this.fundsCollected = this.fundsCollected - fundsCollected;
+    }
 }

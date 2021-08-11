@@ -68,10 +68,11 @@ public class ManageHospitalUserJPanel extends javax.swing.JPanel {
 
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
             for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                Object row[] = new Object[3];
+                Object row[] = new Object[4];
                 row[0] = ua;
                 row[1] = ua.getRole();
                 row[2] = organization;
+                row[3] = ua.getPassword();
                 ((DefaultTableModel) userJTable.getModel()).addRow(row);
             }
         }
@@ -112,14 +113,14 @@ public class ManageHospitalUserJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "User Name", "Role", "Organization"
+                "User Name", "Role", "Organization", "Password"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, true
+                true, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {

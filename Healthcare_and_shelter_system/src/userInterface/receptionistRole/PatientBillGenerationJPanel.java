@@ -204,6 +204,7 @@ public class PatientBillGenerationJPanel extends javax.swing.JPanel {
         } else {
             BillPayRequest request = new BillPayRequest();
             request.setPatientDetails(work);
+            request.setRequest(work);
             request.setSender(userAccount);
             request.setAddress(enterprise.getName());
             request.setStatus("Pending payment");

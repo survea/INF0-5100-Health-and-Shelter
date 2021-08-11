@@ -19,6 +19,7 @@ public class WorkRequest {
     private UserAccount sender;
     private UserAccount receiver;
     private String status;
+    private WorkRequest request;
     
         private String nurseStatus;
     private String nurseMessage;
@@ -55,6 +56,15 @@ public class WorkRequest {
     private String mobile;
     private String email;
 
+    public WorkRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(WorkRequest request) {
+        this.request = request;
+    }
+
+    
     public String getCompanyName() {
         return companyName;
     }
