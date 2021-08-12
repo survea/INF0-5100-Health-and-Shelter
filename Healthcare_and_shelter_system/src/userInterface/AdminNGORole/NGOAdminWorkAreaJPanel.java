@@ -6,6 +6,7 @@
 package userInterface.AdminNGORole;
 
 import business.EcoSystem;
+import static business.EcoSystem.business;
 import business.Organization;
 import business.enterprise.Enterprise;
 import business.network.Network;
@@ -13,6 +14,7 @@ import business.organization.NGOOrganization;
 import business.roles.AdminRole;
 import business.userAccount.UserAccount;
 import business.workQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -36,12 +38,11 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = userAccount;
+        this.userAccount = account;
         this.organization = organization;
         this.network = network;
         this.system = business;
         initComponents();
-        populateTable();
     }
 
     /**
@@ -53,39 +54,26 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        btnShelterRequest = new javax.swing.JButton();
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SHELTER");
+        jLabel2.setText("SHELTER ADMIN PANEL");
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Type", "Name", "Assigned Shelter", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jButton2.setText("Add New Shelter");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
 
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Manage and View Shelters");
+
+        btnShelterRequest.setText("Manage Shelter Request");
+        btnShelterRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnShelterRequestActionPerformed(evt);
             }
         });
 
@@ -94,81 +82,52 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(198, 198, 198)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnShelterRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel2)
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addGap(35, 35, 35)
+                .addComponent(jButton3)
+                .addGap(30, 30, 30)
+                .addComponent(btnShelterRequest)
+                .addContainerGap(207, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnShelterRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShelterRequestActionPerformed
         // TODO add your handling code here:
-        int selectedRow = workRequestJTable.getSelectedRow();
-         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please make a selection");
-            return;
-        }
-        WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-        if (request.getStatus().equals("Assigned Shelter")) {
-            JOptionPane.showMessageDialog(null, "Already Assigned Shelter");
-            return;
-        }
-        System.out.println(request);
-        if (enterprise.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.NGO.getValue())) {
-             for (UserAccount HASUser : enterprise.getUserAccountDirectory().getUserAccountList()) {
-            if (HASUser.getRole() instanceof AdminRole) {
-                HASUser.getWorkQueue().removeWorkRequest(request);
-            }
-        }
-        }
-        populateTable();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ManageShelterRequestJPanel workStatusPanel = new ManageShelterRequestJPanel(userProcessContainer, userAccount, organization, enterprise,network, business);
+        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnShelterRequestActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         AddNewShelterJPanel workStatusPanel = new AddNewShelterJPanel(userProcessContainer, userAccount, organization, enterprise,network, business);
+        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JButton btnShelterRequest;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
-        model.setRowCount(0);
-        if (enterprise.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.NGO.getValue())) {
-             for (UserAccount HASUser : enterprise.getUserAccountDirectory().getUserAccountList()) {
-            if (HASUser.getRole() instanceof AdminRole) {
-                for (WorkRequest request : HASUser.getWorkQueue().getWorkRequestList()) {
-                    if ((request.getStatus().equalsIgnoreCase("Shelter Assigned"))) {
-                        Object[] row = new Object[5];
-                        row[0] = request;
-                        row[1] = request.getShelterRequestName();
-                        row[2] = request.getAssignedShelter();
-                        row[3] = request.getStatus();
-                        model.addRow(row);
-                    }
-                }
-            }
-        }
-         } 
-        
-    }
 }

@@ -24,7 +24,8 @@ public abstract class Organization {
     private int organizationId;
     private static int counter = 0;
     private String organizationType;
-
+    private int ShelterOccupancy = 0;
+    private String ShelterName;
     public enum OrganizationType {
         Admin("Admin Organization"),
         Doctor("Doctor Organization"),
@@ -35,7 +36,11 @@ public abstract class Organization {
         HAS_Healthcare_Representative("HAS Healthcare Organization"),
         HAS_Shelter_Representative("HAS shelter Organization"),
         NGOOrganization("NGO Organization"),
-        Fundrasier("Fundraiser Organization");
+        Fundrasier("Fundraiser Organization"),
+        ChildCare("ChildCare Organization"),
+        AdultCare("AdultCare Organization"),
+        OldAgeHome("OldAgeHome Organization");
+        
 
         private String value;
 
@@ -67,6 +72,26 @@ public abstract class Organization {
 
     public abstract List<Role> getSupportedRole();
 
+    public String getShelterName() {
+        return ShelterName;
+    }
+
+    public void setShelterName(String ShelterName) {
+        this.ShelterName = ShelterName;
+    }
+
+    public int getShelterOccupancy() {
+        return ShelterOccupancy;
+    }
+
+    public void setShelterOccupancy(int ShelterOccupancy) {
+        this.ShelterOccupancy = this.ShelterOccupancy + ShelterOccupancy;
+    }
+
+    public void shelterOccupiedCount(int ShelterOccupancy) {
+        this.ShelterOccupancy = this.ShelterOccupancy - ShelterOccupancy;
+    }
+    
     public String getName() {
         return name;
     }

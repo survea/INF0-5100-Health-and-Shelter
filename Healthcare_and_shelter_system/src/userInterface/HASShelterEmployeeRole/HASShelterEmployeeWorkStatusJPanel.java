@@ -189,8 +189,8 @@ public class HASShelterEmployeeWorkStatusJPanel extends javax.swing.JPanel {
         if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.NGO.getValue())) {
             for (UserAccount userAcc : ent.getUserAccountDirectory().getUserAccountList()) {
                 if (userAcc.getRole() instanceof AdminRole) {
-                    request.setTypeOfRequest("ShelterAssigned");
-                    request.setStatus("Shelter Assigned");
+                    request.setTypeOfRequest("ShelterAssignedRequest");
+                    request.setStatus("Shelter Requested");
                     request.setReceiver(userAcc);
                     request.setAssignedShelter(ent.toString());
                     //req.setPimage("Have to upload");
