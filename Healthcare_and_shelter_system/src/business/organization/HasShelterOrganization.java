@@ -6,8 +6,7 @@
 package business.organization;
 
 import business.Organization;
-import business.roles.DoctorRole;
-import business.roles.NGOAdminRole;
+import business.roles.HasShelterRepresentativeRole;
 import business.roles.Role;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +15,15 @@ import java.util.List;
  *
  * @author dhairyasheel
  */
-public class NGOOrganization extends Organization {
-
+public class HasShelterOrganization extends Organization {
+    public HasShelterOrganization() {
+        super(Organization.OrganizationType.HAS_Shelter_Representative.getValue());
+    }
     @Override
     public List<Role> getSupportedRole() {
-        ArrayList<Role> roles = new ArrayList();
-        roles.add(new NGOAdminRole());
-        return roles;    
+         ArrayList<Role> roles = new ArrayList();
+        roles.add(new HasShelterRepresentativeRole());
+        return roles;
     }
     
 }

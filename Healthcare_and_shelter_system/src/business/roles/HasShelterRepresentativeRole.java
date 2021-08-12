@@ -9,20 +9,22 @@ import business.EcoSystem;
 import business.Organization;
 import business.enterprise.Enterprise;
 import business.network.Network;
-import business.organization.NGOOrganization;
+import business.organization.HasHealthcareRepresentativeOrganization;
+import business.organization.HasShelterOrganization;
 import business.userAccount.UserAccount;
 import javax.swing.JPanel;
-import userInterface.AdminNGORole.NGOAdminWorkAreaJPanel;
+import userInterface.HASEmployeeRole.HasEmployeeMainWorkAreaJPanel;
+import userInterface.HASShelterEmployeeRole.HasShelterEmployeeMainWorkAreaJPanel;
 
 /**
  *
  * @author dhairyasheel
  */
-public class NGOAdminRole extends Role {
+public class HasShelterRepresentativeRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem business) {
-       return new NGOAdminWorkAreaJPanel(userProcessContainer, account,(NGOOrganization) organization, enterprise,network, business);
-     }
+       return new HasShelterEmployeeMainWorkAreaJPanel(userProcessContainer, account, (HasShelterOrganization) organization, enterprise, business);
+    }
     
 }

@@ -40,11 +40,16 @@ public class OrganizationDirectory {
         }else if (type.getValue().equals(Organization.OrganizationType.HAS_Healthcare_Representative.getValue())) {
             organization = new HasHealthcareRepresentativeOrganization();
             organizationList.add(organization);
-        } 
-        else if (type.getValue().equals(Organization.OrganizationType.Fundrasier.getValue())) {
+        } else if (type.getValue().equals(Organization.OrganizationType.HAS_Shelter_Representative.getValue())) {
+            organization = new HasShelterOrganization();
+            organizationList.add(organization);
+        } else if (type.getValue().equals(Organization.OrganizationType.Fundrasier.getValue())) {
             organization = new FundraiserOrganization();
             organizationList.add(organization);
-        } 
+        }  else if (type.getValue().equals(Organization.OrganizationType.NGOOrganization.getValue())) {
+            organization = new NGOOrganization();
+            organizationList.add(organization);
+        }
 //        else if (type.getValue().equals(Organization.OrganizationType.Volunteer.getValue())) {
 //            organization = new VolunteerOrganization();
 //            organizationList.add(organization);

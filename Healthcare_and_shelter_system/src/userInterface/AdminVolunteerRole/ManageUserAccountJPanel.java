@@ -10,6 +10,7 @@ import business.employee.Employee;
 import business.enterprise.Enterprise;
 import business.roles.Role;
 import business.roles.HasHeathcareRepresentaiveRole;
+import business.roles.HasShelterRepresentativeRole;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -246,7 +247,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             String password = passwordJTextField.getText();
             Organization organization = (Organization) organizationJComboBox.getSelectedItem();
             Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-            Role role = new HasHeathcareRepresentaiveRole();
+            
+             Role role = null ;
+            if(organization.getOrganizationType().equalsIgnoreCase("HAS shelter Organization")){
+               role = new HasShelterRepresentativeRole();
+            } else {
+               role = new HasHeathcareRepresentaiveRole();
+            }
+            
 
             organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
 

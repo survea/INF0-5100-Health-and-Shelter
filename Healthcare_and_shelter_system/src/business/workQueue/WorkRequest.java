@@ -55,6 +55,37 @@ public class WorkRequest {
     private String address;
     private String mobile;
     private String email;
+    
+    // Shelter Request
+    private String shelterRequestName;
+    private String assignedfor;
+    private String assignedShelter;
+
+    public String getShelterRequestName() {
+        return shelterRequestName;
+    }
+
+    public void setShelterRequestName(String shelterRequestName) {
+        this.shelterRequestName = shelterRequestName;
+    }
+
+    public String getAssignedfor() {
+        return assignedfor;
+    }
+
+    public void setAssignedfor(String assignedfor) {
+        this.assignedfor = assignedfor;
+    }
+
+    public String getAssignedShelter() {
+        return assignedShelter;
+    }
+
+    public void setAssignedShelter(String assignedShelter) {
+        this.assignedShelter = assignedShelter;
+    }
+    
+    
 
     public WorkRequest getRequest() {
         return request;

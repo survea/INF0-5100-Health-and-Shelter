@@ -6,6 +6,7 @@
 package business.enterprise;
 
 import business.Organization;
+import business.organization.NGOOrganization;
 import business.roles.Role;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class NGOEnterprise extends Enterprise{
     @Override
     public List<Organization> getSupportedType() {
         List<Organization> organization = new ArrayList<>();
+        organization.add(new NGOOrganization());
         return organization;
     }
 }

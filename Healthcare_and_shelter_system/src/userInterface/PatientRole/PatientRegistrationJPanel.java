@@ -13,6 +13,7 @@ import business.organization.HasHealthcareRepresentativeOrganization;
 import business.roles.AdminRole;
 import business.userAccount.UserAccount;
 import business.workQueue.PatientTestRequest;
+import business.workQueue.ShelterRequest;
 import java.awt.CardLayout;
 import java.io.IOException;
 import java.util.Optional;
@@ -270,6 +271,7 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
         String lname = lName.getText();
 
         String gender = genderCombo.getSelectedItem().toString();
+        String request = cmbRequestType.getSelectedItem().toString();
         String pic = null;
 
         if (fname.equals("") || lname.equals("") || age.getText().isEmpty() || height.getText().isEmpty() || weight.getText().isEmpty()) {
@@ -296,21 +298,33 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
                 if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.Volunteer.getValue())) {
                     for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
                         if(adminUser.getRole() instanceof AdminRole) {
-                            PatientTestRequest req = new PatientTestRequest();
+                           
+                            
+                            if(request.equalsIgnoreCase("treatement")){
+                                 PatientTestRequest req = new PatientTestRequest();
 
-                            req.setPatientid(PROPERTIES);
-                            req.setPatientfirstname(fname);
-                            req.setPatientlastname(lname);
-                            req.setPheight(height1);
-                            req.setPweight(weight1);
-                            req.setPgender(gender);
-                            req.setPimage(pic);
-
-                            //if (org.toString().equals(has_HealthcareOrg)) {
-                                req.setTypeOfRequest("AssignHospital");
+                                req.setPatientid(PROPERTIES);
+                                req.setPatientfirstname(fname);
+                                req.setPatientlastname(lname);
+                                req.setPheight(height1);
+                                req.setPweight(weight1);
+                                req.setPgender(gender);
+                                req.setPimage(pic);
+                                 req.setTypeOfRequest("AssignHospital");
                                 req.setStatus("Awaiting hospital For initial checkup");
-                                //req.setPimage("Have to upload");
                                 adminUser.getWorkQueue().getWorkRequestList().add(req);
+                            } else {
+                                ShelterRequest r = new ShelterRequest();
+                                r.setTypeOfRequest("AssignShelter");
+                                r.setStatus("Awaiting for Shelter");
+                                r.setAssignedfor("Assign Shelter");
+                                r.setShelterRequestName(fname +""+ lname);
+                                adminUser.getWorkQueue().getWorkRequestList().add(r);
+                            }
+                            //if (org.toString().equals(has_HealthcareOrg)) {
+                                
+                                //req.setPimage("Have to upload");
+
 //                                req.setReceiver(user);
 //                                user.getWorkQueue().getWorkRequestList().add(req);
 
