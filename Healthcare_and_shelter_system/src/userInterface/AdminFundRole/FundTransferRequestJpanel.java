@@ -161,11 +161,11 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest) tblHospitalRequest.getValueAt(row, 0);
-        Employee employee = enterprise.getEmployeeDirectory().createEmployee(request.getName());
-        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
-        //request.getRequest().setStatus("Funds Processed");
         enterprise.setFundsUsed(request.getApproxPatientFee());
-        //request.getRequest().setStatus("Funds Processed");
+        WorkRequest r = request.getRequest();
+        System.out.println(r);
+        r.setStatus("Funds Processed");
+        r.setMessage("Funds Processed Successfully!");
         request.setStatus("Funds Processed");
         request.setMessage("Funds Processed Successfully!");
         JOptionPane.showMessageDialog(null, "Funds Processed Successfully!");

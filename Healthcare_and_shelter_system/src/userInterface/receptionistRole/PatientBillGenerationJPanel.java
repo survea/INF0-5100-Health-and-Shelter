@@ -55,13 +55,13 @@ public class PatientBillGenerationJPanel extends javax.swing.JPanel {
             System.out.println(user.getWorkQueue().getWorkRequestList());
             for (WorkRequest req : user.getWorkQueue().getWorkRequestList()) {
                 System.out.println(req.getStatus());
-                if ((req.getStatus().equals("Bill Generated")) || (req.getStatus().equals("Hospital Treatment Completed"))) {
+                if ((req.getStatus().equals("Bill Generated")) || (req.getStatus().equals("Hospital Treatment Completed")) || (req.getStatus().equals("Funds Processed"))) {
                     System.out.println(req);
                     Object[] row = new Object[6];
                     row[0] = req.getPatientfirstname();
                     row[1] = req.getPatientlastname();
                     row[2] = req;
-                    row[3] = req.getReceiver();
+                    row[3] = req.getStatus();
                     row[4] = req.getHospitalFee();
                     row[5] = req.getApproxPatientFee();
                     model.addRow(row);
@@ -205,6 +205,7 @@ public class PatientBillGenerationJPanel extends javax.swing.JPanel {
             BillPayRequest request = new BillPayRequest();
             request.setPatientDetails(work);
             request.setRequest(work);
+            System.out.println(work);
             request.setSender(userAccount);
             request.setAddress(enterprise.getName());
             request.setStatus("Pending payment");

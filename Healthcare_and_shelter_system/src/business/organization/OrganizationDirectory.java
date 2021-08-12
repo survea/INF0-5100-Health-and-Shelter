@@ -41,10 +41,11 @@ public class OrganizationDirectory {
             organization = new HasHealthcareRepresentativeOrganization();
             organizationList.add(organization);
         } 
-//        else if (type.getValue().equals(Organization.OrganizationType.Fundrasier.getValue())) {
-//            organization = new FundraiserOrganization();
-//            organizationList.add(organization);
-//        } else if (type.getValue().equals(Organization.OrganizationType.Volunteer.getValue())) {
+        else if (type.getValue().equals(Organization.OrganizationType.Fundrasier.getValue())) {
+            organization = new FundraiserOrganization();
+            organizationList.add(organization);
+        } 
+//        else if (type.getValue().equals(Organization.OrganizationType.Volunteer.getValue())) {
 //            organization = new VolunteerOrganization();
 //            organizationList.add(organization);
 //        } else if (type.getValue().equals(Organization.OrganizationType.NGOOrganization.getValue())) {

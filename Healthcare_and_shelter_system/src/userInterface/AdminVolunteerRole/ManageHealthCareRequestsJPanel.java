@@ -7,6 +7,8 @@ package userInterface.AdminVolunteerRole;
 
 import business.EcoSystem;
 import business.enterprise.Enterprise;
+import business.enterprise.EnterpriseDirectory;
+import business.enterprise.FundEnterprise;
 import business.network.Network;
 import business.organization.OrganizationDirectory;
 import business.userAccount.UserAccount;
@@ -41,6 +43,16 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         this.network = network;
         this.system = system;
 //        this.directory = directory;
+        EnterpriseDirectory ed = network.getEnterpriseDirectory();
+        for(Enterprise e : ed.getEnterpriseList() ){
+            if(e.getEnterpriseType().equalsIgnoreCase("Fund Raiser")){
+                int funds = enterprise.getFundsCollected();
+                if(funds > 0){
+                     lblTotalFunds.setText(String.valueOf(funds));
+                }
+                break;
+            }
+        }
         initComponents();
         populateTable();
 //        populateCombo();
@@ -67,6 +79,8 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        lblTotalFunds = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -140,10 +154,27 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
+        jLabel3.setText("Total Funds Available :");
+
+        lblTotalFunds.setText("0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(392, 392, 392))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backJButton)
+                            .addComponent(assignJButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(processJButton)
+                        .addGap(408, 408, 408))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -160,21 +191,13 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
                         .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(361, 361, 361)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(32, 32, 32)
+                        .addComponent(lblTotalFunds)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(392, 392, 392))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(backJButton)
-                            .addComponent(assignJButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(processJButton)
-                        .addGap(408, 408, 408))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,9 +212,13 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
                     .addComponent(refreshJButton)
                     .addComponent(jLabel2)
                     .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblTotalFunds))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(processJButton))
@@ -325,8 +352,10 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTotalFunds;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JLabel valueLabel;

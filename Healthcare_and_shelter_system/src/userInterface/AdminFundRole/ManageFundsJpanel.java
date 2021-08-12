@@ -183,10 +183,21 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest) tblWorkRequest.getValueAt(row, 0);
-        Employee employee = enterprise.getEmployeeDirectory().createEmployee(request.getName());
-        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
-
-        request.setStatus("Approved");
+        if(enterprise.getOrganizationDirectory().getOrganizationList().size() == 0){
+            Organization org = enterprise.getOrganizationDirectory().createOrganization(Organization.OrganizationType.Fundrasier);
+            Employee employee = org.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount account = org.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
+                request.setStatus("Approved");
+        } else {
+             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if(organization.getOrganizationType().equalsIgnoreCase("Fundraiser Organization")){
+                    Employee employee = organization.getEmployeeDirectory().createEmployee(request.getName());
+                    UserAccount account = organization.getUserAccountDirectory().createUserAccount(request.getUsername(), request.getPassword(), employee, new CorporateRole());
+                    request.setStatus("Approved");
+                    break;
+                }
+            }
+        }
         populateRequestTable();
         populateApproveTable();
     }//GEN-LAST:event_btnApproveActionPerformed

@@ -11,6 +11,8 @@ import business.EcoSystem;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.Organization;
+import business.employee.Employee;
+import business.roles.CorporateRole;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;

@@ -18,7 +18,7 @@ public abstract class Enterprise extends Organization {
 
     public String enterpriseType;
     private OrganizationDirectory organizationDirectory;
-
+    private int fundsCollected = 0;
     public abstract List<Role> getSupportedRole();
 
     public abstract List<Organization> getSupportedType();
@@ -62,5 +62,16 @@ public abstract class Enterprise extends Organization {
     public void setEnterpriseType(String enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
+    
+     public int getFundsCollected() {
+        return fundsCollected;
+    }
 
+    public void setFundsCollected(int fundsCollected) {
+        this.fundsCollected = this.fundsCollected + fundsCollected;
+    }
+    
+    public void setFundsUsed(int fundsCollected) {
+        this.fundsCollected = this.fundsCollected - fundsCollected;
+    }
 }
