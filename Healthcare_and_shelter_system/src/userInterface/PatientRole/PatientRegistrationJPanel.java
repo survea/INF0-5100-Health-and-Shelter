@@ -318,7 +318,7 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
                                 r.setTypeOfRequest("AssignShelter");
                                 r.setStatus("Awaiting for Shelter");
                                 r.setAssignedfor("Assign Shelter");
-                                r.setShelterRequestName(fname +""+ lname);
+                                r.setShelterRequestName(fname +" "+ lname);
                                 adminUser.getWorkQueue().getWorkRequestList().add(r);
                             }
                             //if (org.toString().equals(has_HealthcareOrg)) {

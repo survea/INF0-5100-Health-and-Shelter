@@ -39,6 +39,7 @@ public class HASEmployeeWorkRequestsJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.business = business;
         initComponents();
+         populateTable();
     }
 
     /**
