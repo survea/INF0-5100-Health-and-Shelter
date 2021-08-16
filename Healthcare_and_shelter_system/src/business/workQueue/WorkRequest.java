@@ -55,6 +55,7 @@ public class WorkRequest {
     private String address;
     private String mobile;
     private String email;
+    private String donarName;
     
     // Shelter Request
     private String shelterRequestName;
@@ -62,6 +63,15 @@ public class WorkRequest {
     private String assignedShelter;
     private int age;
 
+    public String getDonarName() {
+        return donarName;
+    }
+
+    public void setDonarName(String donarName) {
+        this.donarName = donarName;
+    }
+
+    
     public int getAge() {
         return age;
     }

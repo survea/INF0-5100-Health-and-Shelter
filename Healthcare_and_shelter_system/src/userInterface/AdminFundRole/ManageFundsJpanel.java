@@ -73,11 +73,11 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Role", "Status"
+                "Name", "Donar Name", "Role", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true
+                true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -232,10 +232,11 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
             if (request.getStatus().equals("Pending")) {
-                Object[] row = new Object[3];
+                Object[] row = new Object[4];
                 row[0] = request;
-                row[1] = request.getName();
-                row[2] = request.getStatus();
+                row[1] = request.getDonarName();
+                row[2] = request.getRole();
+                row[3] = request.getStatus();
                 model.addRow(row);
             }
         }
