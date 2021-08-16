@@ -6,6 +6,15 @@
 package userInterface.registration;
 
 import business.EcoSystem;
+import business.enterprise.Enterprise;
+import business.network.Network;
+import business.roles.AdminRole;
+import business.userAccount.UserAccount;
+import business.workQueue.PatientTestRequest;
+import business.workQueue.ShelterRequest;
+import static java.awt.image.ImageObserver.PROPERTIES;
+import java.util.Optional;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -35,34 +44,32 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
 
         addjPanel4 = new javax.swing.JPanel();
         lblCourseCode1 = new javax.swing.JLabel();
-        txtStudentID1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         lblCourseName1 = new javax.swing.JLabel();
-        txtName1 = new javax.swing.JTextField();
+        cPhone = new javax.swing.JTextField();
         lblCredits2 = new javax.swing.JLabel();
-        txtGpa1 = new javax.swing.JTextField();
+        cPerson = new javax.swing.JTextField();
         lblCredits4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        txtGpa2 = new javax.swing.JTextField();
+        cmbRequestType = new javax.swing.JComboBox<>();
+        txtCity = new javax.swing.JTextField();
         lblCredits3 = new javax.swing.JLabel();
         addjPanel3 = new javax.swing.JPanel();
         lblCourseCode = new javax.swing.JLabel();
-        txtStudentID = new javax.swing.JTextField();
+        fName = new javax.swing.JTextField();
         lblCourseName = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        lName = new javax.swing.JTextField();
         lblkeywords = new javax.swing.JLabel();
         lblCredits = new javax.swing.JLabel();
-        txtGpa = new javax.swing.JTextField();
+        age = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblCredits1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
         lblCourseCode2 = new javax.swing.JLabel();
-        txtStudentID2 = new javax.swing.JTextField();
-        txtStudentID3 = new javax.swing.JTextField();
+        height = new javax.swing.JTextField();
+        weight = new javax.swing.JTextField();
         lblCourseCode3 = new javax.swing.JLabel();
         lblCourseCode4 = new javax.swing.JLabel();
         lblCourseCode5 = new javax.swing.JLabel();
+        genderCombo = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(251, 251, 251));
@@ -75,9 +82,9 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCourseCode1.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode1.setText("Email:");
 
-        txtStudentID1.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentID1ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
 
@@ -86,9 +93,9 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCourseName1.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseName1.setText("Contact No:");
 
-        txtName1.addActionListener(new java.awt.event.ActionListener() {
+        cPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtName1ActionPerformed(evt);
+                cPhoneActionPerformed(evt);
             }
         });
 
@@ -102,7 +109,7 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCredits4.setForeground(new java.awt.Color(114, 150, 180));
         lblCredits4.setText("Request for:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Health Care", "Shelter", "Both Health care and Shelter" }));
+        cmbRequestType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Health Care", "Shelter", "Both Health care and Shelter" }));
 
         lblCredits3.setBackground(new java.awt.Color(254, 254, 254));
         lblCredits3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
@@ -118,52 +125,59 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                     .addGroup(addjPanel4Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(lblCredits4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(addjPanel4Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(addjPanel4Layout.createSequentialGroup()
-                                .addComponent(lblCredits2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtGpa1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addjPanel4Layout.createSequentialGroup()
-                                .addComponent(lblCredits3)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtGpa2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addjPanel4Layout.createSequentialGroup()
-                                .addGap(201, 201, 201)
-                                .addComponent(lblCourseCode1)
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addComponent(txtStudentID1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(addjPanel4Layout.createSequentialGroup()
+                                        .addComponent(lblCredits2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(addjPanel4Layout.createSequentialGroup()
+                                        .addComponent(lblCredits3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(addjPanel4Layout.createSequentialGroup()
+                                        .addGap(201, 201, 201)
+                                        .addComponent(lblCourseCode1)
+                                        .addGap(18, 18, Short.MAX_VALUE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(addjPanel4Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblCourseName1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(addjPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblCourseName1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(85, 85, 85)
+                                .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         addjPanel4Layout.setVerticalGroup(
             addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addjPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCourseName1)
-                    .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtGpa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCredits2)))
+                        .addComponent(cPerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCredits2))
+                    .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCourseName1)
+                        .addComponent(cPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCourseCode1)
-                    .addComponent(txtStudentID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtGpa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCredits3)))
+                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCredits3))
+                    .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCourseCode1)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCredits4))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -176,9 +190,9 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCourseCode.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode.setText("First Name:");
 
-        txtStudentID.addActionListener(new java.awt.event.ActionListener() {
+        fName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentIDActionPerformed(evt);
+                fNameActionPerformed(evt);
             }
         });
 
@@ -187,9 +201,9 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCourseName.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseName.setText("Last Name:");
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        lName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                lNameActionPerformed(evt);
             }
         });
 
@@ -208,31 +222,20 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCredits1.setForeground(new java.awt.Color(114, 150, 180));
         lblCredits1.setText("Gender: ");
 
-        jRadioButton1.setText("Female");
-
-        jRadioButton2.setText("Male");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton3.setText("Other");
-
         lblCourseCode2.setBackground(new java.awt.Color(254, 254, 254));
         lblCourseCode2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lblCourseCode2.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode2.setText("Height:");
 
-        txtStudentID2.addActionListener(new java.awt.event.ActionListener() {
+        height.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentID2ActionPerformed(evt);
+                heightActionPerformed(evt);
             }
         });
 
-        txtStudentID3.addActionListener(new java.awt.event.ActionListener() {
+        weight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentID3ActionPerformed(evt);
+                weightActionPerformed(evt);
             }
         });
 
@@ -251,6 +254,8 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         lblCourseCode5.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode5.setText("ft");
 
+        genderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Declined To Answer" }));
+
         javax.swing.GroupLayout addjPanel3Layout = new javax.swing.GroupLayout(addjPanel3);
         addjPanel3.setLayout(addjPanel3Layout);
         addjPanel3Layout.setHorizontalGroup(
@@ -266,79 +271,75 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                         .addComponent(lblkeywords)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fName)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+                    .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(addjPanel3Layout.createSequentialGroup()
-                        .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtStudentID)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                         .addGap(166, 166, 166)
                         .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addjPanel3Layout.createSequentialGroup()
                                 .addComponent(lblCourseName)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addjPanel3Layout.createSequentialGroup()
-                                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblCredits)
-                                    .addComponent(lblCourseCode2))
+                                .addComponent(lblCredits)
                                 .addGap(18, 18, 18)
-                                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtGpa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(addjPanel3Layout.createSequentialGroup()
-                                        .addComponent(txtStudentID2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblCourseCode5))))))
+                                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(addjPanel3Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(26, 26, 26)
-                        .addComponent(jRadioButton2)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblCourseCode2)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)))
+                        .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCourseCode5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCourseCode3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(weight, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCourseCode4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addjPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCourseCode3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtStudentID3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCourseCode4)
-                .addGap(253, 253, 253))
         );
         addjPanel3Layout.setVerticalGroup(
             addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addjPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCourseCode)
                     .addComponent(lblCourseName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblkeywords)
                         .addComponent(lblCredits)
-                        .addComponent(txtGpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(txtStudentID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCourseCode2)
                     .addComponent(lblCourseCode5)
-                    .addComponent(lblCredits1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseCode3)
-                    .addComponent(lblCourseCode4))
-                .addGap(0, 12, Short.MAX_VALUE))
+                    .addComponent(lblCredits1)
+                    .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(weight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCourseCode3)
+                        .addComponent(lblCourseCode4)))
+                .addGap(0, 52, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(72, 74, 95));
         jButton1.setText("SUBMIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -369,44 +370,143 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtStudentID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentID1ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentID1ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
+    private void cPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1ActionPerformed
+    }//GEN-LAST:event_cPhoneActionPerformed
 
-    private void txtStudentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentIDActionPerformed
+    private void fNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentIDActionPerformed
+    }//GEN-LAST:event_fNameActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void lNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_lNameActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void heightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heightActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_heightActionPerformed
 
-    private void txtStudentID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentID2ActionPerformed
+    private void weightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentID2ActionPerformed
+    }//GEN-LAST:event_weightActionPerformed
 
-    private void txtStudentID3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentID3ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentID3ActionPerformed
+        String fname = fName.getText();
+        String lname = lName.getText();
+
+        String gender = genderCombo.getSelectedItem().toString();
+        String request = cmbRequestType.getSelectedItem().toString();
+        String pic = null;
+
+        if (fName.getText().isEmpty() | lName.getText().isEmpty() | age.getText().isEmpty() | height.getText().isEmpty() | weight.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter all the fields!");
+            return;
+        }
+
+        try {
+            int age1 = Integer.parseInt(age.getText());
+            int height1 = Integer.parseInt(height.getText());
+            int weight1 = Integer.parseInt(weight.getText());
+            if ((age1 > 110) || (age1 < 1)) {
+                JOptionPane.showMessageDialog(null, "Please enter a Valid age!");
+                return;
+            }
+//            pic = getPic(fname);
+            Optional<Network> network;
+            network = system.getNetworkList().stream()
+                    .filter(x -> x.getName().equalsIgnoreCase(txtCity.getText()))
+                    .findFirst();
+            Network currentNetwork = network.get();
+//            Network currentNetwork = system.getNetworkList().get(0);
+            for (Enterprise ent : currentNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.Volunteer.getValue())) {
+                    for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
+                        if(adminUser.getRole() instanceof AdminRole) {
+                           
+                            
+                            if(request.equalsIgnoreCase("Health care")){
+                                 PatientTestRequest req = new PatientTestRequest();
+
+                                req.setPatientid(PROPERTIES);
+                                req.setPatientfirstname(fname);
+                                req.setPatientlastname(lname);
+                                req.setPheight(height1);
+                                req.setPweight(weight1);
+                                req.setPgender(gender);
+                                req.setPimage(pic);
+                                 req.setTypeOfRequest("AssignHospital");
+                                req.setStatus("Awaiting hospital For initial checkup");
+                                adminUser.getWorkQueue().getWorkRequestList().add(req);
+                            } else if(request.equalsIgnoreCase("Shelter")){
+                                ShelterRequest r = new ShelterRequest();
+                                r.setTypeOfRequest("AssignShelter");
+                                r.setStatus("Awaiting for Shelter");
+                                r.setAssignedfor("Assign Shelter");
+                                r.setShelterRequestName(fname +" "+ lname);
+                                r.setAge(Integer.parseInt(age.getText()));
+                                adminUser.getWorkQueue().getWorkRequestList().add(r);
+                            }else if(request.equalsIgnoreCase("Both Health care and Shelter")){
+                                ShelterRequest r = new ShelterRequest();
+                                r.setPatientid(PROPERTIES);
+                                r.setPatientfirstname(fname);
+                                r.setPatientlastname(lname);
+                                r.setPheight(height1);
+                                r.setPweight(weight1);
+                                r.setPgender(gender);
+                                r.setTypeOfRequest("AssignShelterAndHospital");
+                                r.setStatus("Awaiting for Shelter and Treatment");
+                                r.setAssignedfor("Assign Shelter and treatment");
+                                r.setShelterRequestName(fname +" "+ lname);
+                                r.setAge(Integer.parseInt(age.getText()));
+                                adminUser.getWorkQueue().getWorkRequestList().add(r);
+                            }  else {
+                                JOptionPane.showMessageDialog(this, "Select form the options provided");
+                            }
+                            //if (org.toString().equals(has_HealthcareOrg)) {
+                                
+                                //req.setPimage("Have to upload");
+
+//                                req.setReceiver(user);
+//                                user.getWorkQueue().getWorkRequestList().add(req);
+
+//                            }
+//                            if (org.toString().equals(has_ShelterOrg)) {
+//
+//                            }
+                            fName.setText("");
+                            lName.setText("");
+                            age.setText("");
+                            height.setText("");
+                            weight.setText("");
+                        }
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Patient registered succesfully. Patient can be diagnosised now");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter number for Age, Height and Weight!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addjPanel3;
     private javax.swing.JPanel addjPanel4;
+    private javax.swing.JTextField age;
+    private javax.swing.JTextField cPerson;
+    private javax.swing.JTextField cPhone;
+    private javax.swing.JComboBox<String> cmbRequestType;
+    private javax.swing.JTextField fName;
+    private javax.swing.JComboBox<String> genderCombo;
+    private javax.swing.JTextField height;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JTextField lName;
     private javax.swing.JLabel lblCourseCode;
     private javax.swing.JLabel lblCourseCode1;
     private javax.swing.JLabel lblCourseCode2;
@@ -421,14 +521,8 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblCredits3;
     private javax.swing.JLabel lblCredits4;
     private javax.swing.JLabel lblkeywords;
-    private javax.swing.JTextField txtGpa;
-    private javax.swing.JTextField txtGpa1;
-    private javax.swing.JTextField txtGpa2;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
-    private javax.swing.JTextField txtStudentID;
-    private javax.swing.JTextField txtStudentID1;
-    private javax.swing.JTextField txtStudentID2;
-    private javax.swing.JTextField txtStudentID3;
+    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField weight;
     // End of variables declaration//GEN-END:variables
 }

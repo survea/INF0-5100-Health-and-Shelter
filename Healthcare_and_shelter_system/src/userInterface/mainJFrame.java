@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userInterface.AdminFundRole.GeneralRegisterJPanel;
 import userInterface.PatientRole.PatientRegistrationJPanel;
+import userInterface.registration.RegistrationForms;
 
 /**
  *
@@ -57,6 +58,7 @@ public class mainJFrame extends javax.swing.JFrame {
         btnHome1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnAboutUs = new javax.swing.JButton();
+        btnAboutUs1 = new javax.swing.JButton();
         mainWorkArea = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -93,21 +95,34 @@ public class mainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnAboutUs1.setBackground(new java.awt.Color(254, 254, 254));
+        btnAboutUs1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnAboutUs1.setForeground(new java.awt.Color(200, 35, 24));
+        btnAboutUs1.setText("Need Help?");
+        btnAboutUs1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutUs1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(btnHome1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                         .addComponent(btnAboutUs)
-                        .addGap(44, 44, 44)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAboutUs1)
+                        .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +132,8 @@ public class mainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAboutUs)
-                    .addComponent(btnHome1))
+                    .addComponent(btnHome1)
+                    .addComponent(btnAboutUs1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -168,6 +184,14 @@ public class mainJFrame extends javax.swing.JFrame {
         layout.next(mainWorkArea);
     }//GEN-LAST:event_btnAboutUsActionPerformed
 
+    private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed
+        // TODO add your handling code here:
+        RegistrationForms fundPanel = new RegistrationForms(mainWorkArea,system);
+        mainWorkArea.add("RegistrationForms", fundPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+    }//GEN-LAST:event_btnAboutUs1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,6 +229,7 @@ public class mainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAboutUs;
+    private javax.swing.JButton btnAboutUs1;
     private javax.swing.JButton btnHome1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

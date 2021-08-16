@@ -121,21 +121,25 @@
                       <Component id="donarRole" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblCourseCode2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDonarName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="txtLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCredits2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCourseCode2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDonarName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblCourseCode1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblCourseName1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtContactNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCourseCode1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="32" max="32767" attributes="0"/>

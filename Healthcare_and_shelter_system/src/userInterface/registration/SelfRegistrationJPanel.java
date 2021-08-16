@@ -6,6 +6,15 @@
 package userInterface.registration;
 
 import business.EcoSystem;
+import business.enterprise.Enterprise;
+import business.network.Network;
+import business.roles.AdminRole;
+import business.userAccount.UserAccount;
+import business.workQueue.PatientTestRequest;
+import business.workQueue.ShelterRequest;
+import static java.awt.image.ImageObserver.PROPERTIES;
+import java.util.Optional;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -36,32 +45,30 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
 
         addjPanel3 = new javax.swing.JPanel();
         lblCourseCode = new javax.swing.JLabel();
-        txtStudentID = new javax.swing.JTextField();
+        fName = new javax.swing.JTextField();
         lblCourseName = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        lName = new javax.swing.JTextField();
         lblkeywords = new javax.swing.JLabel();
         lblCredits = new javax.swing.JLabel();
-        txtGpa = new javax.swing.JTextField();
+        age = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblCredits1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        genderCombo = new javax.swing.JComboBox<>();
         lblCourseCode2 = new javax.swing.JLabel();
-        txtStudentID2 = new javax.swing.JTextField();
-        txtStudentID3 = new javax.swing.JTextField();
-        lblCourseCode3 = new javax.swing.JLabel();
-        lblCourseCode4 = new javax.swing.JLabel();
+        height = new javax.swing.JTextField();
         lblCourseCode5 = new javax.swing.JLabel();
+        lblCourseCode3 = new javax.swing.JLabel();
+        weight = new javax.swing.JTextField();
+        lblCourseCode4 = new javax.swing.JLabel();
         addjPanel4 = new javax.swing.JPanel();
         lblCourseCode1 = new javax.swing.JLabel();
-        txtStudentID1 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         lblCourseName1 = new javax.swing.JLabel();
-        txtName1 = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
         lblCredits2 = new javax.swing.JLabel();
-        txtGpa1 = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
         lblCredits4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbRequestType = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(254, 254, 254));
@@ -74,9 +81,9 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         lblCourseCode.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode.setText("First Name:");
 
-        txtStudentID.addActionListener(new java.awt.event.ActionListener() {
+        fName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentIDActionPerformed(evt);
+                fNameActionPerformed(evt);
             }
         });
 
@@ -85,9 +92,9 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         lblCourseName.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseName.setText("Last Name:");
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        lName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                lNameActionPerformed(evt);
             }
         });
 
@@ -106,48 +113,39 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         lblCredits1.setForeground(new java.awt.Color(114, 150, 180));
         lblCredits1.setText("Gender: ");
 
-        jRadioButton1.setText("Female");
-
-        jRadioButton2.setText("Male");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton3.setText("Other");
+        genderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Declined To Answer" }));
 
         lblCourseCode2.setBackground(new java.awt.Color(254, 254, 254));
         lblCourseCode2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lblCourseCode2.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode2.setText("Height:");
 
-        txtStudentID2.addActionListener(new java.awt.event.ActionListener() {
+        height.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentID2ActionPerformed(evt);
+                heightActionPerformed(evt);
             }
         });
 
-        txtStudentID3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentID3ActionPerformed(evt);
-            }
-        });
+        lblCourseCode5.setBackground(new java.awt.Color(254, 254, 254));
+        lblCourseCode5.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        lblCourseCode5.setForeground(new java.awt.Color(114, 150, 180));
+        lblCourseCode5.setText("ft");
 
         lblCourseCode3.setBackground(new java.awt.Color(254, 254, 254));
         lblCourseCode3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lblCourseCode3.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode3.setText("Weight:");
 
+        weight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weightActionPerformed(evt);
+            }
+        });
+
         lblCourseCode4.setBackground(new java.awt.Color(254, 254, 254));
         lblCourseCode4.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lblCourseCode4.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode4.setText("lbs");
-
-        lblCourseCode5.setBackground(new java.awt.Color(254, 254, 254));
-        lblCourseCode5.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        lblCourseCode5.setForeground(new java.awt.Color(114, 150, 180));
-        lblCourseCode5.setText("ft");
 
         javax.swing.GroupLayout addjPanel3Layout = new javax.swing.GroupLayout(addjPanel3);
         addjPanel3.setLayout(addjPanel3Layout);
@@ -164,74 +162,62 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
                         .addComponent(lblkeywords)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fName)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+                    .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(addjPanel3Layout.createSequentialGroup()
-                        .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtStudentID)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                        .addGap(166, 166, 166)
-                        .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addjPanel3Layout.createSequentialGroup()
-                                .addComponent(lblCourseName)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addjPanel3Layout.createSequentialGroup()
-                                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblCredits)
-                                    .addComponent(lblCourseCode2))
-                                .addGap(18, 18, 18)
-                                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtGpa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(addjPanel3Layout.createSequentialGroup()
-                                        .addComponent(txtStudentID2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblCourseCode5))))))
-                    .addGroup(addjPanel3Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(26, 26, 26)
-                        .addComponent(jRadioButton2)
+                        .addComponent(lblCourseName)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addjPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCourseCode3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtStudentID3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCourseCode4)
-                .addGap(253, 253, 253))
+                        .addComponent(lName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addjPanel3Layout.createSequentialGroup()
+                        .addComponent(lblCredits)
+                        .addGap(18, 18, 18)
+                        .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addjPanel3Layout.createSequentialGroup()
+                        .addComponent(lblCourseCode2)
+                        .addGap(18, 18, 18)
+                        .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCourseCode5)
+                        .addGap(73, 73, 73)
+                        .addComponent(lblCourseCode3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(weight, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCourseCode4)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         addjPanel3Layout.setVerticalGroup(
             addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addjPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCourseCode)
                     .addComponent(lblCourseName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblkeywords)
                         .addComponent(lblCredits)
-                        .addComponent(txtGpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(txtStudentID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseCode2)
-                    .addComponent(lblCourseCode5)
-                    .addComponent(lblCredits1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseCode3)
-                    .addComponent(lblCourseCode4))
-                .addGap(0, 12, Short.MAX_VALUE))
+                    .addComponent(lblCredits1)
+                    .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCourseCode2)
+                        .addComponent(lblCourseCode5)
+                        .addComponent(weight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCourseCode3)
+                        .addComponent(lblCourseCode4)))
+                .addGap(0, 52, Short.MAX_VALUE))
         );
 
         addjPanel4.setBackground(new java.awt.Color(254, 254, 254));
@@ -242,9 +228,9 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         lblCourseCode1.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseCode1.setText("Email:");
 
-        txtStudentID1.addActionListener(new java.awt.event.ActionListener() {
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentID1ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
 
@@ -253,9 +239,9 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         lblCourseName1.setForeground(new java.awt.Color(114, 150, 180));
         lblCourseName1.setText("Contact No:");
 
-        txtName1.addActionListener(new java.awt.event.ActionListener() {
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtName1ActionPerformed(evt);
+                txtPhoneActionPerformed(evt);
             }
         });
 
@@ -269,7 +255,7 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         lblCredits4.setForeground(new java.awt.Color(114, 150, 180));
         lblCredits4.setText("Request for:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Health Care", "Shelter", "Both Health care and Shelter" }));
+        cmbRequestType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Health Care", "Shelter", "Both Health care and Shelter" }));
 
         javax.swing.GroupLayout addjPanel4Layout = new javax.swing.GroupLayout(addjPanel4);
         addjPanel4.setLayout(addjPanel4Layout);
@@ -281,7 +267,7 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(lblCredits4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addjPanel4Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -290,12 +276,12 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addjPanel4Layout.createSequentialGroup()
-                                .addComponent(txtStudentID1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(153, 153, 153)
                                 .addComponent(lblCourseName1)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtGpa1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addjPanel4Layout.setVerticalGroup(
@@ -305,24 +291,29 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCourseName1)
-                        .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCourseCode1)
-                        .addComponent(txtStudentID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtGpa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCredits2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCredits4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(72, 74, 95));
         jButton1.setText("SUBMIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -353,44 +344,142 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtStudentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentIDActionPerformed
+    private void fNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentIDActionPerformed
+    }//GEN-LAST:event_fNameActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void lNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_lNameActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void txtStudentID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentID1ActionPerformed
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentID1ActionPerformed
+    }//GEN-LAST:event_txtPhoneActionPerformed
 
-    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1ActionPerformed
+                String fname = fName.getText();
+        String lname = lName.getText();
 
-    private void txtStudentID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentID2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentID2ActionPerformed
+        String gender = genderCombo.getSelectedItem().toString();
+        String request = cmbRequestType.getSelectedItem().toString();
+        String pic = null;
 
-    private void txtStudentID3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentID3ActionPerformed
+        if (fName.getText().isEmpty() | lName.getText().isEmpty() | age.getText().isEmpty() | height.getText().isEmpty() | weight.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter all the fields!");
+            return;
+        }
+
+        try {
+            int age1 = Integer.parseInt(age.getText());
+            int height1 = Integer.parseInt(height.getText());
+            int weight1 = Integer.parseInt(weight.getText());
+            if ((age1 > 110) || (age1 < 1)) {
+                JOptionPane.showMessageDialog(null, "Please enter a Valid age!");
+                return;
+            }
+//            pic = getPic(fname);
+            Optional<Network> network;
+            network = system.getNetworkList().stream()
+                    .filter(x -> x.getName().equalsIgnoreCase(txtCity.getText()))
+                    .findFirst();
+            Network currentNetwork = network.get();
+//            Network currentNetwork = system.getNetworkList().get(0);
+            for (Enterprise ent : currentNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.Volunteer.getValue())) {
+                    for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
+                        if(adminUser.getRole() instanceof AdminRole) {
+                           
+                            
+                            if(request.equalsIgnoreCase("Health care")){
+                                 PatientTestRequest req = new PatientTestRequest();
+
+                                req.setPatientid(PROPERTIES);
+                                req.setPatientfirstname(fname);
+                                req.setPatientlastname(lname);
+                                req.setPheight(height1);
+                                req.setPweight(weight1);
+                                req.setPgender(gender);
+                                req.setPimage(pic);
+                                 req.setTypeOfRequest("AssignHospital");
+                                req.setStatus("Awaiting hospital For initial checkup");
+                                adminUser.getWorkQueue().getWorkRequestList().add(req);
+                            } else if(request.equalsIgnoreCase("Shelter")){
+                                ShelterRequest r = new ShelterRequest();
+                                r.setTypeOfRequest("AssignShelter");
+                                r.setStatus("Awaiting for Shelter");
+                                r.setAssignedfor("Assign Shelter");
+                                r.setShelterRequestName(fname +" "+ lname);
+                                r.setAge(Integer.parseInt(age.getText()));
+                                adminUser.getWorkQueue().getWorkRequestList().add(r);
+                            }else if(request.equalsIgnoreCase("Both Health care and Shelter")){
+                                ShelterRequest r = new ShelterRequest();
+                                r.setPatientid(PROPERTIES);
+                                r.setPatientfirstname(fname);
+                                r.setPatientlastname(lname);
+                                r.setPheight(height1);
+                                r.setPweight(weight1);
+                                r.setPgender(gender);
+                                r.setTypeOfRequest("AssignShelterAndHospital");
+                                r.setStatus("Awaiting for Shelter and Treatment");
+                                r.setAssignedfor("Assign Shelter and treatment");
+                                r.setShelterRequestName(fname +" "+ lname);
+                                r.setAge(Integer.parseInt(age.getText()));
+                                adminUser.getWorkQueue().getWorkRequestList().add(r);
+                            }  else {
+                                JOptionPane.showMessageDialog(this, "Select form the options provided");
+                            }
+                            //if (org.toString().equals(has_HealthcareOrg)) {
+                                
+                                //req.setPimage("Have to upload");
+
+//                                req.setReceiver(user);
+//                                user.getWorkQueue().getWorkRequestList().add(req);
+
+//                            }
+//                            if (org.toString().equals(has_ShelterOrg)) {
+//
+//                            }
+                            fName.setText("");
+                            lName.setText("");
+                            age.setText("");
+                            height.setText("");
+                            weight.setText("");
+                        }
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Patient registered succesfully. Patient can be diagnosised now");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter number for Age, Height and Weight!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void heightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heightActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStudentID3ActionPerformed
+    }//GEN-LAST:event_heightActionPerformed
+
+    private void weightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_weightActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addjPanel3;
     private javax.swing.JPanel addjPanel4;
+    private javax.swing.JTextField age;
+    private javax.swing.JComboBox<String> cmbRequestType;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fName;
+    private javax.swing.JComboBox<String> genderCombo;
+    private javax.swing.JTextField height;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JTextField lName;
     private javax.swing.JLabel lblCourseCode;
     private javax.swing.JLabel lblCourseCode1;
     private javax.swing.JLabel lblCourseCode2;
@@ -404,13 +493,8 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblCredits2;
     private javax.swing.JLabel lblCredits4;
     private javax.swing.JLabel lblkeywords;
-    private javax.swing.JTextField txtGpa;
-    private javax.swing.JTextField txtGpa1;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
-    private javax.swing.JTextField txtStudentID;
-    private javax.swing.JTextField txtStudentID1;
-    private javax.swing.JTextField txtStudentID2;
-    private javax.swing.JTextField txtStudentID3;
+    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField weight;
     // End of variables declaration//GEN-END:variables
 }
