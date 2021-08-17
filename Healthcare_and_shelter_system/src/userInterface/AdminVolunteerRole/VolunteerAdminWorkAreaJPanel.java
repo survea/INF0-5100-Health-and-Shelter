@@ -51,6 +51,7 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         ManageUserBtn = new javax.swing.JButton();
         btnmanageOrg = new javax.swing.JButton();
         btnMAnageHealthCareReq = new javax.swing.JButton();
+        btnMAnageHealthCareReq1 = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Volunteer admin work Area");
@@ -83,6 +84,13 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnMAnageHealthCareReq1.setText("VIEW STATISTICS");
+        btnMAnageHealthCareReq1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMAnageHealthCareReq1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +106,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(btnmanageOrg, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(ManageUserBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(btnMAnageHealthCareReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnMAnageHealthCareReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMAnageHealthCareReq1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(285, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,7 +123,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(ManageUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMAnageHealthCareReq)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnMAnageHealthCareReq1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,10 +160,19 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnMAnageHealthCareReqActionPerformed
 
+    private void btnMAnageHealthCareReq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAnageHealthCareReq1ActionPerformed
+        // TODO add your handling code here:
+        HASStatisticsJPanel hsjp = new HASStatisticsJPanel(userProcessContainer, userAccount, enterprise, network, system);
+        userProcessContainer.add("manageHealthCareRequestsJPanel", hsjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnMAnageHealthCareReq1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ManageUserBtn;
     private javax.swing.JButton btnMAnageHealthCareReq;
+    private javax.swing.JButton btnMAnageHealthCareReq1;
     private javax.swing.JButton btnmanageOrg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;

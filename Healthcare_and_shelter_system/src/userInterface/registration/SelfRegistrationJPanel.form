@@ -145,16 +145,18 @@
                       <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblCredits1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="genderCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="height" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCourseCode2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCourseCode5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="weight" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCourseCode3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCourseCode4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCredits1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="genderCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="52" max="32767" attributes="0"/>

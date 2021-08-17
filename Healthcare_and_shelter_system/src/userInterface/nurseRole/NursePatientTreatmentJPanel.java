@@ -51,7 +51,7 @@ public class NursePatientTreatmentJPanel extends javax.swing.JPanel {
         private void populateData() {
         fName.setText(request.getPatientfirstname());
         lName.setText(request.getPatientlastname());
-//        age.setText(Integer.toString(request.getPage()));
+        age.setText(Integer.toString(request.getAge()));
         height.setText(Integer.toString(request.getPheight()));
         weight.setText(Integer.toString(request.getPweight()));
         gender.setText(request.getPgender());

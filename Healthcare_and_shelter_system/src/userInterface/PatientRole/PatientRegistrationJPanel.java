@@ -309,6 +309,7 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
                                 req.setPheight(height1);
                                 req.setPweight(weight1);
                                 req.setPgender(gender);
+                                req.setAge(Integer.parseInt(age.getText()));
                                 req.setPimage(pic);
                                  req.setTypeOfRequest("AssignHospital");
                                 req.setStatus("Awaiting hospital For initial checkup");

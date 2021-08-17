@@ -9,6 +9,11 @@ import business.EcoSystem;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 import userInterface.HomeJPanel;
 
 /**
@@ -231,6 +236,16 @@ public class SystemAdminMainWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageEnterpriseAdmins1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseAdmins1ActionPerformed
         // TODO add your handling code here:
+        DefaultPieDataset pieDateSet = new DefaultPieDataset();
+        pieDateSet.setValue("ONE", new Integer(10));
+        pieDateSet.setValue("TWO", new Integer(20));
+        pieDateSet.setValue("THREE", new Integer(30));
+        pieDateSet.setValue("FOUR", new Integer(40));
+        JFreeChart pieChart = ChartFactory.createPieChart("Pie chart", pieDateSet);
+        PiePlot p = (PiePlot)pieChart.getPlot();
+        ChartFrame frame = new ChartFrame("Pie Chart", pieChart);
+        frame.setVisible(true);
+        frame.setSize(450,500);
     }//GEN-LAST:event_btnManageEnterpriseAdmins1ActionPerformed
 
     private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed

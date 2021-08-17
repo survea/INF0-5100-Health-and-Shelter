@@ -29,6 +29,7 @@
                           <Component id="btnmanageOrg" pref="270" max="32767" attributes="0"/>
                           <Component id="ManageUserBtn" alignment="0" pref="270" max="32767" attributes="0"/>
                           <Component id="btnMAnageHealthCareReq" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnMAnageHealthCareReq1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -49,7 +50,8 @@
               <Component id="ManageUserBtn" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnMAnageHealthCareReq" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnMAnageHealthCareReq1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,6 +93,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMAnageHealthCareReqActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMAnageHealthCareReq1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="VIEW STATISTICS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMAnageHealthCareReq1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

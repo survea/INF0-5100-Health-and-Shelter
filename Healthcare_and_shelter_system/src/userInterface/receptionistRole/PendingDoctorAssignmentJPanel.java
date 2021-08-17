@@ -174,7 +174,7 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
     private void populateTable() {
 //        request.setStatus("HAS Admin appproved");
 //            request.setTypeOfRequest("AwaitingDoctorAssignment");
-                DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
 
         model.setRowCount(0);
         System.out.println(userAccount.getWorkQueue().getWorkRequestList());
@@ -188,7 +188,7 @@ public class PendingDoctorAssignmentJPanel extends javax.swing.JPanel {
                         row[0] = req.getPatientfirstname();
                         row[1] = req.getPatientlastname();
                         row[2] = req.getPpriority();
-//                    row[3] = req.getPage();
+                        row[3] = req.getAge();
                         row[4] = req;
                         row[5] = req.getStatus();
                         row[6] = req.getPdiagnosis();

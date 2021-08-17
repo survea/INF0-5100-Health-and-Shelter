@@ -54,12 +54,13 @@ public class HASEmployeeWorkStatusJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
             if ((request.getStatus().equals("Awaiting hospital For initial checkup")) || (request.getStatus().equals("Pending hospital assignment"))) {
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
                 row[0] = request;
                 row[1] = request.getPatientfirstname();
                 row[2] = request.getPsymptoms();
                 row[3] = request.getPdiagnosis();
-                row[4] = request.getStatus();
+                row[4] = userAccount.getUsername();
+                row[5] = request.getStatus();
                 model.addRow(row);
             }
         }

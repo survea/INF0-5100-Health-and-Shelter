@@ -44,11 +44,11 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         this.system = system;
 //        this.directory = directory;
         EnterpriseDirectory ed = network.getEnterpriseDirectory();
-        for(Enterprise e : ed.getEnterpriseList() ){
-            if(e.getEnterpriseType().equalsIgnoreCase("Fund Raiser")){
+        for (Enterprise e : ed.getEnterpriseList()) {
+            if (e.getEnterpriseType().equalsIgnoreCase("Fund Raiser")) {
                 int funds = enterprise.getFundsCollected();
-                if(funds > 0){
-                     lblTotalFunds.setText(String.valueOf(funds));
+                if (funds > 0) {
+                    lblTotalFunds.setText(String.valueOf(funds));
                 }
                 break;
             }
@@ -333,7 +333,7 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
                 row[0] = req.getPatientfirstname();
                 row[1] = req.getPatientlastname();
                 row[2] = req.getPpriority();
-//                                    row[3] = req.getPage();
+                row[3] = req.getAge();
                 row[4] = req;
                 row[5] = req.getStatus();
                 row[6] = req.getPdiagnosis();

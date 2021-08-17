@@ -424,7 +424,7 @@ public class PatientInitialTestJPanel extends javax.swing.JPanel {
                     request.setPatientid(patientFee);
                     request.setPatientfirstname(fName.getText());
                     request.setPatientlastname(lName.getText());
-//                    request.setPage(Integer.parseInt(age.getText()));
+                    request.setAge(Integer.parseInt(age.getText()));
                     request.setPheight(Integer.parseInt(height.getText()));
                     request.setPweight(Integer.parseInt(weight.getText()));
                     request.setPgender(gender.getText());
@@ -543,7 +543,7 @@ public class PatientInitialTestJPanel extends javax.swing.JPanel {
     private void populatePatientData() {
         fName.setText(request.getPatientfirstname());
         lName.setText(request.getPatientlastname());
-//        age.setText(Integer.toString(request.getPage()));
+        age.setText(Integer.toString(request.getAge()));
         height.setText(Integer.toString(request.getPheight()));
         weight.setText(Integer.toString(request.getPweight()));
         gender.setText(request.getPgender());

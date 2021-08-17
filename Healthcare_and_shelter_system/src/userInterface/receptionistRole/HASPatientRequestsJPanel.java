@@ -152,15 +152,13 @@ public class HASPatientRequestsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Patient Already Added");
             return;
         }
-                if (nurseUserAccount.getRole() instanceof NurseRole) {
-                    request.setTypeOfRequest("InitialCheckupNurseAssigned");
-                    request.setStatus("Awaiting initial checkup - nurse");
-                    request.setReceiver(nurseUserAccount);
-                    //req.setPimage("Have to upload");
-                    ((UserAccount) nurseUserAccount).getWorkQueue().getWorkRequestList().add(request);
-                }
-
-
+        if (nurseUserAccount.getRole() instanceof NurseRole) {
+            request.setTypeOfRequest("InitialCheckupNurseAssigned");
+            request.setStatus("Awaiting initial checkup - nurse");
+            request.setReceiver(nurseUserAccount);
+            //req.setPimage("Have to upload");
+            ((UserAccount) nurseUserAccount).getWorkQueue().getWorkRequestList().add(request);
+        }
 
 //        if (request.getStatus().equals("Hospital Sent")) {
 //            for (Organization organ : enterprise.getOrganizationDirectory().getOrganizationList()) {
@@ -212,7 +210,7 @@ public class HASPatientRequestsJPanel extends javax.swing.JPanel {
                         row[0] = req.getPatientfirstname();
                         row[1] = req.getPatientlastname();
                         row[2] = req.getPpriority();
-//                    row[3] = req.getPage();
+                        row[3] = req.getAge();
                         row[4] = req;
                         row[5] = req.getStatus();
                         row[6] = req.getPdiagnosis();
@@ -228,11 +226,13 @@ public class HASPatientRequestsJPanel extends javax.swing.JPanel {
     private void populateNurseListCmb() {
         cmbNurseList.removeAllItems();
         for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if(org instanceof NurseOrganization)
-            for (UserAccount userAcc : org.getUserAccountDirectory().getUserAccountList()) {
-                if (userAcc.getRole() instanceof NurseRole) {
-                    cmbNurseList.addItem(userAcc);
+            if (org instanceof NurseOrganization) {
+                for (UserAccount userAcc : org.getUserAccountDirectory().getUserAccountList()) {
+                    if (userAcc.getRole() instanceof NurseRole) {
+                        cmbNurseList.addItem(userAcc);
+                    }
                 }
             }
-        } }
+        }
+    }
 }

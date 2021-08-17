@@ -294,12 +294,13 @@ public class HASEmployeeWorkRequestsJPanel extends javax.swing.JPanel {
             if (HASUser.getRole() instanceof AdminRole) {
                 for (WorkRequest request : HASUser.getWorkQueue().getWorkRequestList()) {
                     if ((request.getStatus().equals("Awaiting hospital For initial checkup")) || (request.getStatus().equals("Pending"))) {
-                        Object[] row = new Object[5];
+                        Object[] row = new Object[6];
                         row[0] = request;
                         row[1] = request.getPatientfirstname();
                         row[2] = request.getPsymptoms();
                         row[3] = request.getPdiagnosis();
-                        row[4] = request.getStatus();
+                        row[4] = HASUser.getUsername();
+                        row[5] = request.getStatus();
                         model.addRow(row);
                     }
 

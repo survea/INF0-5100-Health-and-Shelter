@@ -207,7 +207,7 @@ public class PatientListInitialTestReqJPanel extends javax.swing.JPanel {
                 row[0] = req.getPatientfirstname();
                 row[1] = req.getPatientlastname();
                 row[2] = req.getPgender();
-//                row[3] = req.getPage();
+                row[3] = req.getAge();
                 row[4] = req;
                 row[5] = req.getStatus();
                 model.addRow(row);
