@@ -66,6 +66,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(254, 254, 254));
 
+        manageEmployeeJButton.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        manageEmployeeJButton.setForeground(new java.awt.Color(90, 112, 140));
         manageEmployeeJButton.setText("MANAGE EMPLOYEE");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +75,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        ManageUserBtn.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        ManageUserBtn.setForeground(new java.awt.Color(90, 112, 140));
         ManageUserBtn.setText("MANAGE USER");
         ManageUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +84,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnmanageOrg.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnmanageOrg.setForeground(new java.awt.Color(90, 112, 140));
         btnmanageOrg.setText("MANAGE ORGANIZATION");
         btnmanageOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +93,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnMAnageHealthCareReq.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnMAnageHealthCareReq.setForeground(new java.awt.Color(90, 112, 140));
         btnMAnageHealthCareReq.setText("MANAGE HEALTHCARE REQUESTS");
         btnMAnageHealthCareReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +102,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnMAnageHealthCareReq1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnMAnageHealthCareReq1.setForeground(new java.awt.Color(90, 112, 140));
         btnMAnageHealthCareReq1.setText("VIEW STATISTICS");
         btnMAnageHealthCareReq1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +125,9 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnMAnageHealthCareReq1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ManageUserBtn, btnMAnageHealthCareReq, btnMAnageHealthCareReq1, btnmanageOrg, manageEmployeeJButton});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -154,7 +167,7 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         subMainFrame.setLayout(subMainFrameLayout);
         subMainFrameLayout.setHorizontalGroup(
             subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
         );
         subMainFrameLayout.setVerticalGroup(
             subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

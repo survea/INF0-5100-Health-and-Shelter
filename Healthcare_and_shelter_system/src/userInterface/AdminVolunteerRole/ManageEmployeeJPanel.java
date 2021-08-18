@@ -58,13 +58,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         addJButton = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
         cmbOrganization = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EMPLOYEE MANAGEMENT - HAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -96,19 +96,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(organizationJTable);
 
-        addJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        addJButton.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         addJButton.setText("CREATE EMPLOYEE");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
-            }
-        });
-
-        backJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
             }
         });
 
@@ -125,7 +117,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Organization");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButton1.setText("DELETE EMPLOYEE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,49 +125,42 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel7.setText("EMPLOYEE MANAGEMENT - HAS");
-        jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(backJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbOrganization, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(addJButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)))
-                .addGap(0, 124, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jLabel7)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addJButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbOrganization, nameJTextField});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(59, 59, 59)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -186,10 +171,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addJButton)
-                    .addComponent(backJButton)
                     .addComponent(jButton1))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbOrganization, nameJTextField});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -231,13 +219,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_addJButtonActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
@@ -264,12 +245,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
-    private javax.swing.JButton backJButton;
     private javax.swing.JComboBox cmbOrganization;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;

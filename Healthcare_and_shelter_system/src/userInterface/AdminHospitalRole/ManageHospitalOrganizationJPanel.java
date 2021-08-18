@@ -68,18 +68,15 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         organizationJComboBox = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         addJButton = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel7.setText("ORGANIZATION MANAGEMENT - HOSPITAL");
-        jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
+        setBackground(new java.awt.Color(204, 204, 255));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Organanization MAnagement - Hospital", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,7 +116,7 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButton1.setText("DELETE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,19 +124,11 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        addJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        addJButton.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         addJButton.setText("ADD ");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
-            }
-        });
-
-        backJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
             }
         });
 
@@ -148,44 +137,43 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(32, 32, 32)
-                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backJButton)
-                                .addGap(54, 54, 54)
-                                .addComponent(addJButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel7)))
+                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addJButton, jButton1, jLabel1, organizationJComboBox});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addJButton)
-                    .addComponent(backJButton)
                     .addComponent(jButton1))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {addJButton, jButton1});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, organizationJComboBox});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
@@ -217,20 +205,11 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "An Organization has beesn added successfully");
     }//GEN-LAST:event_addJButtonActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;

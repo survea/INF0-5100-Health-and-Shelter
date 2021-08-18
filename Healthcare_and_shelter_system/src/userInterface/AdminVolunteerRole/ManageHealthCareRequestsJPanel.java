@@ -68,27 +68,17 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        cmbRequestType = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         lblTotalFunds = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        enterpriseLabel.setText("ENTERPRISE");
-
-        valueLabel.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        valueLabel.setText("<value>");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MAnage Healthcare requests", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         assignJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         assignJButton.setText("ASSIGN TO ME");
@@ -122,13 +112,6 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel1.setText("HAS EMP - WORK AREA ");
-
-        cmbRequestType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Awaiting initial checkup", "Awaiting admin approval", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Select request status");
-
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -154,8 +137,10 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
+        jLabel3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel3.setText("Total Funds Available :");
 
+        lblTotalFunds.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         lblTotalFunds.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -178,20 +163,8 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(291, 291, 291)
+                        .addGap(0, 0, 0)
                         .addComponent(refreshJButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(enterpriseLabel)
-                        .addGap(22, 22, 22)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
@@ -202,23 +175,15 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refreshJButton)
-                    .addComponent(jLabel2)
-                    .addComponent(cmbRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(refreshJButton)
+                .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lblTotalFunds))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(processJButton))
@@ -240,14 +205,49 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(45, Short.MAX_VALUE)
+                    .addContainerGap(104, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(45, Short.MAX_VALUE)))
+                    .addContainerGap(104, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
+        populateTable();
+    }//GEN-LAST:event_refreshJButtonActionPerformed
+
+    private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
+
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please make a selection");
+            return;
+        }
+        //
+        WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 4);
+        if ((request.getStatus().equals("Admin Waiting")) && (request.getReceiver().equals(userAccount))) {
+            request.setStatus("HAS Admin appproved");
+            request.setTypeOfRequest("AwaitingDoctorAssignment");
+            JOptionPane.showMessageDialog(null, "Request processed");
+            //            count = 0;
+            //            HASRequestHospitalJPanel hASRequestHospitalJPanel = new HASRequestHospitalJPanel(userProcessContainer, account, request, enterprise);
+            //            userProcessContainer.add("hASRequestHospitalJPanel", hASRequestHospitalJPanel);
+            //            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            //            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Patient application is not assigned to you.");
+        }
+    }//GEN-LAST:event_processJButtonActionPerformed
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
@@ -271,41 +271,6 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cannot Assign More Than One Patient");
         }
     }//GEN-LAST:event_assignJButtonActionPerformed
-
-    private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
-
-        int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please make a selection");
-            return;
-        }
-//
-        WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 4);
-        if ((request.getStatus().equals("Admin Waiting")) && (request.getReceiver().equals(userAccount))) {
-            request.setStatus("HAS Admin appproved");
-            request.setTypeOfRequest("AwaitingDoctorAssignment");
-            JOptionPane.showMessageDialog(null, "Request processed");
-//            count = 0;
-//            HASRequestHospitalJPanel hASRequestHospitalJPanel = new HASRequestHospitalJPanel(userProcessContainer, account, request, enterprise);
-//            userProcessContainer.add("hASRequestHospitalJPanel", hASRequestHospitalJPanel);
-//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//            layout.next(userProcessContainer);
-        } else {
-            JOptionPane.showMessageDialog(null, "Patient application is not assigned to you.");
-        }
-    }//GEN-LAST:event_processJButtonActionPerformed
-
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
@@ -348,17 +313,12 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JButton backJButton;
-    private javax.swing.JComboBox<String> cmbRequestType;
-    private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotalFunds;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }
