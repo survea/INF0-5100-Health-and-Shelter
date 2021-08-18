@@ -11,6 +11,7 @@ import business.network.Network;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userInterface.HomeJPanel;
 
 /**
  *
@@ -46,19 +47,29 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        subMainFrame = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
         enterpriseLabel = new javax.swing.JLabel();
         manageOrganizationJButton = new javax.swing.JButton();
         manageEmployeeJButton = new javax.swing.JButton();
         userJButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnAboutUs1 = new javax.swing.JButton();
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel2.setText("HOSPITAL ADMINISTRATOR HOME");
+        setBackground(new java.awt.Color(254, 254, 254));
+
+        subMainFrame.setBackground(new java.awt.Color(254, 254, 254));
+        subMainFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jPanel2.setBackground(new java.awt.Color(254, 254, 254));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("ENTERPRISE:");
 
-        manageOrganizationJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        manageOrganizationJButton.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        manageOrganizationJButton.setForeground(new java.awt.Color(90, 112, 140));
         manageOrganizationJButton.setText("MANAGE ORGANIZATION");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +77,8 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        manageEmployeeJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        manageEmployeeJButton.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        manageEmployeeJButton.setForeground(new java.awt.Color(90, 112, 140));
         manageEmployeeJButton.setText("MANAGE EMPLOYEE");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,11 +86,86 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        userJButton2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        userJButton2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        userJButton2.setForeground(new java.awt.Color(90, 112, 140));
         userJButton2.setText("MANAGE USER");
         userJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userJButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(userJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(260, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 471, Short.MAX_VALUE)
+        );
+
+        jSplitPane1.setRightComponent(jPanel3);
+
+        javax.swing.GroupLayout subMainFrameLayout = new javax.swing.GroupLayout(subMainFrame);
+        subMainFrame.setLayout(subMainFrameLayout);
+        subMainFrameLayout.setHorizontalGroup(
+            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+        );
+        subMainFrameLayout.setVerticalGroup(
+            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subMainFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel1.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(60, 76, 123));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HOSPITAL ADMIN ");
+
+        btnAboutUs1.setBackground(new java.awt.Color(254, 254, 254));
+        btnAboutUs1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnAboutUs1.setForeground(new java.awt.Color(200, 35, 24));
+        btnAboutUs1.setText("Logout");
+        btnAboutUs1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutUs1ActionPerformed(evt);
             }
         });
 
@@ -87,69 +174,79 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subMainFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(userJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAboutUs1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 35, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(23, 23, 23)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(userJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnAboutUs1))
+                .addGap(5, 5, 5)
+                .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
+//        ManageHospitalOrganizationJPanel manageHospitalOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise);
+//        userProcessContainer.add("manageHospitalOrganizationJPanel", manageHospitalOrganizationJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+        
         ManageHospitalOrganizationJPanel manageHospitalOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("manageHospitalOrganizationJPanel", manageHospitalOrganizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        jSplitPane1.setRightComponent(manageHospitalOrganizationJPanel);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
+//        ManageHospitalEmployeeJPanel manageEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise);
+//        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+        
         ManageHospitalEmployeeJPanel manageEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        jSplitPane1.setRightComponent(manageEmployeeJPanel);
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void userJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButton2ActionPerformed
         // TODO add your handling code here:
+//        ManageHospitalUserJPanel manageUserAccountJPanel = new ManageHospitalUserJPanel(userProcessContainer, enterprise);
+//        userProcessContainer.add("ManageUserAccountJPanel", manageUserAccountJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+
         ManageHospitalUserJPanel manageUserAccountJPanel = new ManageHospitalUserJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("ManageUserAccountJPanel", manageUserAccountJPanel);
+        jSplitPane1.setRightComponent(manageUserAccountJPanel);
+    }//GEN-LAST:event_userJButton2ActionPerformed
+
+    private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed
+        // TODO add your handling code here:
+        HomeJPanel fundPanel = new HomeJPanel(userProcessContainer,system);
+        userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_userJButton2ActionPerformed
+    }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAboutUs1;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
+    private javax.swing.JPanel subMainFrame;
     private javax.swing.JButton userJButton2;
     // End of variables declaration//GEN-END:variables
 }
