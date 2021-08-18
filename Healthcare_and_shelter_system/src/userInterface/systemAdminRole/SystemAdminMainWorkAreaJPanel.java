@@ -70,7 +70,7 @@ public class SystemAdminMainWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(254, 254, 254));
 
-        btnManageNetwork.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnManageNetwork.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
         btnManageNetwork.setForeground(new java.awt.Color(99, 112, 140));
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class SystemAdminMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageEnterprise.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnManageEnterprise.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
         btnManageEnterprise.setForeground(new java.awt.Color(99, 112, 140));
         btnManageEnterprise.setText("Manage Enterprise");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class SystemAdminMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageEnterpriseAdmins.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnManageEnterpriseAdmins.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
         btnManageEnterpriseAdmins.setForeground(new java.awt.Color(99, 112, 140));
         btnManageEnterpriseAdmins.setText("Manage Enterprise admins");
         btnManageEnterpriseAdmins.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +97,7 @@ public class SystemAdminMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageEnterpriseAdmins1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnManageEnterpriseAdmins1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
         btnManageEnterpriseAdmins1.setForeground(new java.awt.Color(99, 112, 140));
         btnManageEnterpriseAdmins1.setText("Statistics");
         btnManageEnterpriseAdmins1.addActionListener(new java.awt.event.ActionListener() {

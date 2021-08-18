@@ -19,7 +19,6 @@ import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userInterface.AdminFundRole.GeneralRegisterJPanel;
 import userInterface.PatientRole.PatientRegistrationJPanel;
 import userInterface.registration.RegistrationForms;
 
@@ -217,6 +216,8 @@ public class MainJFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

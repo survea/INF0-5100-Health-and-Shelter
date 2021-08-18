@@ -149,7 +149,7 @@
                 <Component class="javax.swing.JButton" name="btnManageNetwork">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Serif" size="18" style="1"/>
+                      <Font name="Serif" size="15" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8c" green="70" red="63" type="rgb"/>
@@ -163,7 +163,7 @@
                 <Component class="javax.swing.JButton" name="btnManageEnterprise">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Serif" size="18" style="1"/>
+                      <Font name="Serif" size="15" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8c" green="70" red="63" type="rgb"/>
@@ -177,7 +177,7 @@
                 <Component class="javax.swing.JButton" name="btnManageEnterpriseAdmins">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Serif" size="18" style="1"/>
+                      <Font name="Serif" size="15" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8c" green="70" red="63" type="rgb"/>
@@ -191,7 +191,7 @@
                 <Component class="javax.swing.JButton" name="btnManageEnterpriseAdmins1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Serif" size="18" style="1"/>
+                      <Font name="Serif" size="15" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8c" green="70" red="63" type="rgb"/>
