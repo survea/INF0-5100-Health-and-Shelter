@@ -26,6 +26,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import userInterface.HomeJPanel;
+import userInterface.MainJFrame;
 
 /**
  *
@@ -230,6 +231,8 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(system);
     }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
     private void btnManageEnterpriseAdmins2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseAdmins2ActionPerformed

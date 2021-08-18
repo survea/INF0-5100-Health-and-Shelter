@@ -19,7 +19,6 @@ import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userInterface.AdminFundRole.GeneralRegisterJPanel;
 import userInterface.PatientRole.PatientRegistrationJPanel;
 import userInterface.registration.RegistrationForms;
 
@@ -27,7 +26,7 @@ import userInterface.registration.RegistrationForms;
  *
  * @author Diksha Godse
  */
-public class mainJFrame extends javax.swing.JFrame {
+public class MainJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form mainJFrame
@@ -36,7 +35,7 @@ public class mainJFrame extends javax.swing.JFrame {
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 //    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
-    public mainJFrame() {
+    public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
@@ -209,20 +208,23 @@ public class mainJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainJFrame().setVisible(true);
+                new MainJFrame().setVisible(true);
             }
         });
     }
@@ -244,5 +246,8 @@ public class mainJFrame extends javax.swing.JFrame {
         mainWorkArea.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.next(mainWorkArea);
+    }
+    public void logout(EcoSystem system) {
+        dB4OUtil.storeSystem(system);
     }
 }

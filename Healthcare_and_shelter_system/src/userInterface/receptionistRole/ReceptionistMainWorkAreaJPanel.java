@@ -13,6 +13,7 @@ import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import userInterface.HomeJPanel;
+import userInterface.MainJFrame;
 
 /**
  *
@@ -200,10 +201,14 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed
         // TODO add your handling code here:
+        
         HomeJPanel fundPanel = new HomeJPanel(userProcessContainer,eco);
         userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(eco);
+        
     }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
     private void btnPendingDoctorAssignmentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPendingDoctorAssignmentReqActionPerformed

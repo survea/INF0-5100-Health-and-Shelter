@@ -22,6 +22,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import userInterface.HomeJPanel;
+import userInterface.MainJFrame;
 
 /**
  *
@@ -250,6 +251,8 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(system);
     }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
 
