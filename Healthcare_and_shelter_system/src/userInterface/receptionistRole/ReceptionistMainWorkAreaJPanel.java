@@ -12,6 +12,7 @@ import business.organization.ReceptionistOrganization;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userInterface.HomeJPanel;
 
 /**
  *
@@ -41,7 +42,7 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.network = network;
         this.eco = eco;
-        this.valueLabel.setText(this.enterprise.getName());
+//        this.valueLabel.setText(this.enterprise.getName());
 //        populateRequestTable();
     }
 
@@ -54,16 +55,24 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        subMainFrame = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
         btnHAAPatientReq = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         btnPendingDoctorAssignmentReq = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnAboutUs1 = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel1.setText("My Work Area - Hospital Role");
+        setBackground(new java.awt.Color(254, 254, 254));
 
+        subMainFrame.setBackground(new java.awt.Color(254, 254, 254));
+        subMainFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jPanel2.setBackground(new java.awt.Color(254, 254, 254));
+
+        btnHAAPatientReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         btnHAAPatientReq.setText("NGO PATIENT REQUESTS");
         btnHAAPatientReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +80,7 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButton2.setText("PATIENT FEES");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,16 +88,87 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        enterpriseLabel.setText("ENTERPRISE:");
-
-        valueLabel.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        valueLabel.setText("<value>");
-
-        btnPendingDoctorAssignmentReq.setText("Patients pending for doctor");
+        btnPendingDoctorAssignmentReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnPendingDoctorAssignmentReq.setText("DOCTOR ASSIGNMENT REQUEST");
         btnPendingDoctorAssignmentReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPendingDoctorAssignmentReqActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPendingDoctorAssignmentReq)))
+        );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHAAPatientReq, btnPendingDoctorAssignmentReq, jButton2});
+
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(208, Short.MAX_VALUE))
+        );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHAAPatientReq, btnPendingDoctorAssignmentReq, jButton2});
+
+        jSplitPane1.setLeftComponent(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 471, Short.MAX_VALUE)
+        );
+
+        jSplitPane1.setRightComponent(jPanel3);
+
+        javax.swing.GroupLayout subMainFrameLayout = new javax.swing.GroupLayout(subMainFrame);
+        subMainFrame.setLayout(subMainFrameLayout);
+        subMainFrameLayout.setHorizontalGroup(
+            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+        );
+        subMainFrameLayout.setVerticalGroup(
+            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subMainFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel2.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(60, 76, 123));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("HOSPITAL RECEPTIONIST ");
+
+        btnAboutUs1.setBackground(new java.awt.Color(254, 254, 254));
+        btnAboutUs1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnAboutUs1.setForeground(new java.awt.Color(200, 35, 24));
+        btnAboutUs1.setText("Logout");
+        btnAboutUs1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutUs1ActionPerformed(evt);
             }
         });
 
@@ -96,69 +177,78 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subMainFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(enterpriseLabel)
-                        .addGap(163, 163, 163)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAboutUs1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(50, 50, 50))
+                    .addComponent(jLabel2)
+                    .addComponent(btnAboutUs1))
+                .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHAAPatientReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHAAPatientReqActionPerformed
+    private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed
         // TODO add your handling code here:
-        HASPatientRequestsJPanel requestPanel = new HASPatientRequestsJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
-        userProcessContainer.add("hASPatientRequestsJPanel", requestPanel);
+        HomeJPanel fundPanel = new HomeJPanel(userProcessContainer,eco);
+        userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnHAAPatientReqActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        PatientBillGenerationJPanel payPanel = new PatientBillGenerationJPanel(userProcessContainer, userAccount, organization, enterprise, network, eco);
-        userProcessContainer.add("manageOrganizationJPanel", payPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
     private void btnPendingDoctorAssignmentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPendingDoctorAssignmentReqActionPerformed
         // TODO add your handling code here:
+//        PendingDoctorAssignmentJPanel pendngDocPanel = new PendingDoctorAssignmentJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
+//        userProcessContainer.add("pendingDoctorAssignmentJPanel", pendngDocPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+
         PendingDoctorAssignmentJPanel pendngDocPanel = new PendingDoctorAssignmentJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
-        userProcessContainer.add("pendingDoctorAssignmentJPanel", pendngDocPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        jSplitPane1.setRightComponent(pendngDocPanel);
     }//GEN-LAST:event_btnPendingDoctorAssignmentReqActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+//        PatientBillGenerationJPanel payPanel = new PatientBillGenerationJPanel(userProcessContainer, userAccount, organization, enterprise, network, eco);
+//        userProcessContainer.add("manageOrganizationJPanel", payPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+
+        PatientBillGenerationJPanel payPanel = new PatientBillGenerationJPanel(userProcessContainer, userAccount, organization, enterprise, network, eco);
+        jSplitPane1.setRightComponent(payPanel);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnHAAPatientReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHAAPatientReqActionPerformed
+        // TODO add your handling code here:
+//        HASPatientRequestsJPanel requestPanel = new HASPatientRequestsJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
+//        userProcessContainer.add("hASPatientRequestsJPanel", requestPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+        
+        HASPatientRequestsJPanel requestPanel = new HASPatientRequestsJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
+        jSplitPane1.setRightComponent(requestPanel);
+    }//GEN-LAST:event_btnHAAPatientReqActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAboutUs1;
     private javax.swing.JButton btnHAAPatientReq;
     private javax.swing.JButton btnPendingDoctorAssignmentReq;
-    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel valueLabel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel subMainFrame;
     // End of variables declaration//GEN-END:variables
 }
