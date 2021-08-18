@@ -52,6 +52,12 @@ public class OrganizationDirectory {
         } else if (type.getValue().equals(Organization.OrganizationType.OldAgeHome.getValue())) {
             organization = new OldAgeHomeOrganization();
             organizationList.add(organization);
+        }else if (type.getValue().equals(Organization.OrganizationType.ChildCare.getValue())) {
+            organization = new ChildCareOrganization();
+            organizationList.add(organization);
+        }else if (type.getValue().equals(Organization.OrganizationType.AdultCare.getValue())) {
+            organization = new AdultCareOrganization();
+            organizationList.add(organization);
         }
 //        else if (type.getValue().equals(Organization.OrganizationType.Volunteer.getValue())) {
 //            organization = new VolunteerOrganization();

@@ -11,6 +11,8 @@ import business.employee.Employee;
 import business.enterprise.Enterprise;
 import business.network.Network;
 import business.organization.NGOOrganization;
+import business.roles.AdultCareRole;
+import business.roles.ChildCareRole;
 import business.roles.OldAgeHomeRole;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
@@ -67,7 +69,6 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -83,8 +84,9 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
         txtUser = new javax.swing.JTextField();
         txtPass = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Add New Shelter Organization");
+        setBackground(new java.awt.Color(254, 254, 254));
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,7 +116,8 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(organizationJTable);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(77, 93, 132));
         jLabel2.setText("Organization Type");
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -124,7 +127,8 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
             }
         });
 
-        backJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        backJButton.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(77, 93, 132));
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +136,8 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
             }
         });
 
-        addJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        addJButton.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        addJButton.setForeground(new java.awt.Color(77, 93, 132));
         addJButton.setText("ADD ");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +145,8 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(77, 93, 132));
         jButton1.setText("DELETE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,10 +154,16 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(77, 93, 132));
         jLabel3.setText("Total Occupancy Count");
 
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(77, 93, 132));
         jLabel4.setText("Organization name");
 
+        jLabel5.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(77, 93, 132));
         jLabel5.setText("username");
 
         txtPass.addActionListener(new java.awt.event.ActionListener() {
@@ -160,16 +172,24 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(77, 93, 132));
         jLabel6.setText("Password");
+
+        jLabel1.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(60, 76, 123));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Add New Shelter Organization");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -178,36 +198,36 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel2)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel4)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel6)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(backJButton)
-                                            .addGap(22, 22, 22))))
+                                            .addGap(22, 22, 22))
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(32, 32, 32)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(organizationJComboBox, 0, 182, Short.MAX_VALUE)
+                                            .addComponent(organizationJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtOccupancy)
                                             .addComponent(txtName)
                                             .addComponent(txtUser)
-                                            .addComponent(txtPass)))
+                                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
                                         .addComponent(addJButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1)))))
-                        .addGap(117, 117, 117))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(241, 241, 241))))
+                                        .addComponent(jButton1))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -260,10 +280,10 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
           UserAccount user = org.getUserAccountDirectory().createUserAccount(txtUser.getText(), txtPass.getText(), emp, new OldAgeHomeRole());
           JOptionPane.showMessageDialog(null, "An Organization and user has beesn added successfully");
       } else if(org.getOrganizationType().equalsIgnoreCase("AdultCare Organization")){
-          UserAccount user = org.getUserAccountDirectory().createUserAccount(txtUser.getText(), txtPass.getText(), emp, new OldAgeHomeRole());
+          UserAccount user = org.getUserAccountDirectory().createUserAccount(txtUser.getText(), txtPass.getText(), emp, new AdultCareRole());
           JOptionPane.showMessageDialog(null, "An Organization and user has beesn added successfully");
       }else if(org.getOrganizationType().equalsIgnoreCase("ChildCare Organization")){
-          UserAccount user = org.getUserAccountDirectory().createUserAccount(txtUser.getText(), txtPass.getText(), emp, new OldAgeHomeRole());
+          UserAccount user = org.getUserAccountDirectory().createUserAccount(txtUser.getText(), txtPass.getText(), emp, new ChildCareRole());
           JOptionPane.showMessageDialog(null, "An Organization and user has beesn added successfully");
       }
       

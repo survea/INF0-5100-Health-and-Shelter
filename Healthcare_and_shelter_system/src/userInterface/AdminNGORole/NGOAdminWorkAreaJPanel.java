@@ -13,11 +13,19 @@ import business.network.Network;
 import business.organization.NGOOrganization;
 import business.roles.AdminRole;
 import business.userAccount.UserAccount;
+import business.workQueue.PatientTestRequest;
+import business.workQueue.ShelterRequest;
 import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+import userInterface.HomeJPanel;
 
 /**
  *
@@ -54,13 +62,31 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        subMainFrame = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         btnShelterRequest = new javax.swing.JButton();
+        btnManageEnterpriseAdmins2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnAboutUs1 = new javax.swing.JButton();
 
-        jLabel2.setText("SHELTER ADMIN PANEL");
+        setBackground(new java.awt.Color(254, 254, 254));
 
+        jLabel1.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(60, 76, 123));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Shelter Admin ");
+
+        subMainFrame.setBackground(new java.awt.Color(254, 254, 254));
+        subMainFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jPanel2.setBackground(new java.awt.Color(254, 254, 254));
+
+        jButton2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(99, 112, 140));
         jButton2.setText("Add New Shelter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,12 +94,83 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Manage and View Shelters");
-
+        btnShelterRequest.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnShelterRequest.setForeground(new java.awt.Color(99, 112, 140));
         btnShelterRequest.setText("Manage Shelter Request");
         btnShelterRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShelterRequestActionPerformed(evt);
+            }
+        });
+
+        btnManageEnterpriseAdmins2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnManageEnterpriseAdmins2.setForeground(new java.awt.Color(99, 112, 140));
+        btnManageEnterpriseAdmins2.setText("Statistics");
+        btnManageEnterpriseAdmins2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageEnterpriseAdmins2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnShelterRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageEnterpriseAdmins2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(btnShelterRequest)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageEnterpriseAdmins2)
+                .addContainerGap())
+        );
+
+        jSplitPane1.setLeftComponent(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 482, Short.MAX_VALUE)
+        );
+
+        jSplitPane1.setRightComponent(jPanel3);
+
+        javax.swing.GroupLayout subMainFrameLayout = new javax.swing.GroupLayout(subMainFrame);
+        subMainFrame.setLayout(subMainFrameLayout);
+        subMainFrameLayout.setHorizontalGroup(
+            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
+        );
+        subMainFrameLayout.setVerticalGroup(
+            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+        );
+
+        btnAboutUs1.setBackground(new java.awt.Color(254, 254, 254));
+        btnAboutUs1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnAboutUs1.setForeground(new java.awt.Color(200, 35, 24));
+        btnAboutUs1.setText("Logout");
+        btnAboutUs1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutUs1ActionPerformed(evt);
             }
         });
 
@@ -82,52 +179,91 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnShelterRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAboutUs1)
+                .addGap(60, 60, 60))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(36, 36, 36)
+                    .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(56, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel2)
-                .addGap(29, 29, 29)
-                .addComponent(jButton2)
-                .addGap(35, 35, 35)
-                .addComponent(jButton3)
-                .addGap(30, 30, 30)
-                .addComponent(btnShelterRequest)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnAboutUs1))
+                .addContainerGap(527, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(55, 55, 55)
+                    .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(32, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShelterRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShelterRequestActionPerformed
         // TODO add your handling code here:
         ManageShelterRequestJPanel workStatusPanel = new ManageShelterRequestJPanel(userProcessContainer, userAccount, organization, enterprise,network, business);
-        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        jSplitPane1.setRightComponent(workStatusPanel);
+//        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnShelterRequestActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          AddNewShelterJPanel workStatusPanel = new AddNewShelterJPanel(userProcessContainer, userAccount, organization, enterprise,network, business);
-        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+       jSplitPane1.setRightComponent(workStatusPanel);
+//         userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed
+        // TODO add your handling code here:
+        HomeJPanel fundPanel = new HomeJPanel(userProcessContainer,system);
+        userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAboutUs1ActionPerformed
+
+    private void btnManageEnterpriseAdmins2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseAdmins2ActionPerformed
+        // TODO add your handling code here:
+                int treatementReqCount = 0;
+        int shelterReqCount = 0;
+//        JPanel jPanel1 = new JPanel();
+//        jPanel1.setLayout(new java.awt.BorderLayout());
+        for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
+             if (workReq instanceof ShelterRequest) {
+                shelterReqCount++;
+            }
+        }
+        DefaultPieDataset pieDateSet = new DefaultPieDataset();
+        pieDateSet.setValue("Awaiting for Shelter", shelterReqCount);
+        JFreeChart pieChart = ChartFactory.createPieChart("Pie chart", pieDateSet);
+        PiePlot p = (PiePlot) pieChart.getPlot();
+
+        ChartFrame frame = new ChartFrame("Pie Chart", pieChart);
+        frame.setVisible(true);
+        frame.setSize(450,500);
+    }//GEN-LAST:event_btnManageEnterpriseAdmins2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAboutUs1;
+    private javax.swing.JButton btnManageEnterpriseAdmins2;
     private javax.swing.JButton btnShelterRequest;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel subMainFrame;
     // End of variables declaration//GEN-END:variables
 
 }
