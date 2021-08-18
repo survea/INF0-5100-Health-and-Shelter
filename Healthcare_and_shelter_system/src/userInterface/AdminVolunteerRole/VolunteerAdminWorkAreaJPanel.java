@@ -12,6 +12,7 @@ import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import userInterface.HomeJPanel;
+import userInterface.MainJFrame;
 
 /**
  *
@@ -281,6 +282,8 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(system);
     }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
 

@@ -254,6 +254,8 @@ public class SystemAdminMainWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(eco);
     }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
 
