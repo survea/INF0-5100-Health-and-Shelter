@@ -31,6 +31,15 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.userProcessContainer = userProcessContainerÏ;
+        populateComboBox();
+    }
+    
+    private void populateComboBox() {
+        networkJComboBox.removeAllItems();
+
+        for (Network network : system.getNetworkList()) {
+            networkJComboBox.addItem(network);
+        }
     }
 
     /**
@@ -48,11 +57,11 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
         lblCourseName1 = new javax.swing.JLabel();
         txtContactNo = new javax.swing.JTextField();
         lblCredits2 = new javax.swing.JLabel();
-        txtLocation = new javax.swing.JTextField();
         lblCredits4 = new javax.swing.JLabel();
         donarRole = new javax.swing.JComboBox<>();
         txtDonarName = new javax.swing.JTextField();
         lblCourseCode2 = new javax.swing.JLabel();
+        networkJComboBox = new javax.swing.JComboBox<>();
         btnSubmit = new javax.swing.JButton();
         addjPanel5 = new javax.swing.JPanel();
         lblCredits3 = new javax.swing.JLabel();
@@ -138,9 +147,9 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
                                 .addGap(39, 39, 39)))
                         .addComponent(lblCourseName1)))
                 .addGap(18, 18, 18)
-                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtContactNo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(txtLocation))
+                    .addComponent(networkJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(70, 70, 70))
         );
         addjPanel4Layout.setVerticalGroup(
@@ -149,11 +158,11 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCredits4)
                     .addComponent(donarRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(19, 19, 19)
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCredits2))
+                        .addComponent(lblCredits2)
+                        .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCourseCode2)
                         .addComponent(txtDonarName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -248,7 +257,7 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
                 .addComponent(addjPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSubmit)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -270,10 +279,19 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(txtDonarName.getText().isEmpty() | txtLocation.getText().isEmpty()|txtEmail.getText().isEmpty()|txtUser.getText().isEmpty()|txtPassword.getText().isEmpty()|txtContactNo.getText().isEmpty()){
+        if(txtDonarName.getText().isEmpty()|txtEmail.getText().isEmpty()|txtUser.getText().isEmpty()|txtPassword.getText().isEmpty()|txtContactNo.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Please fill all the fields", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-        }
+        }else if(!txtDonarName.getText().matches("^[a-zA-Z]+$")){
+            JOptionPane.showMessageDialog(null, "Please enter only characters in First Name","Error",JOptionPane.ERROR_MESSAGE);
+             return;
+        }  else if(!txtEmail.getText().matches("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")){
+            JOptionPane.showMessageDialog(null, "Please enter Valid Email ID!");
+            return;
+        } else if(!txtContactNo.getText().matches("^(\\+\\d{1,3}[- ]?)?\\d{10}$") && !txtContactNo.getText().matches("^\\([0-9]{3}\\)[0-9]{3}-[0-9]{4}$")){
+            JOptionPane.showMessageDialog(null, "Please enter Valid Phone No!");
+            return;
+        } 
         int userCheck =0;
         String userName =txtUser.getText();
         String pass = txtPassword.getText();
@@ -312,14 +330,11 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
                     request.setRole("General");
                 } else {
                     JOptionPane.showMessageDialog(this, "Select form the options provided");
+                    return;
                 }
                 
-                Optional<Network> network;
-                network = system.getNetworkList().stream()
-                        .filter(x -> x.getName().equalsIgnoreCase(txtLocation.getText()))
-                        .findFirst();
-                Network currentNetwork = network.get();
-                for (Enterprise ent : currentNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                 Network network = (Network) networkJComboBox.getSelectedItem();
+                for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.FundRaiser.getValue())) {
                     for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
                         if(adminUser.getRole() instanceof AdminRole) {
@@ -347,10 +362,10 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblCredits2;
     private javax.swing.JLabel lblCredits3;
     private javax.swing.JLabel lblCredits4;
+    private javax.swing.JComboBox<Object> networkJComboBox;
     private javax.swing.JTextField txtContactNo;
     private javax.swing.JTextField txtDonarName;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
