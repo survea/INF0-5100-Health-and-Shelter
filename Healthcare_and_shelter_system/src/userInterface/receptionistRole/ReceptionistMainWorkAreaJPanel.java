@@ -11,6 +11,11 @@ import business.network.Network;
 import business.organization.ReceptionistOrganization;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import userInterface.HomeJPanel;
@@ -45,12 +50,24 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.network = network;
         this.eco = eco;
-        if (userAccount.getPersonPicture() != null) {
-            lblPicture.setIcon(new ImageIcon(userAccount.getPersonPicture()));
+        if (userAccount.getPersonPicture() == null) {
+            userAccount.setPersonPicture("/userProfilePictures/default_profile_picture.jpg");
         }
-        this.lblEcosystemName.setText(this.enterprise.getName());
-        this.lblPersonName.setText(userAccount.getUsername());
-//        populateRequestTable();
+        setProfilePicture();
+        lblPersonName.setText(userAccount.getUsername());
+        lblEnterpriseName.setText(enterprise.getName());
+    }
+
+    private void setProfilePicture() {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src" + userAccount.getPersonPicture()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image dimg = img.getScaledInstance(70, 70, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        lblPicture.setIcon(imageIcon);
     }
 
     /**
@@ -62,34 +79,44 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        subMainFrame = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel2 = new javax.swing.JPanel();
-        btnHAAPatientReq = new javax.swing.JButton();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel4 = new javax.swing.JPanel();
+        lblPicture = new javax.swing.JLabel();
+        lblPersonName = new javax.swing.JLabel();
+        lblEcosystemName = new javax.swing.JLabel();
+        btnAboutUs2 = new javax.swing.JButton();
+        lblEnterpriseName = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         btnPendingDoctorAssignmentReq = new javax.swing.JButton();
         btnUpdateProfile = new javax.swing.JButton();
-        lblPicture = new javax.swing.JLabel();
-        lblEcosystemName = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblPersonName = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnAboutUs1 = new javax.swing.JButton();
+        btnHAAPatientReq = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(254, 254, 254));
 
-        subMainFrame.setBackground(new java.awt.Color(254, 254, 254));
-        subMainFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setBackground(new java.awt.Color(254, 254, 254));
 
-        jPanel2.setBackground(new java.awt.Color(254, 254, 254));
+        lblPersonName.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        lblPersonName.setText("test name");
 
-        btnHAAPatientReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        btnHAAPatientReq.setText("NGO PATIENT REQUESTS");
-        btnHAAPatientReq.addActionListener(new java.awt.event.ActionListener() {
+        lblEcosystemName.setBackground(new java.awt.Color(254, 254, 254));
+        lblEcosystemName.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        lblEcosystemName.setForeground(new java.awt.Color(60, 76, 123));
+        lblEcosystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEcosystemName.setText("RECEPTIONIST");
+
+        btnAboutUs2.setBackground(new java.awt.Color(254, 254, 254));
+        btnAboutUs2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnAboutUs2.setForeground(new java.awt.Color(200, 35, 24));
+        btnAboutUs2.setText("Logout");
+        btnAboutUs2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHAAPatientReqActionPerformed(evt);
+                btnAboutUs2ActionPerformed(evt);
             }
         });
+
+        lblEnterpriseName.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        lblEnterpriseName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jButton2.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButton2.setText("PATIENT FEES");
@@ -115,63 +142,55 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblEcosystemName.setBackground(new java.awt.Color(254, 254, 254));
-        lblEcosystemName.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        lblEcosystemName.setForeground(new java.awt.Color(60, 76, 123));
-        lblEcosystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEcosystemName.setText("HOSPITAL RECEPTIONIST ");
+        btnHAAPatientReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnHAAPatientReq.setText("NGO PATIENT REQUESTS");
+        btnHAAPatientReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHAAPatientReqActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(60, 76, 123));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("HOSPITAL RECEPTIONIST ");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(lblPersonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUpdateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEcosystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(238, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAboutUs2)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPersonName, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEcosystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHAAPatientReq, btnPendingDoctorAssignmentReq, jButton2});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHAAPatientReq, btnPendingDoctorAssignmentReq, jButton2});
 
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(lblEcosystemName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(lblPersonName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(lblPersonName)))
+                .addGap(10, 10, 10)
+                .addComponent(btnAboutUs2)
+                .addGap(18, 18, 18)
                 .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,86 +198,40 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdateProfile)
-                .addGap(69, 69, 69))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHAAPatientReq, btnPendingDoctorAssignmentReq, jButton2});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHAAPatientReq, btnPendingDoctorAssignmentReq, jButton2});
 
-        jSplitPane1.setLeftComponent(jPanel2);
+        jSplitPane2.setLeftComponent(jPanel4);
 
-        jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel5.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel5.setAutoscrolls(true);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(jPanel3);
-
-        javax.swing.GroupLayout subMainFrameLayout = new javax.swing.GroupLayout(subMainFrame);
-        subMainFrame.setLayout(subMainFrameLayout);
-        subMainFrameLayout.setHorizontalGroup(
-            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
-        );
-        subMainFrameLayout.setVerticalGroup(
-            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subMainFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnAboutUs1.setBackground(new java.awt.Color(254, 254, 254));
-        btnAboutUs1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        btnAboutUs1.setForeground(new java.awt.Color(200, 35, 24));
-        btnAboutUs1.setText("Logout");
-        btnAboutUs1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAboutUs1ActionPerformed(evt);
-            }
-        });
+        jSplitPane2.setRightComponent(jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subMainFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAboutUs1)))
-                .addContainerGap())
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAboutUs1)
-                .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSplitPane2)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAboutUs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs1ActionPerformed
-        // TODO add your handling code here:
-
-        HomeJPanel fundPanel = new HomeJPanel(userProcessContainer, eco);
-        userProcessContainer.add("HomeJPanel", fundPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-        MainJFrame mainJFrame = new MainJFrame();
-        mainJFrame.logout(eco);
-
-    }//GEN-LAST:event_btnAboutUs1ActionPerformed
 
     private void btnPendingDoctorAssignmentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPendingDoctorAssignmentReqActionPerformed
         // TODO add your handling code here:
@@ -268,7 +241,7 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
 //        layout.next(userProcessContainer);
 
         PendingDoctorAssignmentJPanel pendngDocPanel = new PendingDoctorAssignmentJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
-        jSplitPane1.setRightComponent(pendngDocPanel);
+        jSplitPane2.setRightComponent(pendngDocPanel);
     }//GEN-LAST:event_btnPendingDoctorAssignmentReqActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -279,7 +252,7 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
 //        layout.next(userProcessContainer);
 
         PatientBillGenerationJPanel payPanel = new PatientBillGenerationJPanel(userProcessContainer, userAccount, organization, enterprise, network, eco);
-        jSplitPane1.setRightComponent(payPanel);
+        jSplitPane2.setRightComponent(payPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnHAAPatientReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHAAPatientReqActionPerformed
@@ -290,29 +263,38 @@ public class ReceptionistMainWorkAreaJPanel extends javax.swing.JPanel {
 //        layout.next(userProcessContainer);
 
         HASPatientRequestsJPanel requestPanel = new HASPatientRequestsJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
-        jSplitPane1.setRightComponent(requestPanel);
+        jSplitPane2.setRightComponent(requestPanel);
     }//GEN-LAST:event_btnHAAPatientReqActionPerformed
 
     private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
         // TODO add your handling code here:
         PersonalDetailsJPanel requestPanel = new PersonalDetailsJPanel(userProcessContainer, userAccount, eco);
-        jSplitPane1.setRightComponent(requestPanel);
+        jSplitPane2.setRightComponent(requestPanel);
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
+
+    private void btnAboutUs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs2ActionPerformed
+        // TODO add your handling code here:
+        HomeJPanel fundPanel = new HomeJPanel(userProcessContainer, eco);
+        userProcessContainer.add("HomeJPanel", fundPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(eco);
+    }//GEN-LAST:event_btnAboutUs2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAboutUs1;
+    private javax.swing.JButton btnAboutUs2;
     private javax.swing.JButton btnHAAPatientReq;
     private javax.swing.JButton btnPendingDoctorAssignmentReq;
     private javax.swing.JButton btnUpdateProfile;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JLabel lblEcosystemName;
+    private javax.swing.JLabel lblEnterpriseName;
     private javax.swing.JLabel lblPersonName;
     private javax.swing.JLabel lblPicture;
-    private javax.swing.JPanel subMainFrame;
     // End of variables declaration//GEN-END:variables
 }
