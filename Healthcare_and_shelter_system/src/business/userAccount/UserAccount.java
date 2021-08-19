@@ -9,6 +9,7 @@ import business.employee.Employee;
 import business.enterprise.Enterprise;
 import business.roles.Role;
 import business.workQueue.WorkQueue;
+import java.awt.Image;
 
 /**
  *
@@ -22,6 +23,7 @@ public class UserAccount {
     private Role role;
     private WorkQueue workQueue;
     private Enterprise enterprise;
+    private String personPicture = "/userProfilePictures/default_profile_picture.jpg";
 
     public UserAccount() {
         workQueue = new WorkQueue();
@@ -73,6 +75,14 @@ public class UserAccount {
 
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
+    }
+
+    public String getPersonPicture() {
+        return personPicture;
+    }
+
+    public void setPersonPicture(String personPicture) {
+        this.personPicture = personPicture;
     }
 
     @Override
