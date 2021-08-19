@@ -11,8 +11,24 @@ import business.enterprise.Enterprise;
 import business.organization.HasHealthcareRepresentativeOrganization;
 import business.organization.HasShelterOrganization;
 import business.userAccount.UserAccount;
+import business.workQueue.ShelterRequest;
+import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+import userInterface.HomeJPanel;
+import userInterface.MainJFrame;
+import userInterface.PersonalDetailsJPanel;
 
 /**
  *
@@ -39,9 +55,23 @@ public class HasShelterEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.business = business;
         initComponents();
-
+        if (account.getPersonPicture() == null) {
+            account.setPersonPicture("/userProfilePictures/default_profile_picture.jpg");
+        }
+        setProfilePicture();
+        lblEnterpriseName.setText(account.getUsername());
     }
-
+     private void setProfilePicture() {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src" + account.getPersonPicture()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image dimg = img.getScaledInstance(70, 70, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        lblPicture.setIcon(imageIcon);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,22 +81,28 @@ public class HasShelterEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        manageOrganizationJButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
         manageOrganizationJButton2 = new javax.swing.JButton();
+        manageOrganizationJButton1 = new javax.swing.JButton();
+        lblEcosystemName = new javax.swing.JLabel();
+        lblEnterpriseName = new javax.swing.JLabel();
+        lblPicture = new javax.swing.JLabel();
+        btnAboutUs2 = new javax.swing.JButton();
+        btnMAnageHealthCareReq1 = new javax.swing.JButton();
+        btnUpdateProfile = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
 
-        manageOrganizationJButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        manageOrganizationJButton1.setText("HAS emp WORK REQUEST");
-        manageOrganizationJButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageOrganizationJButton1ActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(254, 254, 254));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel1.setText("HAS Employee - HOME PAGE");
+        jPanel1.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        manageOrganizationJButton2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(254, 254, 254));
+
+        manageOrganizationJButton2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        manageOrganizationJButton2.setForeground(new java.awt.Color(99, 112, 140));
         manageOrganizationJButton2.setText("WORK REQUEST STATUS");
         manageOrganizationJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,55 +110,218 @@ public class HasShelterEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        manageOrganizationJButton1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        manageOrganizationJButton1.setForeground(new java.awt.Color(99, 112, 140));
+        manageOrganizationJButton1.setText("ASSIGNED WORK");
+        manageOrganizationJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageOrganizationJButton1ActionPerformed(evt);
+            }
+        });
+
+        lblEcosystemName.setBackground(new java.awt.Color(254, 254, 254));
+        lblEcosystemName.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        lblEcosystemName.setForeground(new java.awt.Color(60, 76, 123));
+        lblEcosystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEcosystemName.setText("Shelter Volunteer");
+
+        lblEnterpriseName.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        lblEnterpriseName.setText("test name");
+
+        btnAboutUs2.setBackground(new java.awt.Color(254, 254, 254));
+        btnAboutUs2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        btnAboutUs2.setForeground(new java.awt.Color(200, 35, 24));
+        btnAboutUs2.setText("Logout");
+        btnAboutUs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutUs2ActionPerformed(evt);
+            }
+        });
+
+        btnMAnageHealthCareReq1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnMAnageHealthCareReq1.setForeground(new java.awt.Color(99, 112, 140));
+        btnMAnageHealthCareReq1.setText("VIEW STATISTICS");
+        btnMAnageHealthCareReq1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMAnageHealthCareReq1ActionPerformed(evt);
+            }
+        });
+
+        btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnUpdateProfile.setForeground(new java.awt.Color(99, 112, 140));
+        btnUpdateProfile.setText("UPDATE PROFILE");
+        btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateProfileActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblEcosystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAboutUs2)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(manageOrganizationJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageOrganizationJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMAnageHealthCareReq1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblEcosystemName)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(lblEnterpriseName)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAboutUs2)
+                .addGap(24, 24, 24)
+                .addComponent(manageOrganizationJButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(manageOrganizationJButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMAnageHealthCareReq1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnUpdateProfile)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 733, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 418, Short.MAX_VALUE)
+        );
+
+        jSplitPane1.setRightComponent(jPanel3);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(manageOrganizationJButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(manageOrganizationJButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)))
-                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(192, 192, 192))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24)
-                .addComponent(manageOrganizationJButton1)
-                .addGap(40, 40, 40)
-                .addComponent(manageOrganizationJButton2)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageOrganizationJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton1ActionPerformed
         // TODO add your handling code here:
 
-        HASShelterEmployeeWorkRequestsJPanel hasWorkRquestsWorkPanel = new HASShelterEmployeeWorkRequestsJPanel(userProcessContainer, account,organization, enterprise, business);
-        userProcessContainer.add("HASEmployeeWorkRequestsJPanel", hasWorkRquestsWorkPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+         HASShelterEmployeeWorkStatusJPanel workStatusPanel = new HASShelterEmployeeWorkStatusJPanel(userProcessContainer, account, organization, enterprise, business);
+       jSplitPane1.setRightComponent(workStatusPanel);
+//        userProcessContainer.add("HASEmployeeWorkRequestsJPanel", hasWorkRquestsWorkPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButton1ActionPerformed
 
     private void manageOrganizationJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton2ActionPerformed
         // TODO add your handling code here:
-        HASShelterEmployeeWorkStatusJPanel workStatusPanel = new HASShelterEmployeeWorkStatusJPanel(userProcessContainer, account, organization, enterprise, business);
-        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+        HASShelterEmployeeWorkRequestsJPanel hasWorkRquestsWorkPanel = new HASShelterEmployeeWorkRequestsJPanel(userProcessContainer, account,organization, enterprise, business);
+        jSplitPane1.setRightComponent(hasWorkRquestsWorkPanel);
+       
+//        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageOrganizationJButton2ActionPerformed
+
+    private void btnAboutUs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs2ActionPerformed
+        // TODO add your handling code here:
+        HomeJPanel fundPanel = new HomeJPanel(userProcessContainer, business);
+        userProcessContainer.add("HomeJPanel", fundPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_manageOrganizationJButton2ActionPerformed
+        MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.logout(business);
+    }//GEN-LAST:event_btnAboutUs2ActionPerformed
+
+    private void btnMAnageHealthCareReq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAnageHealthCareReq1ActionPerformed
+                        int treatementReqCount = 0;
+        int shelterReqCount = 0;
+//        JPanel jPanel1 = new JPanel();
+//        jPanel1.setLayout(new java.awt.BorderLayout());
+        for (WorkRequest workReq : account.getWorkQueue().getWorkRequestList()) {
+             if (workReq instanceof ShelterRequest) {
+                shelterReqCount++;
+            }
+        }
+        DefaultPieDataset pieDateSet = new DefaultPieDataset();
+        pieDateSet.setValue("Awaiting for Shelter", shelterReqCount);
+        JFreeChart pieChart = ChartFactory.createPieChart("Pie chart", pieDateSet);
+        PiePlot p = (PiePlot) pieChart.getPlot();
+
+        ChartFrame frame = new ChartFrame("Pie Chart", pieChart);
+        frame.setVisible(true);
+        frame.setSize(450,500);
+    }//GEN-LAST:event_btnMAnageHealthCareReq1ActionPerformed
+
+    private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
+        // TODO add your handling code here:
+        PersonalDetailsJPanel requestPanel = new PersonalDetailsJPanel(userProcessContainer, account, business);
+        jSplitPane1.setRightComponent(requestPanel);
+    }//GEN-LAST:event_btnUpdateProfileActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAboutUs2;
+    private javax.swing.JButton btnMAnageHealthCareReq1;
+    private javax.swing.JButton btnUpdateProfile;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblEcosystemName;
+    private javax.swing.JLabel lblEnterpriseName;
+    private javax.swing.JLabel lblPicture;
     private javax.swing.JButton manageOrganizationJButton1;
     private javax.swing.JButton manageOrganizationJButton2;
     // End of variables declaration//GEN-END:variables

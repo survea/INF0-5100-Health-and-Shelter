@@ -90,7 +90,10 @@ public class HASShelterEmployeeWorkStatusJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
-        backJButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(254, 254, 254));
 
         cmbNetworkHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +101,8 @@ public class HASShelterEmployeeWorkStatusJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(89, 103, 132));
         jButton1.setText("ASSIGN SHELTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,45 +131,50 @@ public class HASShelterEmployeeWorkStatusJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        backJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(78, 99, 134));
+        jLabel1.setText("New Shelter Request");
+
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(92, 112, 132));
+        jLabel2.setText("Select Shelter: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(cmbNetworkHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(512, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backJButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jLabel2)
+                        .addGap(34, 34, 34)
+                        .addComponent(cmbNetworkHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(jButton1)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cmbNetworkHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbNetworkHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(25, 25, 25))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,8 +191,12 @@ public class HASShelterEmployeeWorkStatusJPanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-        if (request.getStatus().equals("Assigned Shelter")) {
-            JOptionPane.showMessageDialog(null, "Already Assigned Shelter");
+        if (request.getStatus().equals("Shelter Requested")) {
+            JOptionPane.showMessageDialog(null, "Already Shelter Requested");
+            return;
+        }
+         if (request.getStatus().equalsIgnoreCase("Old Age Home Assigned")|request.getStatus().equalsIgnoreCase("Adult Care Shelter Assigned")|request.getStatus().equalsIgnoreCase("Child Care Shelter Assigned")){
+            JOptionPane.showMessageDialog(null, "Shelter is already assigned!");
             return;
         }
         if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.NGO.getValue())) {
@@ -195,36 +208,19 @@ public class HASShelterEmployeeWorkStatusJPanel extends javax.swing.JPanel {
                     request.setAssignedShelter(ent.toString());
                     //req.setPimage("Have to upload");
                     ((UserAccount) userAcc).getWorkQueue().getWorkRequestList().add(request);
-                    JOptionPane.showMessageDialog(null, "Assigned to the Hospital, pending initial checkup");
-       
-                    // updating work request of render HAS employee
-//                    WorkRequest currentReq = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-//
-//                    Optional<WorkRequest> selectedWorkReq;
-//                    selectedWorkReq = userAccount.getWorkQueue().getWorkRequestList().stream()
-//                            .filter(x -> x == currentReq)
-//                            .findFirst();
-//                    ((WorkRequest) selectedWorkReq.get()).setStatus("Awaiting initial checkup reports");
-//                    ((WorkRequest) selectedWorkReq.get()).setTypeOfRequest("InitialCheckupRequest");
-//                    ((WorkRequest) selectedWorkReq.get()).setReceiver(userAcc);
-                }
+                    JOptionPane.showMessageDialog(null, "Requested to Shelter Admin");
+             }
             }
         }
          populateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JComboBox cmbNetworkHospital;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables

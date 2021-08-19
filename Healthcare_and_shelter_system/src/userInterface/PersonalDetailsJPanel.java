@@ -60,8 +60,12 @@ public class PersonalDetailsJPanel extends javax.swing.JPanel {
         lblPDemographics = new javax.swing.JLabel();
         btnSavePersonalInfo = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         lblPersonPicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnUploadPersonPic.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnUploadPersonPic.setForeground(new java.awt.Color(92, 112, 132));
         btnUploadPersonPic.setText("Upload person picture");
         btnUploadPersonPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,11 +73,13 @@ public class PersonalDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblPDemographics.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
-        lblPDemographics.setForeground(new java.awt.Color(0, 51, 204));
+        lblPDemographics.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        lblPDemographics.setForeground(new java.awt.Color(68, 82, 123));
         lblPDemographics.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPDemographics.setText("Person Demographics");
 
+        btnSavePersonalInfo.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnSavePersonalInfo.setForeground(new java.awt.Color(92, 112, 132));
         btnSavePersonalInfo.setText("save person picture");
         btnSavePersonalInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,30 +91,33 @@ public class PersonalDetailsJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPDemographics, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(287, 287, 287)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPersonPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSavePersonalInfo)
-                            .addComponent(btnUploadPersonPic))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addComponent(lblPDemographics, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnUploadPersonPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSavePersonalInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(lblPersonPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(22, 22, 22)
                 .addComponent(lblPDemographics)
-                .addGap(28, 28, 28)
-                .addComponent(lblPersonPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPersonPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUploadPersonPic)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnSavePersonalInfo)
-                .addContainerGap())
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -113,6 +113,7 @@ public class HasEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
         lblEnterpriseName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnUpdateProfile.setForeground(new java.awt.Color(99, 112, 140));
         btnUpdateProfile.setText("UPDATE PROFILE");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +122,7 @@ public class HasEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnMAnageHealthCareReq1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnMAnageHealthCareReq1.setForeground(new java.awt.Color(99, 112, 140));
         btnMAnageHealthCareReq1.setText("VIEW STATISTICS");
         btnMAnageHealthCareReq1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +131,7 @@ public class HasEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         manageOrganizationJButton2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        manageOrganizationJButton2.setForeground(new java.awt.Color(99, 112, 140));
         manageOrganizationJButton2.setText("WORK REQUEST STATUS");
         manageOrganizationJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +140,7 @@ public class HasEmployeeMainWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         manageOrganizationJButton1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        manageOrganizationJButton1.setForeground(new java.awt.Color(99, 112, 140));
         manageOrganizationJButton1.setText("UNASSIGNED WORK REQUESTS");
         manageOrganizationJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

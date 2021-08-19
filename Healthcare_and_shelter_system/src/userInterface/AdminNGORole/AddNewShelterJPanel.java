@@ -203,7 +203,7 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
                                             .addGap(22, 22, 22))
                                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(32, 32, 32)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -215,13 +215,16 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
                                         .addComponent(addJButton)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton1))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addJButton, backJButton, jButton1});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -256,6 +259,9 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addGap(89, 89, 89))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {addJButton, backJButton, jButton1});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
@@ -271,10 +277,21 @@ public class AddNewShelterJPanel extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
+      if(txtOccupancy.getText().isEmpty()|txtName.getText().isEmpty()|txtUser.getText().isEmpty()|txtPass.getText().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Please fill up all the fields!");
+            return;
+      }
+      int count;
+      try{
+          count = Integer.parseInt(txtOccupancy.getText());
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(null, "Please Enter Occupancy count in Digits!");
+            return;
+      }
       Organization.OrganizationType type =  (Organization.OrganizationType) organizationJComboBox.getSelectedItem();
       Organization org =  enterprise.getOrganizationDirectory().createOrganization(type);
       Employee emp = org.getEmployeeDirectory().createEmployee(txtName.getText());
-      org.setShelterOccupancy(Integer.parseInt(txtOccupancy.getText()));
+      org.setShelterOccupancy(count);
       org.setShelterName(txtName.getText());
       if(org.getOrganizationType().equalsIgnoreCase("OldAgeHome Organization")){
           UserAccount user = org.getUserAccountDirectory().createUserAccount(txtUser.getText(), txtPass.getText(), emp, new OldAgeHomeRole());

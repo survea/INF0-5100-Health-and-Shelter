@@ -199,6 +199,10 @@ public class ManageShelterRequestJPanel extends javax.swing.JPanel {
         
         int age = request.getAge();
         
+        if (request.getStatus().equalsIgnoreCase("Old Age Home Assigned")|request.getStatus().equalsIgnoreCase("Adult Care Shelter Assigned")|request.getStatus().equalsIgnoreCase("Child Care Shelter Assigned")){
+            JOptionPane.showMessageDialog(null, "Shelter is already assigned!");
+            return;
+        }
         if(org.getOrganizationType().equalsIgnoreCase("OldAgeHome Organization") && age >=60){
             request.setStatus("Old Age Home Assigned");
             request.setAssignedShelter(org.getShelterName());
@@ -221,18 +225,18 @@ public class ManageShelterRequestJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       int selectedRow = workRequestJTable.getSelectedRow();
+        int selectedRow = workRequestJTable.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please make a selection");
             return;
         }
         WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-         for (UserAccount HASUser : enterprise.getUserAccountDirectory().getUserAccountList()) {
+        for (UserAccount HASUser : enterprise.getUserAccountDirectory().getUserAccountList()) {
             if (HASUser.getRole() instanceof AdminRole) {
                 HASUser.getWorkQueue().removeWorkRequest(request);
             }
         }
-         populateTable();
+        populateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
