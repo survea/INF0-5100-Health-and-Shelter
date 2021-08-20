@@ -5,8 +5,10 @@
  */
 package userInterface.doctorRole;
 
+import business.EcoSystem;
 import business.Organization;
 import business.enterprise.Enterprise;
+import business.organization.DoctorOrganization;
 import business.organization.LabOrganization;
 import business.organization.NurseOrganization;
 import business.userAccount.UserAccount;
@@ -17,6 +19,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -31,18 +34,23 @@ public class DoctorPatientDetailsJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     WorkRequest request;
     Enterprise enterprise;
+    JSplitPane jSplitPane2;
+    DoctorOrganization doctorOrganization;
     int count = 0;
 
-    DoctorPatientDetailsJPanel(JPanel userProcessContainer, UserAccount userAccount, WorkRequest request, Enterprise enterprise) {
+    DoctorPatientDetailsJPanel(JPanel userProcessContainer, UserAccount userAccount, WorkRequest request, Enterprise enterprise, DoctorOrganization doctorOrganization, JSplitPane jSplitPane2) {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.request = request;
         this.enterprise = enterprise;
+        this.jSplitPane2 = jSplitPane2;
+        this.doctorOrganization = doctorOrganization;
         initComponents();
         valueLabel.setText(userAccount.getUsername());
         populateData();
     }
-        private void populateData() {
+
+    private void populateData() {
         fName.setText(request.getPatientfirstname());
         lName.setText(request.getPatientlastname());
         age.setText(Integer.toString(request.getAge()));
@@ -412,14 +420,15 @@ public class DoctorPatientDetailsJPanel extends javax.swing.JPanel {
                 org.getWorkQueue().getWorkRequestList().add(request);
                 userAccount.getWorkQueue().getWorkRequestList().add(request);
                 JOptionPane.showMessageDialog(null, "Sent to Lab for Test");
-                userProcessContainer.remove(this);
-                Component[] componentArray = userProcessContainer.getComponents();
-                Component component = componentArray[componentArray.length - 1];
-                DoctorAreaPatientListJPanel sysAdminwjp = (DoctorAreaPatientListJPanel) component;
-                sysAdminwjp.populateTable();
-                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-                layout.previous(userProcessContainer);
-
+//                userProcessContainer.remove(this);
+//                Component[] componentArray = userProcessContainer.getComponents();
+//                Component component = componentArray[componentArray.length - 1];
+//                DoctorAreaPatientListJPanel sysAdminwjp = (DoctorAreaPatientListJPanel) component;
+//                sysAdminwjp.populateTable();
+//                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//                layout.previous(userProcessContainer);
+                DoctorAreaPatientListJPanel dapljp = new DoctorAreaPatientListJPanel(userProcessContainer, userAccount, doctorOrganization, enterprise, EcoSystem.business, jSplitPane2);
+                jSplitPane2.setRightComponent(dapljp);
             }
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Please Enter The Appropriate Message");
@@ -459,13 +468,15 @@ public class DoctorPatientDetailsJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             JOptionPane.showMessageDialog(null, "Request Sent to Nurse for Treatment");
-            userProcessContainer.remove(this);
-            Component[] componentArray = userProcessContainer.getComponents();
-            Component component = componentArray[componentArray.length - 1];
-            DoctorAreaPatientListJPanel sysAdminwjp = (DoctorAreaPatientListJPanel) component;
-            sysAdminwjp.populateTable();
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.previous(userProcessContainer);
+//            userProcessContainer.remove(this);
+//            Component[] componentArray = userProcessContainer.getComponents();
+//            Component component = componentArray[componentArray.length - 1];
+//            DoctorAreaPatientListJPanel sysAdminwjp = (DoctorAreaPatientListJPanel) component;
+//            sysAdminwjp.populateTable();
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.previous(userProcessContainer);
+            DoctorAreaPatientListJPanel dapljp = new DoctorAreaPatientListJPanel(userProcessContainer, userAccount, doctorOrganization, enterprise, EcoSystem.business, jSplitPane2);
+            jSplitPane2.setRightComponent(dapljp);
 
         }
 

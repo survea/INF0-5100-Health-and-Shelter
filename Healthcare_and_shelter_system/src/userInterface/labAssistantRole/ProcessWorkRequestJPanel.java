@@ -5,13 +5,16 @@
  */
 package userInterface.labAssistantRole;
 
+import business.EcoSystem;
 import business.enterprise.Enterprise;
+import business.organization.LabOrganization;
 import business.userAccount.UserAccount;
 import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -29,20 +32,24 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 //    ProcessWorkRequestJPanel(JPanel userProcessContainer, WorkRequest request, UserAccount userAccount, Enterprise enterprise) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-        JPanel userProcessContainer;
+    JPanel userProcessContainer;
     WorkRequest request;
     UserAccount account;
     Enterprise enterprise;
+    JSplitPane jSplitPane2;
+    LabOrganization organization;
 
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, WorkRequest request, UserAccount account, Enterprise enterprise) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, WorkRequest request, UserAccount account, Enterprise enterprise, LabOrganization organization, JSplitPane jSplitPane2) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.account = account;
+        this.jSplitPane2 = jSplitPane2;
         this.enterprise = enterprise;
+        this.organization = organization;
     }
 
     /**
@@ -58,7 +65,6 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         submitJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         resultJTextField = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel2.setText("LAB ASSISTANT RESULT PANEL");
@@ -75,13 +81,6 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Result");
 
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,10 +96,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                                 .addComponent(jLabel1)
                                 .addGap(45, 45, 45)
                                 .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backJButton)
-                                .addGap(30, 30, 30)
-                                .addComponent(submitJButton)))))
+                            .addComponent(submitJButton))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,9 +109,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitJButton)
-                    .addComponent(backJButton))
+                .addComponent(submitJButton)
                 .addContainerGap(143, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -123,7 +117,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
         try {
-            if(resultJTextField.getText().isEmpty()){
+            if (resultJTextField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please Enter the Test Results!");
                 return;
             }
@@ -140,37 +134,27 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             request.setStatus("Treatment/Test Completed");
             request.setLabMessage(resultJTextField.getText());
             JOptionPane.showMessageDialog(null, "Test completed!");
-            userProcessContainer.remove(this);
-            Component[] componentArray = userProcessContainer.getComponents();
-            Component component = componentArray[componentArray.length - 1];
-            LabAssistantMainWorkAreaJPanel dwjp = (LabAssistantMainWorkAreaJPanel) component;
-            dwjp.populateTable();
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.previous(userProcessContainer);
+//            userProcessContainer.remove(this);
+//            Component[] componentArray = userProcessContainer.getComponents();
+//            Component component = componentArray[componentArray.length - 1];
+//            LabAssistantMainWorkAreaJPanel dwjp = (LabAssistantMainWorkAreaJPanel) component;
+//            dwjp.populateTable();
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.previous(userProcessContainer);
+                LabAssistantMainWorkAreaJPanel lamwajp = new LabAssistantMainWorkAreaJPanel(userProcessContainer, account, organization, EcoSystem.business, enterprise, jSplitPane2);
+                jSplitPane2.setRightComponent(lamwajp);
             JOptionPane.showMessageDialog(null, "Results sent to doctor!");
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Please Enter The Appropriate Amount");
 
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Please Enter The Appropriate Amount in digits!");
 
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        LabAssistantMainWorkAreaJPanel dwjp = (LabAssistantMainWorkAreaJPanel) component;
-        dwjp.populateTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField resultJTextField;

@@ -13,6 +13,7 @@ import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,18 +30,21 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
     DoctorOrganization doctorOrganization;
     Enterprise enterprise;
     EcoSystem business;
+    JSplitPane jSplitPane2;
     int count = 0;
 
-    DoctorAreaPatientListJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, EcoSystem business) {
+    DoctorAreaPatientListJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, EcoSystem business, JSplitPane jSplitPane2) {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.doctorOrganization = doctorOrganization;
         this.enterprise = enterprise;
         this.business = business;
+        this.jSplitPane2 = jSplitPane2;
         initComponents();
         populateTable();
     }
-        public void populateTable() {
+
+    public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
 
         model.setRowCount(0);
@@ -61,7 +65,6 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
 //    DoctorMainWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, EcoSystem business) {
 //
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -241,10 +244,11 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
             request.setStatus("Processing");
             JOptionPane.showMessageDialog(null, "Request processed");
             count = 0;
-            DoctorPatientDetailsJPanel processWorkRequestJPanel = new DoctorPatientDetailsJPanel(userProcessContainer, userAccount, request, enterprise);
-            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            DoctorPatientDetailsJPanel processWorkRequestJPanel = new DoctorPatientDetailsJPanel(userProcessContainer, userAccount, request, enterprise, doctorOrganization, jSplitPane2);
+//            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.next(userProcessContainer);
+            jSplitPane2.setRightComponent(processWorkRequestJPanel);
         } else {
             JOptionPane.showMessageDialog(null, "Patient application is processed by another doctor or not assigned yet.");
         }

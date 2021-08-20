@@ -14,6 +14,8 @@ import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.plaf.SplitPaneUI;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,11 +34,12 @@ public class PatientRequestsFromDoctorJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
 
     int count = 0;
+    JSplitPane jSplitPane2;
 
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public PatientRequestsFromDoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+    public PatientRequestsFromDoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, JSplitPane jSplitPane2) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
@@ -44,6 +47,7 @@ public class PatientRequestsFromDoctorJPanel extends javax.swing.JPanel {
         this.business = business;
         this.nurseOrganization = (NurseOrganization) organization;
         this.enterprise = enterprise;
+        this.jSplitPane2 = jSplitPane2;
 
         populateTable();
     }
@@ -224,10 +228,11 @@ public class PatientRequestsFromDoctorJPanel extends javax.swing.JPanel {
         } else if ((request.getNurseStatus().equals("Pending")) && (request.getReceiver().equals(userAccount))) {
             request.setNurseStatus("Processing");
             count = 0;
-            NursePatientTreatmentJPanel nurseTreatmentJPanel = new NursePatientTreatmentJPanel(userProcessContainer, userAccount, request, enterprise, this);
-            userProcessContainer.add("NurseTreatmentJPanel", nurseTreatmentJPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            NursePatientTreatmentJPanel nurseTreatmentJPanel = new NursePatientTreatmentJPanel(userProcessContainer, userAccount, request, enterprise, this, jSplitPane2);
+//            userProcessContainer.add("NurseTreatmentJPanel", nurseTreatmentJPanel);
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.next(userProcessContainer);
+            jSplitPane2.setRightComponent(nurseTreatmentJPanel);
         } else {
             JOptionPane.showMessageDialog(null, "Patient Is Under Processing Of Another Nurse");
         }

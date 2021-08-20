@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userInterface.nurseRole;
+package userInterface.labAssistantRole;
 
 import business.EcoSystem;
 import business.enterprise.Enterprise;
-import business.network.Network;
-import business.organization.NurseOrganization;
+import business.organization.LabOrganization;
 import business.userAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -26,26 +25,27 @@ import userInterface.PersonalDetailsJPanel;
  *
  * @author Diksha Godse
  */
-public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
+public class LabAssistantHomePage extends javax.swing.JPanel {
 
     /**
-     * Creates new form NurseMainWorkAreaJPanel
+     * Creates new form LabAssistantHomePage
      */
-    JPanel userProcessContainer;
-    UserAccount account;
-    NurseOrganization nurseOrganization;
-    Enterprise enterprise;
-    Network network;
-    EcoSystem business;
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private UserAccount userAccount;
+    private LabOrganization labOrganization;
+    private Enterprise enterprise;
 
-    public NurseMainWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, NurseOrganization nurseOrganization, Enterprise enterprise, Network network, EcoSystem business) {
-        this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.nurseOrganization = nurseOrganization;
-        this.enterprise = enterprise;
-        this.business = business;
-        this.network = network;
+    /**
+     * Creates new form LabAssistantWorkAreaJPanel
+     */
+    public LabAssistantHomePage(JPanel userProcessContainer, UserAccount account, LabOrganization organization, EcoSystem business, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.business = business;
+        this.labOrganization = (LabOrganization) organization;
+        this.enterprise = enterprise;
         if (account.getPersonPicture() == null) {
             account.setPersonPicture("/userProfilePictures/default_profile_picture.jpg");
         }
@@ -57,7 +57,7 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
     private void setProfilePicture() {
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("./src" + account.getPersonPicture()));
+            img = ImageIO.read(new File("./src" + userAccount.getPersonPicture()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,9 +82,9 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
         lblEcosystemName = new javax.swing.JLabel();
         btnAboutUs2 = new javax.swing.JButton();
         lblEnterpriseName = new javax.swing.JLabel();
+        btnPendingDoctorAssignmentReq = new javax.swing.JButton();
         btnUpdateProfile = new javax.swing.JButton();
-        btnInitialTestReq = new javax.swing.JButton();
-        btnDoctorTestRequest = new javax.swing.JButton();
+        btnHAAPatientReq = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
 
         jPanel4.setBackground(new java.awt.Color(254, 254, 254));
@@ -96,7 +96,7 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
         lblEcosystemName.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         lblEcosystemName.setForeground(new java.awt.Color(60, 76, 123));
         lblEcosystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEcosystemName.setText("NURSE");
+        lblEcosystemName.setText("LAB ASSISTANT");
 
         btnAboutUs2.setBackground(new java.awt.Color(254, 254, 254));
         btnAboutUs2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -111,6 +111,14 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
         lblEnterpriseName.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         lblEnterpriseName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btnPendingDoctorAssignmentReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnPendingDoctorAssignmentReq.setText("DOCTOR ASSIGNMENT REQUEST");
+        btnPendingDoctorAssignmentReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPendingDoctorAssignmentReqActionPerformed(evt);
+            }
+        });
+
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         btnUpdateProfile.setText("UPDATE PROFILE");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -119,19 +127,11 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnInitialTestReq.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnInitialTestReq.setText("Initial Test Requests");
-        btnInitialTestReq.addActionListener(new java.awt.event.ActionListener() {
+        btnHAAPatientReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnHAAPatientReq.setText("UNASSIGNED LAB TEST REQUESTS");
+        btnHAAPatientReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInitialTestReqActionPerformed(evt);
-            }
-        });
-
-        btnDoctorTestRequest.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnDoctorTestRequest.setText("Test requests by doctor");
-        btnDoctorTestRequest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoctorTestRequestActionPerformed(evt);
+                btnHAAPatientReqActionPerformed(evt);
             }
         });
 
@@ -150,14 +150,13 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblEcosystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnDoctorTestRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnInitialTestReq, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDoctorTestRequest, btnInitialTestReq, btnUpdateProfile});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHAAPatientReq, btnUpdateProfile});
 
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,15 +175,15 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addComponent(btnAboutUs2)
                 .addGap(18, 18, 18)
-                .addComponent(btnInitialTestReq, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDoctorTestRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdateProfile)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDoctorTestRequest, btnInitialTestReq, btnUpdateProfile});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHAAPatientReq, btnUpdateProfile});
 
         jSplitPane2.setLeftComponent(jPanel4);
 
@@ -208,41 +207,13 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane2)
-                .addContainerGap())
+            .addComponent(jSplitPane2)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnInitialTestReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialTestReqActionPerformed
-        // TODO add your handling code here:
-//        PatientListInitialTestReqJPanel workStatusPanel = new PatientListInitialTestReqJPanel(userProcessContainer, account, nurseOrganization, enterprise, network, business);
-//        userProcessContainer.add("WorkStatusPanel", workStatusPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-        
-        PatientListInitialTestReqJPanel workStatusPanel = new PatientListInitialTestReqJPanel(userProcessContainer, account, nurseOrganization, enterprise, network, business, jSplitPane2);
-        jSplitPane2.setRightComponent(workStatusPanel);
-    }//GEN-LAST:event_btnInitialTestReqActionPerformed
-
-    private void btnDoctorTestRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorTestRequestActionPerformed
-        // TODO add your handling code here:
-//        PatientRequestsFromDoctorJPanel patientRequestsFromDoctorJPanel = new PatientRequestsFromDoctorJPanel(userProcessContainer, account, (NurseOrganization) nurseOrganization, enterprise, business);
-//        userProcessContainer.add("NurseWorkAreaJPanel", patientRequestsFromDoctorJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-        
-        PatientRequestsFromDoctorJPanel patientRequestsFromDoctorJPanel = new PatientRequestsFromDoctorJPanel(userProcessContainer, account, (NurseOrganization) nurseOrganization, enterprise, business, jSplitPane2);
-        jSplitPane2.setRightComponent(patientRequestsFromDoctorJPanel);
-    }//GEN-LAST:event_btnDoctorTestRequestActionPerformed
 
     private void btnAboutUs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUs2ActionPerformed
         // TODO add your handling code here:
@@ -254,17 +225,39 @@ public class NurseMainWorkAreaJPanel extends javax.swing.JPanel {
         mainJFrame.logout(business);
     }//GEN-LAST:event_btnAboutUs2ActionPerformed
 
+    private void btnPendingDoctorAssignmentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPendingDoctorAssignmentReqActionPerformed
+        // TODO add your handling code here:
+        //        PendingDoctorAssignmentJPanel pendngDocPanel = new PendingDoctorAssignmentJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
+        //        userProcessContainer.add("pendingDoctorAssignmentJPanel", pendngDocPanel);
+        //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        //        layout.next(userProcessContainer);
+
+        LabAssistantMainWorkAreaJPanel pendngDocPanel = new LabAssistantMainWorkAreaJPanel(userProcessContainer, userAccount, labOrganization, business, enterprise, jSplitPane2);
+        jSplitPane2.setRightComponent(pendngDocPanel);
+    }//GEN-LAST:event_btnPendingDoctorAssignmentReqActionPerformed
+
     private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
         // TODO add your handling code here:
-        PersonalDetailsJPanel requestPanel = new PersonalDetailsJPanel(userProcessContainer, account, business);
+        PersonalDetailsJPanel requestPanel = new PersonalDetailsJPanel(userProcessContainer, userAccount, business);
         jSplitPane2.setRightComponent(requestPanel);
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
+
+    private void btnHAAPatientReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHAAPatientReqActionPerformed
+        // TODO add your handling code here:
+        //        HASPatientRequestsJPanel requestPanel = new HASPatientRequestsJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
+        //        userProcessContainer.add("hASPatientRequestsJPanel", requestPanel);
+        //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        //        layout.next(userProcessContainer);
+
+        LabAssistantMainWorkAreaJPanel requestPanel = new LabAssistantMainWorkAreaJPanel(userProcessContainer, userAccount, labOrganization, business, enterprise, jSplitPane2 );
+        jSplitPane2.setRightComponent(requestPanel);
+    }//GEN-LAST:event_btnHAAPatientReqActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAboutUs2;
-    private javax.swing.JButton btnDoctorTestRequest;
-    private javax.swing.JButton btnInitialTestReq;
+    private javax.swing.JButton btnHAAPatientReq;
+    private javax.swing.JButton btnPendingDoctorAssignmentReq;
     private javax.swing.JButton btnUpdateProfile;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

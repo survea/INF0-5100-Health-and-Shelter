@@ -95,7 +95,6 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(254, 254, 254));
 
         jButton2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(99, 112, 140));
         jButton2.setText("Add New Shelter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +103,6 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnShelterRequest.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnShelterRequest.setForeground(new java.awt.Color(99, 112, 140));
         btnShelterRequest.setText("Manage Shelter Request");
         btnShelterRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +111,6 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageEnterpriseAdmins2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnManageEnterpriseAdmins2.setForeground(new java.awt.Color(99, 112, 140));
         btnManageEnterpriseAdmins2.setText("Statistics");
         btnManageEnterpriseAdmins2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +138,6 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        btnUpdateProfile.setForeground(new java.awt.Color(99, 112, 140));
         btnUpdateProfile.setText("Update Profile");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

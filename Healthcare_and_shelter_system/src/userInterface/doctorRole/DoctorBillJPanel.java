@@ -5,8 +5,10 @@
  */
 package userInterface.doctorRole;
 
+import business.EcoSystem;
 import business.Organization;
 import business.enterprise.Enterprise;
+import business.organization.DoctorOrganization;
 import business.organization.NurseOrganization;
 import business.userAccount.UserAccount;
 import business.workQueue.WorkRequest;
@@ -14,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -28,21 +31,26 @@ public class DoctorBillJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private WorkRequest request;
     private Enterprise enterprise;
+    JSplitPane jSplitPane2;
+    DoctorOrganization doctorOrganization;
     int count = 0;
 
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public DoctorBillJPanel(JPanel userProcessContainer, UserAccount account, WorkRequest request, Enterprise enterprise) {
+    public DoctorBillJPanel(JPanel userProcessContainer, UserAccount account, WorkRequest request, Enterprise enterprise, DoctorOrganization doctorOrganization, JSplitPane jSplitPane2) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.request = request;
         this.enterprise = enterprise;
+        this.jSplitPane2 = jSplitPane2;
+        this.doctorOrganization = doctorOrganization;
         valueLabel.setText(account.getUsername());
         populateData();
     }
+    
         private void populateData() {
         fName.setText(request.getPatientfirstname());
         lName.setText(request.getPatientlastname());
@@ -357,13 +365,15 @@ public class DoctorBillJPanel extends javax.swing.JPanel {
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
         if (count != 0) {
-            userProcessContainer.remove(this);
-            Component[] componentArray = userProcessContainer.getComponents();
-            Component component = componentArray[componentArray.length - 1];
-            DoctorWorkRequestStatusJPanel dwjp = (DoctorWorkRequestStatusJPanel) component;
-            dwjp.populateTable();
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.previous(userProcessContainer);
+//            userProcessContainer.remove(this);
+//            Component[] componentArray = userProcessContainer.getComponents();
+//            Component component = componentArray[componentArray.length - 1];
+//            DoctorWorkRequestStatusJPanel dwjp = (DoctorWorkRequestStatusJPanel) component;
+//            dwjp.populateTable();
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.previous(userProcessContainer);
+            DoctorWorkRequestStatusJPanel dwjp = new DoctorWorkRequestStatusJPanel(userProcessContainer, userAccount, doctorOrganization, enterprise, EcoSystem.business, jSplitPane2);
+            jSplitPane2.setRightComponent(dwjp);
         } else {
             JOptionPane.showMessageDialog(null, "Please Assign A Process To The Patient");
         }

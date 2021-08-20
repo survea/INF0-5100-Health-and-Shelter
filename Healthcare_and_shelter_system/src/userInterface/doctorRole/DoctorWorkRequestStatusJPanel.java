@@ -13,6 +13,7 @@ import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,13 +30,15 @@ public class DoctorWorkRequestStatusJPanel extends javax.swing.JPanel {
     DoctorOrganization doctorOrganization;
     Enterprise enterprise;
     EcoSystem business;
+    JSplitPane jSplitPane2;
 
-    DoctorWorkRequestStatusJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, EcoSystem business) {
+    DoctorWorkRequestStatusJPanel(JPanel userProcessContainer, UserAccount userAccount, DoctorOrganization doctorOrganization, Enterprise enterprise, EcoSystem business, JSplitPane jSplitPane2) {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.doctorOrganization = doctorOrganization;
         this.enterprise = enterprise;
         this.business = business;
+        this.jSplitPane2 = jSplitPane2;
         initComponents();
         valueLabel.setText(enterprise.getName());
         populateTable();
@@ -201,10 +204,11 @@ public class DoctorWorkRequestStatusJPanel extends javax.swing.JPanel {
 
         WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
         if ((request.getStatus().equals("Treatment/Test Completed"))) {
-            DoctorBillJPanel billGeneration = new DoctorBillJPanel(userProcessContainer, userAccount, request, enterprise);
-            userProcessContainer.add("BillGeneration", billGeneration);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            DoctorBillJPanel billGeneration = new DoctorBillJPanel(userProcessContainer, userAccount, request, enterprise, doctorOrganization, jSplitPane2);
+//            userProcessContainer.add("BillGeneration", billGeneration);
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.next(userProcessContainer);
+                jSplitPane2.setRightComponent(billGeneration);
         } else {
             JOptionPane.showMessageDialog(null, "Process is already done");
         }

@@ -110,7 +110,6 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(99, 112, 140));
         jButton1.setText("Fund Transfer Request");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +118,6 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(99, 112, 140));
         jButton2.setText("Manage Funds Request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +126,6 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageEnterpriseAdmins2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnManageEnterpriseAdmins2.setForeground(new java.awt.Color(99, 112, 140));
         btnManageEnterpriseAdmins2.setText("Statistics");
         btnManageEnterpriseAdmins2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +134,6 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        btnUpdateProfile.setForeground(new java.awt.Color(99, 112, 140));
         btnUpdateProfile.setText("Update Profile");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

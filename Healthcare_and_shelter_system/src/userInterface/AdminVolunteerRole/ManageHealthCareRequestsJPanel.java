@@ -162,9 +162,7 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
                         .addGap(408, 408, 408))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(refreshJButton))
+                    .addComponent(refreshJButton)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
@@ -205,12 +203,12 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 627, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(104, Short.MAX_VALUE)
+                    .addContainerGap(103, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(104, Short.MAX_VALUE)))
+                    .addContainerGap(102, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -258,11 +256,11 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
             return;
         }
         if (count == 0) {
-            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
+            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 4);
             count++;
             request.setReceiver(userAccount);
-            request.setStatus("Pending hospital assignment");
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
+//            request.setStatus("Pending hospital assignment");
+//            userAccount.getWorkQueue().getWorkRequestList().add(request);
 
             populateTable();
             JOptionPane.showMessageDialog(null, "Assigned");

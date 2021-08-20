@@ -245,7 +245,7 @@ public class DoctorMainWorkAreaJPanel extends javax.swing.JPanel {
 //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //        layout.next(userProcessContainer);
 
-        DoctorAreaPatientListJPanel doctorWorkPanel = new DoctorAreaPatientListJPanel(userProcessContainer, userAccount, (DoctorOrganization) doctorOrganization, enterprise, business);
+        DoctorAreaPatientListJPanel doctorWorkPanel = new DoctorAreaPatientListJPanel(userProcessContainer, userAccount, (DoctorOrganization) doctorOrganization, enterprise, business, jSplitPane2);
         jSplitPane2.setRightComponent(doctorWorkPanel);
     }//GEN-LAST:event_manageOrganizationJButton1ActionPerformed
 
@@ -256,7 +256,7 @@ public class DoctorMainWorkAreaJPanel extends javax.swing.JPanel {
 //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //        layout.next(userProcessContainer);
         
-        DoctorWorkRequestStatusJPanel workStatusPanel = new DoctorWorkRequestStatusJPanel(userProcessContainer, userAccount, (DoctorOrganization) doctorOrganization, enterprise, business);
+        DoctorWorkRequestStatusJPanel workStatusPanel = new DoctorWorkRequestStatusJPanel(userProcessContainer, userAccount, (DoctorOrganization) doctorOrganization, enterprise, business, jSplitPane2);
         jSplitPane2.setRightComponent(workStatusPanel);
     }//GEN-LAST:event_manageOrganizationJButton2ActionPerformed
 

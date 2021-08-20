@@ -115,7 +115,6 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEnterpriseName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        btnUpdateProfile.setForeground(new java.awt.Color(99, 112, 140));
         btnUpdateProfile.setText("UPDATE PROFILE");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +123,6 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         manageEmployeeJButton.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        manageEmployeeJButton.setForeground(new java.awt.Color(99, 112, 140));
         manageEmployeeJButton.setText("MANAGE EMPLOYEE");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +131,6 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         ManageUserBtn.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        ManageUserBtn.setForeground(new java.awt.Color(99, 112, 140));
         ManageUserBtn.setText("MANAGE USER");
         ManageUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +139,6 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnmanageOrg.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnmanageOrg.setForeground(new java.awt.Color(99, 112, 140));
         btnmanageOrg.setText("MANAGE ORGANIZATION");
         btnmanageOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +147,6 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnMAnageHealthCareReq.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnMAnageHealthCareReq.setForeground(new java.awt.Color(99, 112, 140));
         btnMAnageHealthCareReq.setText("MANAGE HEALTHCARE REQUESTS");
         btnMAnageHealthCareReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +155,6 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnMAnageHealthCareReq1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        btnMAnageHealthCareReq1.setForeground(new java.awt.Color(99, 112, 140));
         btnMAnageHealthCareReq1.setText("VIEW STATISTICS");
         btnMAnageHealthCareReq1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

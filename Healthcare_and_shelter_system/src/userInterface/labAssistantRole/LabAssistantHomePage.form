@@ -16,20 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSplitPane2" pref="380" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jSplitPane2" alignment="0" pref="400" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSplitPane2" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jSplitPane2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -53,7 +45,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnAboutUs2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -66,11 +58,9 @@
                               <Component id="lblEnterpriseName" alignment="1" min="-2" pref="259" max="-2" attributes="0"/>
                               <Component id="lblEcosystemName" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnHAAPatientReq" linkSize="1" alignment="0" min="-2" pref="297" max="-2" attributes="0"/>
+                          <Component id="btnPendingDoctorAssignmentReq" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnUpdateProfile" linkSize="1" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="btnDoctorTestRequest" linkSize="1" min="-2" pref="176" max="-2" attributes="0"/>
-                              <Component id="btnInitialTestReq" linkSize="1" min="-2" pref="176" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                   </Group>
@@ -96,12 +86,12 @@
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="btnAboutUs2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnInitialTestReq" linkSize="2" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnHAAPatientReq" linkSize="2" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnDoctorTestRequest" linkSize="2" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnPendingDoctorAssignmentReq" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnUpdateProfile" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -129,7 +119,7 @@
                   <Color blue="7b" green="4c" red="3c" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="NURSE"/>
+                <Property name="text" type="java.lang.String" value="LAB ASSISTANT"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnAboutUs2">
@@ -157,6 +147,17 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="btnPendingDoctorAssignmentReq">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Serif" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="DOCTOR ASSIGNMENT REQUEST"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPendingDoctorAssignmentReqActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="btnUpdateProfile">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -168,26 +169,15 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateProfileActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnInitialTestReq">
+            <Component class="javax.swing.JButton" name="btnHAAPatientReq">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Serif" size="15" style="1"/>
+                  <Font name="Serif" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Initial Test Requests"/>
+                <Property name="text" type="java.lang.String" value="UNASSIGNED LAB TEST REQUESTS"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInitialTestReqActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnDoctorTestRequest">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Serif" size="15" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Test requests by doctor"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoctorTestRequestActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHAAPatientReqActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

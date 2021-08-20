@@ -14,6 +14,8 @@ import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.plaf.SplitPaneUI;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,11 +33,12 @@ public class PatientListInitialTestReqJPanel extends javax.swing.JPanel {
     private NurseOrganization nurseOrganization;
     private Enterprise enter;
     Network network;
+    JSplitPane jSplitPane2;
 
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public PatientListInitialTestReqJPanel(JPanel userProcessContainer, UserAccount account, NurseOrganization organization, Enterprise enter, Network network, EcoSystem business) {
+    public PatientListInitialTestReqJPanel(JPanel userProcessContainer, UserAccount account, NurseOrganization organization, Enterprise enter, Network network, EcoSystem business, JSplitPane jSplitPane2) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
@@ -44,6 +47,7 @@ public class PatientListInitialTestReqJPanel extends javax.swing.JPanel {
         this.nurseOrganization = organization;
         this.enter = enter;
         this.network = network;
+        this.jSplitPane2 = jSplitPane2;
         populateTable();
     }
 
@@ -164,10 +168,12 @@ public class PatientListInitialTestReqJPanel extends javax.swing.JPanel {
 
         if (request.getStatus().equals("Awaiting initial checkup - nurse")) {
 //            userAccount.getWorkQueue().getWorkRequestList().add(request);
-            PatientInitialTestJPanel patientNurseRequestJpanel = new PatientInitialTestJPanel(userProcessContainer, userAccount, (NurseOrganization) nurseOrganization, business, enter, network, request);
-            userProcessContainer.add("PatientInitialTestJPanel", patientNurseRequestJpanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            PatientInitialTestJPanel patientNurseRequestJpanel = new PatientInitialTestJPanel(userProcessContainer, userAccount, (NurseOrganization) nurseOrganization, business, enter, network, request, jSplitPane2);
+//            userProcessContainer.add("PatientInitialTestJPanel", patientNurseRequestJpanel);
+            jSplitPane2.setRightComponent(patientNurseRequestJpanel);
+
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.next(userProcessContainer);
         } else {
             JOptionPane.showMessageDialog(null, "The Patient is already taken");
         }
