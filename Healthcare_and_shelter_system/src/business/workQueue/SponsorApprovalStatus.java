@@ -19,4 +19,6 @@ public class SponsorApprovalStatus extends WorkRequest{
     public void setTestResult(String testResult) {
         this.testResult = testResult;
     }
+    
+   
 }

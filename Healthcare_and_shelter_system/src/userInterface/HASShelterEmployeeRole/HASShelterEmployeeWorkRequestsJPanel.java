@@ -63,17 +63,17 @@ public class HASShelterEmployeeWorkRequestsJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Type", "Name", "Assigned for", "Assigned Shelter", "Status"
+                "Name", "Assigned for", "Assigned Shelter", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, false
+                false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -199,12 +199,11 @@ public class HASShelterEmployeeWorkRequestsJPanel extends javax.swing.JPanel {
             if (HASUser.getRole() instanceof AdminRole) {
                 for (WorkRequest request : HASUser.getWorkQueue().getWorkRequestList()) {
                     if ((request.getStatus().equals("Awaiting for Shelter")) ) {
-                        Object[] row = new Object[5];
+                        Object[] row = new Object[4];
                         row[0] = request;
-                        row[1] = request.getShelterRequestName();
-                        row[2] = request.getAssignedfor();
-                        row[3] = request.getAssignedShelter();
-                        row[4] = request.getStatus();
+                        row[1] = request.getAssignedfor();
+                        row[2] = request.getAssignedShelter();
+                        row[3] = request.getStatus();
                         model.addRow(row);
                     }
 

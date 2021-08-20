@@ -156,7 +156,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
         enterprise.setFundsUsed(request.getApproxPatientFee());
         WorkRequest r = request.getRequest();
         System.out.println(r);
-        if(request.getStatus().equalsIgnoreCase("Funds Processed") || r.getStatus().equalsIgnoreCase("Funds Processed")){
+        if(request.getStatus().equalsIgnoreCase("Funds Processed")){
             JOptionPane.showMessageDialog(null, "Funds are already processed!", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }

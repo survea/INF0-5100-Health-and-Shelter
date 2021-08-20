@@ -72,11 +72,11 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Donar Name", "Role", "Status"
+                "Donar Name", "Role", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false, true
+                true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -108,7 +108,7 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Donar's Name", "Role", "Status"
+                "Donar's Name", "Role", "Status"
             }
         ));
         jScrollPane3.setViewportView(tblDonarList);
@@ -211,11 +211,10 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
             if (request.getStatus().equals("Pending")) {
-                Object[] row = new Object[4];
+                Object[] row = new Object[3];
                 row[0] = request;
-                row[1] = request.getDonarName();
-                row[2] = request.getRole();
-                row[3] = request.getStatus();
+                row[1] = request.getRole();
+                row[2] = request.getStatus();
                 model.addRow(row);
             }
         }
@@ -227,11 +226,10 @@ public class ManageFundsJpanel extends javax.swing.JPanel {
         model1.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
             if (request.getStatus().equals("Approved")) {
-                Object[] row = new Object[4];
+                Object[] row = new Object[3];
                 row[0] = request;
-                row[1] = request.getDonarName();
-                row[2] = request.getRole();
-                row[3] = request.getStatus();
+                row[1] = request.getRole();
+                row[2] = request.getStatus();
                 model1.addRow(row);
             }
         }

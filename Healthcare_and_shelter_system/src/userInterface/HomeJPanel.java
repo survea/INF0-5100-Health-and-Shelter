@@ -88,6 +88,11 @@ public class HomeJPanel extends javax.swing.JPanel {
 
         jCheckBox1.setBackground(new java.awt.Color(254, 254, 254));
         jCheckBox1.setText("Show Password");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         btnLogin.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         btnLogin.setText("Sign In");
@@ -292,6 +297,15 @@ public class HomeJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+         if (evt.getSource() == jCheckBox1) {
+            if (jCheckBox1.isSelected()) {
+                passwordField.setEchoChar((char) 0);
+            } else {
+                passwordField.setEchoChar('*'); }}      
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
