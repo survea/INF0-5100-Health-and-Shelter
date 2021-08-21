@@ -335,12 +335,13 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
             addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addjPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCourseCode1)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCourseName1)
-                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCourseCode1)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addjPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -535,6 +536,7 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
                                 r.setTypeOfRequest("AssignShelter");
                                 r.setStatus("Awaiting for Shelter");
                                 r.setAssignedfor("Assign Shelter");
+                                r.setObjectName(fname +" "+ lname);
                                 r.setShelterRequestName(fname +" "+ lname);
                                 r.setAge(Integer.parseInt(age.getText()));
                                 adminUser.getWorkQueue().getWorkRequestList().add(r);
@@ -542,6 +544,7 @@ public class SelfRegistrationJPanel extends javax.swing.JPanel {
                             }else if(request.equalsIgnoreCase("Both Health care and Shelter")){
                                 ShelterRequest r = new ShelterRequest();
                                 r.setPatientid(PROPERTIES);
+                                r.setObjectName(fname +" "+ lname);
                                 r.setPatientfirstname(fname);
                                 r.setPatientlastname(lname);
                                 r.setPheight(height1);

@@ -69,17 +69,17 @@ public class ManageShelterRequestJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Type", "Name", "Assigned Shelter", "Status", "Age"
+                "Name", "Assigned Shelter", "Status", "Age"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, true
+                false, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -88,9 +88,9 @@ public class ManageShelterRequestJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
         if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
+            workRequestJTable.getColumnModel().getColumn(0).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
+            workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         tblShelter.setModel(new javax.swing.table.DefaultTableModel(
@@ -153,11 +153,11 @@ public class ManageShelterRequestJPanel extends javax.swing.JPanel {
                         .addGap(106, 106, 106)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(btnAssignShelter, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(290, 290, 290)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(btnAssignShelter, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -257,13 +257,12 @@ public class ManageShelterRequestJPanel extends javax.swing.JPanel {
              for (UserAccount HASUser : enterprise.getUserAccountDirectory().getUserAccountList()) {
             if (HASUser.getRole() instanceof AdminRole) {
                 for (WorkRequest request : HASUser.getWorkQueue().getWorkRequestList()) {
-                    if ((request.getStatus().equalsIgnoreCase("Shelter Assigned"))|(request.getStatus().equalsIgnoreCase("Shelter Requested"))) {
-                        Object[] row = new Object[5];
+                    if ((request.getStatus().equalsIgnoreCase("Shelter Assigned"))|(request.getStatus().equalsIgnoreCase("Shelter Requested")) |(request.getStatus().equalsIgnoreCase("Awaiting for Shelter and Treatment"))) {
+                        Object[] row = new Object[4];
                         row[0] = request;
-                        row[1] = request.getShelterRequestName();
-                        row[2] = request.getAssignedShelter();
-                        row[3] = request.getStatus();
-                        row[4] = request.getAge();
+                        row[1] = request.getAssignedShelter();
+                        row[2] = request.getStatus();
+                        row[3] = request.getAge();
                         model.addRow(row);
                     }
                 }

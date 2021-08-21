@@ -525,6 +525,7 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                                 r.setStatus("Awaiting for Shelter");
                                 r.setAssignedfor("Assign Shelter");
                                 r.setShelterRequestName(fname +" "+ lname);
+                                r.setObjectName(fname +" "+ lname);
                                 r.setAge(Integer.parseInt(age.getText()));
                                 adminUser.getWorkQueue().getWorkRequestList().add(r);
                                 JOptionPane.showMessageDialog(this, "Person registered succesfully. Shelter request send to admin");
@@ -536,6 +537,7 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                                 r.setPheight(height1);
                                 r.setPweight(weight1);
                                 r.setPgender(gender);
+                                r.setObjectName(fname +" "+ lname);
                                 r.setTypeOfRequest("AssignShelterAndHospital");
                                 r.setStatus("Awaiting for Shelter and Treatment");
                                 r.setAssignedfor("Assign Shelter and treatment");

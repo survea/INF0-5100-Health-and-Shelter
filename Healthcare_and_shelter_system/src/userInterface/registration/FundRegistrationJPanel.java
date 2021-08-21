@@ -318,6 +318,7 @@ public class FundRegistrationJPanel extends javax.swing.JPanel {
         } else if (userCheck == 0) {
             SponsorApprovalStatus request = new SponsorApprovalStatus();
             request.setTypeOfRequest("Sponsor");
+                request.setObjectName(txtDonarName.getText());
                 request.setDonarName(txtDonarName.getText());
                 request.setUsername(userName);
                 request.setPassword(pass);

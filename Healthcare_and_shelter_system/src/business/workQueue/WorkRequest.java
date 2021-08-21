@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class WorkRequest {
     
+    private String objectName;
+    
     private String typeOfRequest;
     private String message;
     private UserAccount sender;
@@ -62,6 +64,19 @@ public class WorkRequest {
     private String assignedfor;
     private String assignedShelter;
     private int age;
+
+    @Override
+    public String toString(){
+        return objectName;
+    }
+    
+    public String getObjectName() {
+        return objectName;
+    }
+    
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
 
     public String getDonarName() {
         return donarName;

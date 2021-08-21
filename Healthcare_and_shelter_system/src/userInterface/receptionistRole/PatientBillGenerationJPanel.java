@@ -179,12 +179,15 @@ public class PatientBillGenerationJPanel extends javax.swing.JPanel {
         }
         if (work.getHospitalFee() == 0) {
             JOptionPane.showMessageDialog(null, "Already In Process. Sent to System Admin for processing payment!");
-        } else {
+        } else if(work.getStatus().equals("Funds Processed")){
+            JOptionPane.showMessageDialog(null, "Funds are already processed!");
+        }else {
             BillPayRequest request = new BillPayRequest();
             request.setPatientDetails(work);
             request.setRequest(work);
             System.out.println(work);
             request.setSender(userAccount);
+            request.setObjectName(work.getPatientfirstname()+" "+work.getPatientlastname() );
             request.setAddress(enterprise.getName());
             request.setStatus("Pending payment");
             request.setMessage("Pay Bills");
