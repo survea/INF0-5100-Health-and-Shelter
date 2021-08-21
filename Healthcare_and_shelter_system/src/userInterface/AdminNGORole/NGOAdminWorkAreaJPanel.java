@@ -74,7 +74,6 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        subMainFrame = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -88,9 +87,6 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(254, 254, 254));
-
-        subMainFrame.setBackground(new java.awt.Color(254, 254, 254));
-        subMainFrame.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel2.setBackground(new java.awt.Color(254, 254, 254));
 
@@ -199,7 +195,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageEnterpriseAdmins2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUpdateProfile)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageEnterpriseAdmins2, btnShelterRequest, btnUpdateProfile, jButton2});
@@ -212,41 +208,24 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 712, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 483, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel3);
-
-        javax.swing.GroupLayout subMainFrameLayout = new javax.swing.GroupLayout(subMainFrame);
-        subMainFrame.setLayout(subMainFrameLayout);
-        subMainFrameLayout.setHorizontalGroup(
-            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        subMainFrameLayout.setVerticalGroup(
-            subMainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(subMainFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -270,17 +249,20 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageEnterpriseAdmins2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseAdmins2ActionPerformed
         // TODO add your handling code here:
-                int treatementReqCount = 0;
-        int shelterReqCount = 0;
+                int pendingReqCount = 0;
+        int approvedReqCount = 0;
 //        JPanel jPanel1 = new JPanel();
 //        jPanel1.setLayout(new java.awt.BorderLayout());
-        for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
-             if (workReq instanceof ShelterRequest) {
-                shelterReqCount++;
+        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
+              if (request.getStatus().equalsIgnoreCase("Shelter Requested")) {
+                pendingReqCount++;
+            } else if (request.getStatus().equalsIgnoreCase("Old Age Home Assigned")|request.getStatus().equalsIgnoreCase("Adult Care Shelter Assigned")|request.getStatus().equalsIgnoreCase("Child Care Shelter Assigned")) {
+                approvedReqCount++;
             }
         }
         DefaultPieDataset pieDateSet = new DefaultPieDataset();
-        pieDateSet.setValue("Awaiting for Shelter", shelterReqCount);
+        pieDateSet.setValue("Awaiting for Shelter", pendingReqCount);
+        pieDateSet.setValue("Shelter Assigned", approvedReqCount);
         JFreeChart pieChart = ChartFactory.createPieChart("Pie chart", pieDateSet);
         PiePlot p = (PiePlot) pieChart.getPlot();
 
@@ -324,7 +306,6 @@ private void setProfilePicture() {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPersonName;
     private javax.swing.JLabel lblPicture;
-    private javax.swing.JPanel subMainFrame;
     // End of variables declaration//GEN-END:variables
 
 }
