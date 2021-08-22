@@ -11,7 +11,9 @@ import business.enterprise.EnterpriseDirectory;
 import business.enterprise.FundEnterprise;
 import business.network.Network;
 import business.organization.OrganizationDirectory;
+import business.roles.AdminRole;
 import business.userAccount.UserAccount;
+import business.workQueue.InterNetworkRequest;
 import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -48,7 +50,7 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         EnterpriseDirectory ed = network.getEnterpriseDirectory();
         for (Enterprise e : ed.getEnterpriseList()) {
             if (e.getEnterpriseType().equalsIgnoreCase("Fund Raiser")) {
-                int funds = enterprise.getFundsCollected();
+                int funds = e.getFundsCollected();
                 if (funds > 0) {
                     lblTotalFunds.setText(String.valueOf(funds));
                 }
@@ -76,8 +78,11 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         lblTotalFunds = new javax.swing.JLabel();
+        btnAlert = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(254, 254, 254));
+
+        jPanel1.setBackground(new java.awt.Color(254, 254, 254));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MAnage Healthcare requests", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         assignJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -135,21 +140,19 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         lblTotalFunds.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         lblTotalFunds.setText("0");
 
+        btnAlert.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnAlert.setForeground(new java.awt.Color(220, 80, 80));
+        btnAlert.setText("Alert Fund Admin");
+        btnAlert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlertActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(392, 392, 392))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(assignJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(processJButton)
-                        .addGap(408, 408, 408))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(refreshJButton)
@@ -159,6 +162,21 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addComponent(lblTotalFunds)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(392, 392, 392))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(assignJButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(processJButton)
+                            .addGap(408, 408, 408)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAlert)
+                        .addGap(419, 419, 419))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +193,9 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(processJButton))
-                .addGap(51, 51, 51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAlert)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -194,9 +214,9 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
             .addGap(0, 627, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(103, Short.MAX_VALUE)
+                    .addContainerGap(101, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(102, Short.MAX_VALUE)))
+                    .addContainerGap(100, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,6 +268,37 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_assignJButtonActionPerformed
 
+    private void btnAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlertActionPerformed
+        // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog("Enter Amount to be required:");
+        InterNetworkRequest request = new InterNetworkRequest();
+        try{
+            request.setRequestedAmount(Integer.parseInt(input));
+            request.setApproxPatientFee(Integer.parseInt(input));
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Enter amount in numbers");
+            return;
+        }
+        request.setRequestedNetwork(network);
+        request.setRequestedEnterprise(enterprise);
+        request.setStatus("FundAlert");
+        request.setMessage("Not Enough Funds. Request for more");
+        request.setSender(userAccount);
+        request.setObjectName(userAccount.getUsername());
+        request.setTypeOfRequest("RaiseFee");
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.enterpriseType.equalsIgnoreCase(Enterprise.EnterpriseType.FundRaiser.getValue())) {
+                    for(UserAccount adminUser : ent.getUserAccountDirectory().getUserAccountList()) {
+                        if(adminUser.getRole() instanceof AdminRole) {
+                            adminUser.getWorkQueue().getWorkRequestList().add(request);
+                            JOptionPane.showMessageDialog(this, "Alert sent to Fund Admin for Approval!");
+
+                        }
+                    }
+                }
+            }
+    }//GEN-LAST:event_btnAlertActionPerformed
+
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
 
@@ -288,6 +339,7 @@ public class ManageHealthCareRequestsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
+    private javax.swing.JButton btnAlert;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

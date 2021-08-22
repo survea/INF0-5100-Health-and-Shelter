@@ -5,6 +5,8 @@
  */
 package business.workQueue;
 
+import business.enterprise.Enterprise;
+import business.network.Network;
 import business.userAccount.UserAccount;
 import java.util.Date;
 
@@ -64,10 +66,40 @@ public class WorkRequest {
     private String assignedfor;
     private String assignedShelter;
     private int age;
-
+    
+    // interNetwork;
+    private Enterprise requestedEnterprise;
+    private Network requestedNetwork;
+    private int requestedAmount;
+    
     @Override
     public String toString(){
         return objectName;
+    }
+
+    public int getRequestedAmount() {
+        return requestedAmount;
+    }
+
+    public void setRequestedAmount(int requestedAmount) {
+        this.requestedAmount = requestedAmount;
+    }
+
+    
+    public Network getRequestedNetwork() {
+        return requestedNetwork;
+    }
+
+    public void setRequestedNetwork(Network requestedNetwork) {
+        this.requestedNetwork = requestedNetwork;
+    }
+    
+    public Enterprise getRequestedEnterprise() {
+        return requestedEnterprise;
+    }
+
+    public void setRequestedEnterprise(Enterprise requestedEnterprise) {
+        this.requestedEnterprise = requestedEnterprise;
     }
     
     public String getObjectName() {

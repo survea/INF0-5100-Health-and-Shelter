@@ -80,6 +80,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         btnManageEnterpriseAdmins2 = new javax.swing.JButton();
         btnUpdateProfile = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(254, 254, 254));
@@ -107,6 +108,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton1.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(99, 112, 140));
         jButton1.setText("Fund Transfer Request");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +117,8 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
-        jButton2.setText("Manage Funds Request");
+        jButton2.setForeground(new java.awt.Color(99, 112, 140));
+        jButton2.setText("Manage Donars Request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -123,6 +126,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageEnterpriseAdmins2.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        btnManageEnterpriseAdmins2.setForeground(new java.awt.Color(99, 112, 140));
         btnManageEnterpriseAdmins2.setText("Statistics");
         btnManageEnterpriseAdmins2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,10 +135,20 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnUpdateProfile.setForeground(new java.awt.Color(99, 112, 140));
         btnUpdateProfile.setText("Update Profile");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateProfileActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Serif", 1, 15)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(99, 112, 140));
+        jButton3.setText(" Volunteer Alert Request");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -145,14 +159,6 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblPersonName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAboutUs1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,13 +169,25 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
                                     .addGap(24, 24, 24))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap()))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManageEnterpriseAdmins2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUpdateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
-                .addContainerGap())
+                                    .addContainerGap()))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblPersonName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnAboutUs1))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnManageEnterpriseAdmins2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnUpdateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,10 +207,12 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnManageEnterpriseAdmins2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUpdateProfile)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageEnterpriseAdmins2, btnUpdateProfile, jButton1, jButton2});
@@ -209,7 +229,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
+            .addGap(0, 505, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel4);
@@ -225,7 +245,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -286,6 +306,12 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
         PersonalDetailsJPanel requestPanel = new PersonalDetailsJPanel(userProcessContainer, userAccount, system);
         jSplitPane1.setRightComponent(requestPanel);
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        VolunteerAlertJPanel requestPanel = new VolunteerAlertJPanel(userProcessContainer, userAccount,organization, enterprise,network, system);
+        jSplitPane1.setRightComponent(requestPanel);
+    }//GEN-LAST:event_jButton3ActionPerformed
     private void setProfilePicture() {
         BufferedImage img = null;
         try {
@@ -306,6 +332,7 @@ public class FundsAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdateProfile;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

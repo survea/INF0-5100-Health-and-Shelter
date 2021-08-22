@@ -8,6 +8,7 @@ package business;
 import business.network.Network;
 import business.roles.Role;
 import business.roles.SystemAdminRole;
+import business.workQueue.WorkQueue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class EcoSystem extends Organization {
 
     public static EcoSystem business;
     public List<Network> networkList;
+    public WorkQueue workqueue;
 
     public static EcoSystem getInstance() {
         if (business == null) {
@@ -48,11 +50,20 @@ public class EcoSystem extends Organization {
     private EcoSystem() {
         super(null);
         networkList = new ArrayList<Network>();
+        workqueue = new WorkQueue();
     }
 
     public EcoSystem(List<Network> networkList) {
         super();
         this.networkList = networkList;
+    }
+
+    public WorkQueue getWorkqueue() {
+        return workqueue;
+    }
+
+    public void setWorkqueue(WorkQueue workqueue) {
+        this.workqueue = workqueue;
     }
 
     public List<Network> getNetworkList() {

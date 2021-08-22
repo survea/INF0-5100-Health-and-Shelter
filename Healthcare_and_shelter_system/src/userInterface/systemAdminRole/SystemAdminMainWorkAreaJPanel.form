@@ -57,34 +57,30 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="btnManageEnterpriseAdmins1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnManageEnterpriseAdmins" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnManageEnterprise" linkSize="2" alignment="0" pref="290" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblPicture" min="-2" pref="75" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lblPersonName" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="btnManageNetwork" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnUpdateProfile" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="lblEcosystemName" min="-2" pref="275" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="lblEcosystemName" min="-2" pref="275" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnAboutUs1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnManageEnterpriseAdmins2" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="btnManageEnterpriseAdmins1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnManageEnterpriseAdmins" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnManageEnterprise" linkSize="2" alignment="0" pref="290" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblPicture" min="-2" pref="75" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="lblPersonName" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnManageNetwork" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnUpdateProfile" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnAboutUs1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -111,11 +107,13 @@
                       <Component id="btnManageEnterprise" linkSize="3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnManageEnterpriseAdmins" linkSize="3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnManageEnterpriseAdmins2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Component id="btnManageEnterpriseAdmins1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnUpdateProfile" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -216,6 +214,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAboutUs1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageEnterpriseAdmins2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Serif" size="15" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Manage Funds"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageEnterpriseAdmins2ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -7,6 +7,8 @@ package userInterface.AdminFundRole;
 
 import business.EcoSystem;
 import business.employee.Employee;
+import business.enterprise.Enterprise;
+import business.enterprise.EnterpriseDirectory;
 import business.enterprise.FundEnterprise;
 import business.network.Network;
 import business.organization.FundraiserOrganization;
@@ -70,7 +72,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Patient Name", "Amount Requested", "Status", "Message"
+                "Name", "Amount Requested", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -121,12 +123,12 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
+                        .addGap(320, 320, 320)
                         .addComponent(btnApprove))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +139,11 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblTotalFunds))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnApprove)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,18 +155,43 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest) tblHospitalRequest.getValueAt(row, 0);
-        enterprise.setFundsUsed(request.getApproxPatientFee());
-        WorkRequest r = request.getRequest();
-        System.out.println(r);
-        if(request.getStatus().equalsIgnoreCase("Funds Processed")){
-            JOptionPane.showMessageDialog(null, "Funds are already processed!", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
+        if(request.getTypeOfRequest().equalsIgnoreCase("RaiseFee")){
+            //Enterprise e = request.getRequest().getRequestedEnterprise();
+            WorkRequest r = request.getRequest();
+            Network n = r.getRequestedNetwork();
+            EnterpriseDirectory ed = n.getEnterpriseDirectory();
+            int funds = request.getRequest().getApproxPatientFee();
+            for (Enterprise e : ed.getEnterpriseList()) {
+                if (e.getEnterpriseType().equalsIgnoreCase("Fund Raiser")) {
+                    e.setFundsCollected(funds);
+                    System.out.println(e.getFundsCollected());
+                    enterprise.setFundsUsed(funds);
+                    System.out.println(enterprise.getFundsCollected());
+                    r.setStatus("Funds Processed");
+                    r.setMessage("Funds Processed Successfully!");
+                    request.setStatus("Funds Processed");
+                    request.setMessage("Funds Processed Successfully!");
+                    JOptionPane.showMessageDialog(null, "Funds Processed Successfully!");
+                    break;
+                }
+            }
+            
+        } else {
+             enterprise.setFundsUsed(request.getApproxPatientFee());
+            WorkRequest r = request.getRequest();
+            System.out.println(r);
+            if(request.getStatus().equalsIgnoreCase("Funds Processed")){
+                JOptionPane.showMessageDialog(null, "Funds are already processed!", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            r.setStatus("Funds Processed");
+            r.setMessage("Funds Processed Successfully!");
+            request.setStatus("Funds Processed");
+            request.setMessage("Funds Processed Successfully!");
+            JOptionPane.showMessageDialog(null, "Funds Processed Successfully!");
         }
-        r.setStatus("Funds Processed");
-        r.setMessage("Funds Processed Successfully!");
-        request.setStatus("Funds Processed");
-        request.setMessage("Funds Processed Successfully!");
-        JOptionPane.showMessageDialog(null, "Funds Processed Successfully!");
+        
+       
         populateTotalFunds();
         populateRequestTable();
             
@@ -174,7 +201,7 @@ public class FundTransferRequestJpanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (WorkRequest r : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (r.getStatus().equals("Pending payment")) {
+            if (r.getStatus().equals("Pending payment")||r.getStatus().equals("Raise Funds")) {
                 Object[] row = new Object[5];
                 row[0] = r;
                 row[1] = r.getApproxPatientFee();

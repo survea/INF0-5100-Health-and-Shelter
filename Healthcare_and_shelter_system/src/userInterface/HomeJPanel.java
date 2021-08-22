@@ -31,6 +31,7 @@ public class HomeJPanel extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.userProcessContainer = userProcessContainerÏ;
+        
     }
 
 
