@@ -84,6 +84,8 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {

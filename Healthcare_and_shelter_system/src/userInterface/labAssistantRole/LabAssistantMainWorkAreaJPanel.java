@@ -85,6 +85,8 @@ public class LabAssistantMainWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         workRequestJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

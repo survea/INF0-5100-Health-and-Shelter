@@ -107,6 +107,8 @@ public class DoctorBillJPanel extends javax.swing.JPanel {
         bodyTemp = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         patientSym.setEditable(false);
         patientSym.setColumns(20);
         patientSym.setRows(5);
