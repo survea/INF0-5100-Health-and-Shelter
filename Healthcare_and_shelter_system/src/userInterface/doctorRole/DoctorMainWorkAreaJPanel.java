@@ -86,6 +86,8 @@ public class DoctorMainWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         jPanel4.setBackground(new java.awt.Color(254, 254, 254));
 
         lblPersonName.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
@@ -225,15 +227,11 @@ public class DoctorMainWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

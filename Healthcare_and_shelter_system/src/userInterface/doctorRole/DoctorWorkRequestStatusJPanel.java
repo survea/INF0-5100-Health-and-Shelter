@@ -83,6 +83,8 @@ public class DoctorWorkRequestStatusJPanel extends javax.swing.JPanel {
         backJButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         enterpriseLabel.setText("ENTERPRISE:");
 

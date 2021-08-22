@@ -153,6 +153,8 @@ public class PatientInitialTestJPanel extends javax.swing.JPanel {
         jLabel15.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel15.setText("Glucose Level");
 
+        imagePlacer.setBackground(new java.awt.Color(254, 254, 254));
+
         btnSubmit.setText("SUBMIT RESULTS");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

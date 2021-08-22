@@ -86,6 +86,8 @@ public class PatientRequestsFromDoctorJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

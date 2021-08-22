@@ -63,10 +63,12 @@
                               <Component id="lblEnterpriseName" alignment="1" min="-2" pref="259" max="-2" attributes="0"/>
                               <Component id="lblEcosystemName" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton2" linkSize="1" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnHAAPatientReq" linkSize="1" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnPendingDoctorAssignmentReq" linkSize="1" max="32767" attributes="0"/>
-                          <Component id="btnUpdateProfile" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnUpdateProfile" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButton2" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                   </Group>
@@ -98,8 +100,8 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton2" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnUpdateProfile" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="134" max="32767" attributes="0"/>
+                      <Component id="btnUpdateProfile" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace pref="126" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -67,6 +67,8 @@ public class HASStatisticsJPanel extends javax.swing.JPanel {
 
         jButton1.setText("jButton1");
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         btnTtlReqStats.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         btnTtlReqStats.setForeground(new java.awt.Color(99, 112, 140));
         btnTtlReqStats.setText("Total request Statistics");

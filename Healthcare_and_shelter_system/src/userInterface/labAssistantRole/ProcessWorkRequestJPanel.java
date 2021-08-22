@@ -66,6 +66,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         resultJTextField = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel2.setText("LAB ASSISTANT RESULT PANEL");
         jLabel2.setToolTipText("");

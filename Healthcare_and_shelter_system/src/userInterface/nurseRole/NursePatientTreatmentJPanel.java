@@ -107,6 +107,8 @@ public class NursePatientTreatmentJPanel extends javax.swing.JPanel {
         gender = new javax.swing.JTextField();
         bldGrp = new javax.swing.JTextField();
 
+        jPanel1.setBackground(new java.awt.Color(254, 254, 254));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("First Name");
 
