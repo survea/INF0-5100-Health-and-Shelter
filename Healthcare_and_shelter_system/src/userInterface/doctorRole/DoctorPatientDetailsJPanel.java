@@ -16,6 +16,10 @@ import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -63,10 +67,26 @@ public class DoctorPatientDetailsJPanel extends javax.swing.JPanel {
         gluLvl.setText(Float.toString(request.getPglucoselvl()));
         patientSym.setText(request.getPsymptoms());
         diagnosis.setText(request.getPdiagnosis());
-        String picture = request.getPimage();
-        ImageIcon pic1 = new ImageIcon(picture);
-        pic1 = new ImageIcon(pic1.getImage().getScaledInstance(130, 150, Image.SCALE_SMOOTH));
-        imagePlacer.setIcon(pic1);
+        
+                if(request.getPimage() == null)
+            request.setPimage("/userProfilePictures/default_profile_picture.jpg");
+        setProfilePicture(request);
+//        String picture = request.getPimage();
+//        ImageIcon pic1 = new ImageIcon(picture);
+//        pic1 = new ImageIcon(pic1.getImage().getScaledInstance(130, 150, Image.SCALE_SMOOTH));
+//        imagePlacer.setIcon(pic1);
+    }
+        private void setProfilePicture(WorkRequest request) {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src" + request.getPimage()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image dimg = img.getScaledInstance(130, 150,Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        imagePlacer.setIcon(imageIcon);
+
     }
 
     /**

@@ -12,20 +12,27 @@ import business.roles.AdminRole;
 import business.userAccount.UserAccount;
 import business.workQueue.PatientTestRequest;
 import business.workQueue.ShelterRequest;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.PROPERTIES;
+import java.awt.image.RenderedImage;
 import java.util.Optional;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.io.File;
+import java.io.IOException;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javax.imageio.ImageIO;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import userInterface.PersonalDetailsJPanel;
 /**
  *
  * @author dhairyasheel
@@ -38,12 +45,14 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private final JFileChooser fileChooser = new JFileChooser();
-    ImageIcon logoImage;
-    public RegistrationNeedyJPanel(JPanel userProcessContainerÏ, EcoSystem system) {
+//    ImageIcon logoImage;
+    RenderedImage needyPicture;
+    
+    public RegistrationNeedyJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.system = system;
-        this.userProcessContainer = userProcessContainerÏ;
-        populateComboBox();
+        this.userProcessContainer = userProcessContainer;
+        populateComboBox(); 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,7 +95,6 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         imgLogo = new javax.swing.JLabel();
         btnAttach = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(251, 251, 251));
 
@@ -331,7 +339,7 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                         .addComponent(weight, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCourseCode4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         addjPanel3Layout.setVerticalGroup(
             addjPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,15 +387,6 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRemove.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnRemove.setForeground(new java.awt.Color(75, 88, 121));
-        btnRemove.setText("Remove");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -398,21 +397,17 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imgLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAttach)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRemove)
-                .addGap(33, 33, 33))
+                .addGap(68, 68, 68))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -428,7 +423,7 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
                             .addComponent(jButton1))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(addjPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(addjPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -464,6 +459,13 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
         String gender = genderCombo.getSelectedItem().toString();
         String request = cmbRequestType.getSelectedItem().toString();
         String pic = null;
+                    try {
+                ImageIO.write(needyPicture, "JPG", new File("./src/needyProfilePictures/"+fname + lname +"capture.jpg"));
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(PersonalDetailsJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            String filename = "/needyProfilePictures/" + fname + lname + "capture.jpg";
+            pic = filename;
 
         if (fName.getText().isEmpty() | lName.getText().isEmpty()| height.getText().isEmpty() | weight.getText().isEmpty()|txtEmail.getText().isEmpty()| cPhone.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all the fields!");
@@ -603,27 +605,30 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_weightActionPerformed
 
     private void btnAttachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachActionPerformed
-        // TODO add your handling code here:
-        int returnVal = fileChooser.showOpenDialog(this);
-        if(returnVal == JFileChooser.APPROVE_OPTION){
-            File file = fileChooser.getSelectedFile();
-            URL url;
-            try{
-                url = file.toURI().toURL();
-                logoImage = new ImageIcon(url);
-                logoImage = new ImageIcon(logoImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-                imgLogo.setIcon(logoImage);
-            }catch(MalformedURLException e){
-                System.out.println(e);
-            }
+        JFileChooser browseDriverLicenseFile = new JFileChooser();
+
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseDriverLicenseFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseDriverLicenseFile.showOpenDialog(null);
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseDriverLicenseFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+
+            //Display image in JLable
+            ImageIcon Ii = new ImageIcon(selectedImagePath);
+            //Resize image to fit jlabel
+            Image image = Ii.getImage().getScaledInstance(imgLogo.getWidth(), imgLogo.getHeight(), Image.SCALE_SMOOTH);
+            imgLogo.setIcon(new ImageIcon(image));
+
+            // construct the buffered image
+            BufferedImage bImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+            Graphics2D bImageGraphics = bImage.createGraphics();
+            bImageGraphics.drawImage(image, null, null);
+//            RenderedImage rImage = (RenderedImage) bImage;
+            needyPicture = (RenderedImage) bImage;
         }
     }//GEN-LAST:event_btnAttachActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // TODO add your handling code here:
-        logoImage = null;
-        imgLogo.setIcon(logoImage);
-    }//GEN-LAST:event_btnRemoveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -631,7 +636,6 @@ public class RegistrationNeedyJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel addjPanel4;
     private javax.swing.JTextField age;
     private javax.swing.JButton btnAttach;
-    private javax.swing.JButton btnRemove;
     private javax.swing.JTextField cPerson;
     private javax.swing.JTextField cPhone;
     private javax.swing.JComboBox<String> cmbRequestType;

@@ -49,7 +49,7 @@ public class DoctorWorkRequestStatusJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
-            if ((request.getStatus().equals("Treatment/Test Completed")) || (request.getStatus().equals("Bill Generated"))) {
+            if ((request.getStatus().equals("Treatment/Test Completed")) || (request.getStatus().equals("Bill Generated")) ||(request.getStatus().equals("Treatement Pending"))||(request.getStatus().equals("Treatement Processing"))) {
                 Object[] row = new Object[8];
                 row[0] = request;
                 row[1] = request.getPatientfirstname();

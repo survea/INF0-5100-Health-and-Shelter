@@ -49,7 +49,7 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
-            if ((request.getStatus().equals("Assigned To Doctor")) || (request.getStatus().equals("Pending"))) {
+            if ((request.getStatus().equals("Assigned To Doctor")) || (request.getStatus().equals("Treatement Pending")) || (request.getStatus().equals("Treatement Processing"))) {
                 Object[] row = new Object[5];
                 row[0] = request;
                 row[1] = request.getPatientfirstname();
@@ -221,7 +221,7 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
             WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
             count++;
             request.setReceiver(userAccount);
-            request.setStatus("Pending");
+            request.setStatus("Treatement Pending");
             populateTable();
             JOptionPane.showMessageDialog(null, "Assigned");
 
@@ -240,8 +240,8 @@ public class DoctorAreaPatientListJPanel extends javax.swing.JPanel {
         }
 
         WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-        if ((request.getStatus().equals("Pending")) && (request.getReceiver().equals(userAccount))) {
-            request.setStatus("Processing");
+        if (((request.getStatus().equals("Treatement Pending")) || (request.getStatus().equals("Treatement Processing"))) && (request.getReceiver().equals(userAccount))) {
+            request.setStatus("Treatement Processing");
             JOptionPane.showMessageDialog(null, "Request processed");
             count = 0;
             DoctorPatientDetailsJPanel processWorkRequestJPanel = new DoctorPatientDetailsJPanel(userProcessContainer, userAccount, request, enterprise, doctorOrganization, jSplitPane2);

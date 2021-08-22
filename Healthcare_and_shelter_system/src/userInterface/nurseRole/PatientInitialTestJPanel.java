@@ -15,8 +15,12 @@ import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -472,20 +476,20 @@ public class PatientInitialTestJPanel extends javax.swing.JPanel {
                     request.setStatus("Admin Waiting");
                     request.setTypeOfRequest("NGODecision");
                     JOptionPane.showMessageDialog(null, "Patient Details sent to the System Admin for Approval!");
-                                                        fName.setText("");
-                                    lName.setText("");
-                                    age.setText("");
-                                    height.setText("");
-                                    weight.setText("");
-                                    gender.setText("");
-                                    bldGrp.setText("");
-                                    bldPres.setText("");
-                                    bodyTemp.setText("");
-                                    gluLvl.setText("");
-                                    patientSym.setText("");
-                                    patientfee.setText("");
-                                    diagnosis.setText("");
-                                    priority.setText("");
+                    fName.setText("");
+                    lName.setText("");
+                    age.setText("");
+                    height.setText("");
+                    weight.setText("");
+                    gender.setText("");
+                    bldGrp.setText("");
+                    bldPres.setText("");
+                    bodyTemp.setText("");
+                    gluLvl.setText("");
+                    patientSym.setText("");
+                    patientfee.setText("");
+                    diagnosis.setText("");
+                    priority.setText("");
 //                    for (Enterprise enterp : network.getEnterpriseDirectory().getEnterpriseList()) {
 //                        if (enterp.getEnterpriseType().equalsIgnoreCase(Enterprise.EnterpriseType.Volunteer.getValue())) {
 //                            for (UserAccount hASAdmin : enterp.getUserAccountDirectory().getUserAccountList()) {
@@ -568,10 +572,26 @@ public class PatientInitialTestJPanel extends javax.swing.JPanel {
         height.setText(Integer.toString(request.getPheight()));
         weight.setText(Integer.toString(request.getPweight()));
         gender.setText(request.getPgender());
-        String picture = request.getPimage();
-        System.out.println(picture);
-        ImageIcon pic1 = new ImageIcon(picture);
-        pic1 = new ImageIcon(pic1.getImage().getScaledInstance(130, 150, Image.SCALE_SMOOTH));
-        imagePlacer.setIcon(pic1);
+//        String picture = request.getPimage();
+//        System.out.println(picture);
+//        ImageIcon pic1 = new ImageIcon(picture);
+//        pic1 = new ImageIcon(pic1.getImage().getScaledInstance(130, 150, Image.SCALE_SMOOTH));
+//        imagePlacer.setIcon(pic1);
+
+                if(request.getPimage() == null)
+            request.setPimage("/userProfilePictures/default_profile_picture.jpg");
+        setProfilePicture(request);
+    }
+
+    private void setProfilePicture(WorkRequest request) {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src" + request.getPimage()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image dimg = img.getScaledInstance(130, 150, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        imagePlacer.setIcon(imageIcon);
     }
 }
