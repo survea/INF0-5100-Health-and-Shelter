@@ -59,6 +59,8 @@ public class HASPatientRequestsJPanel extends javax.swing.JPanel {
         btnAssignToNurse = new javax.swing.JButton();
         cmbNurseList = new javax.swing.JComboBox();
 
+        setBackground(new java.awt.Color(254, 254, 254));
+
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

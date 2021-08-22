@@ -85,6 +85,7 @@ public class PatientBillGenerationJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(254, 254, 254));
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PATIENT SUBMISSIONS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
