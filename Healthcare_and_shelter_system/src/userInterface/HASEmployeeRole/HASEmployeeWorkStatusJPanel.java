@@ -219,6 +219,8 @@ public class HASEmployeeWorkStatusJPanel extends javax.swing.JPanel {
 //            }
         }
         JOptionPane.showMessageDialog(null, "Assigned to the Hospital, pending initial checkup");
+        populateTable();
+        populateJComboBox();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

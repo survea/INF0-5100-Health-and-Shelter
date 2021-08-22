@@ -142,6 +142,8 @@ public class HASPatientRequestsJPanel extends javax.swing.JPanel {
             //req.setPimage("Have to upload");
             ((UserAccount) nurseUserAccount).getWorkQueue().getWorkRequestList().add(request);
         }
+        populateNurseListCmb();
+        populateTable();
 
 //        if (request.getStatus().equals("Hospital Sent")) {
 //            for (Organization organ : enterprise.getOrganizationDirectory().getOrganizationList()) {
