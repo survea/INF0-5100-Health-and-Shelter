@@ -100,7 +100,7 @@ public class VolunteerAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEcosystemName.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         lblEcosystemName.setForeground(new java.awt.Color(60, 76, 123));
         lblEcosystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEcosystemName.setText("HOSPITAL ADMIN");
+        lblEcosystemName.setText("HAS ADMIN");
 
         btnAboutUs2.setBackground(new java.awt.Color(254, 254, 254));
         btnAboutUs2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
