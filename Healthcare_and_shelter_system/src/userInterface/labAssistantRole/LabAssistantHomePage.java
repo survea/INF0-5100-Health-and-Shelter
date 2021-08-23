@@ -82,7 +82,6 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
         lblEcosystemName = new javax.swing.JLabel();
         btnAboutUs2 = new javax.swing.JButton();
         lblEnterpriseName = new javax.swing.JLabel();
-        btnPendingDoctorAssignmentReq = new javax.swing.JButton();
         btnUpdateProfile = new javax.swing.JButton();
         btnHAAPatientReq = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -111,14 +110,6 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
         lblEnterpriseName.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         lblEnterpriseName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        btnPendingDoctorAssignmentReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        btnPendingDoctorAssignmentReq.setText("DOCTOR ASSIGNMENT REQUEST");
-        btnPendingDoctorAssignmentReq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPendingDoctorAssignmentReqActionPerformed(evt);
-            }
-        });
-
         btnUpdateProfile.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         btnUpdateProfile.setText("UPDATE PROFILE");
         btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +119,7 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
         });
 
         btnHAAPatientReq.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        btnHAAPatientReq.setText("UNASSIGNED LAB TEST REQUESTS");
+        btnHAAPatientReq.setText("LAB TEST REQUESTS");
         btnHAAPatientReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHAAPatientReqActionPerformed(evt);
@@ -151,7 +142,6 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
                         .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblEcosystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
@@ -177,10 +167,8 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnHAAPatientReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnPendingDoctorAssignmentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btnUpdateProfile)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHAAPatientReq, btnUpdateProfile});
@@ -225,17 +213,6 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
         mainJFrame.logout(business);
     }//GEN-LAST:event_btnAboutUs2ActionPerformed
 
-    private void btnPendingDoctorAssignmentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPendingDoctorAssignmentReqActionPerformed
-        // TODO add your handling code here:
-        //        PendingDoctorAssignmentJPanel pendngDocPanel = new PendingDoctorAssignmentJPanel(userProcessContainer, userAccount, organization, enterprise, eco);
-        //        userProcessContainer.add("pendingDoctorAssignmentJPanel", pendngDocPanel);
-        //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        //        layout.next(userProcessContainer);
-
-        LabAssistantMainWorkAreaJPanel pendngDocPanel = new LabAssistantMainWorkAreaJPanel(userProcessContainer, userAccount, labOrganization, business, enterprise, jSplitPane2);
-        jSplitPane2.setRightComponent(pendngDocPanel);
-    }//GEN-LAST:event_btnPendingDoctorAssignmentReqActionPerformed
-
     private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
         // TODO add your handling code here:
         PersonalDetailsJPanel requestPanel = new PersonalDetailsJPanel(userProcessContainer, userAccount, business);
@@ -257,7 +234,6 @@ public class LabAssistantHomePage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAboutUs2;
     private javax.swing.JButton btnHAAPatientReq;
-    private javax.swing.JButton btnPendingDoctorAssignmentReq;
     private javax.swing.JButton btnUpdateProfile;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
