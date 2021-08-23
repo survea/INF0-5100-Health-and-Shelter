@@ -391,7 +391,7 @@ public class DoctorBillJPanel extends javax.swing.JPanel {
             }
             else {
                 //request.setMessage(message);
-                request.setHospitalFee(Integer.parseInt(message));
+                request.setHospitalFee(request.getHospitalFee() + Integer.parseInt(message));
                 request.setSender(userAccount);
                 request.setStatus("Bill Generated");
                 JOptionPane.showMessageDialog(null, "Bill generated and Sent to Receptionist");
@@ -433,7 +433,7 @@ public class DoctorBillJPanel extends javax.swing.JPanel {
                 }
                 if (org != null) {
                     org.getWorkQueue().getWorkRequestList().add(request);
-                    userAccount.getWorkQueue().getWorkRequestList().add(request);
+//                    userAccount.getWorkQueue().getWorkRequestList().add(request);
                 }
             }
         }catch(NullPointerException e){

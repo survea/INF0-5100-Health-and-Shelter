@@ -6,8 +6,11 @@
 package userInterface.labAssistantRole;
 
 import business.EcoSystem;
+import business.Organization;
 import business.enterprise.Enterprise;
+import business.organization.DoctorOrganization;
 import business.organization.LabOrganization;
+import business.roles.DoctorRole;
 import business.userAccount.UserAccount;
 import business.workQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -135,6 +138,16 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             System.out.println(request.getStatus());
             request.setStatus("Treatment/Test Completed");
             request.setLabMessage(resultJTextField.getText());
+//            for (Organization organiz : enterprise.getOrganizationDirectory().getOrganizationList()) {
+//                if (organiz instanceof DoctorOrganization) {
+//                    for (UserAccount docUser : organiz.getUserAccountDirectory().getUserAccountList()) {
+//                        int pos = docUser.getWorkQueue().getWorkRequestList().indexOf(request);
+//                        if(pos >= 0) {
+//                            docUser.getWorkQueue().getWorkRequestList().set(pos, request);
+//                        }
+//                    }
+//                }
+//            }
             JOptionPane.showMessageDialog(null, "Test completed!");
 //            userProcessContainer.remove(this);
 //            Component[] componentArray = userProcessContainer.getComponents();
@@ -143,8 +156,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 //            dwjp.populateTable();
 //            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //            layout.previous(userProcessContainer);
-                LabAssistantMainWorkAreaJPanel lamwajp = new LabAssistantMainWorkAreaJPanel(userProcessContainer, account, organization, EcoSystem.business, enterprise, jSplitPane2);
-                jSplitPane2.setRightComponent(lamwajp);
+            LabAssistantMainWorkAreaJPanel lamwajp = new LabAssistantMainWorkAreaJPanel(userProcessContainer, account, organization, EcoSystem.business, enterprise, jSplitPane2);
+            jSplitPane2.setRightComponent(lamwajp);
             JOptionPane.showMessageDialog(null, "Results sent to doctor!");
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Please Enter The Appropriate Amount");

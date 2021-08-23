@@ -442,7 +442,7 @@ public class DoctorPatientDetailsJPanel extends javax.swing.JPanel {
             }
             if (org != null) {
                 org.getWorkQueue().getWorkRequestList().add(request);
-                userAccount.getWorkQueue().getWorkRequestList().add(request);
+//                userAccount.getWorkQueue().getWorkRequestList().add(request);
                 JOptionPane.showMessageDialog(null, "Sent to Lab for Test");
 //                userProcessContainer.remove(this);
 //                Component[] componentArray = userProcessContainer.getComponents();
@@ -490,7 +490,7 @@ public class DoctorPatientDetailsJPanel extends javax.swing.JPanel {
         }
         if (org != null) {
             org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
+//            userAccount.getWorkQueue().getWorkRequestList().add(request);
             JOptionPane.showMessageDialog(null, "Request Sent to Nurse for Treatment");
 //            userProcessContainer.remove(this);
 //            Component[] componentArray = userProcessContainer.getComponents();

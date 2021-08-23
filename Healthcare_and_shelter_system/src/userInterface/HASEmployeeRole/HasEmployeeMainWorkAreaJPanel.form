@@ -125,7 +125,7 @@
                   <Color blue="7b" green="4c" red="3c" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="HOSPITAL ADMIN"/>
+                <Property name="text" type="java.lang.String" value="HAS EMPLOYEE"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnAboutUs2">
